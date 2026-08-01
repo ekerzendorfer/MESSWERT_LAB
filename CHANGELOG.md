@@ -1,5 +1,25 @@
 # Änderungsprotokoll
 
+## v0.2.0 – 2026-08-01
+
+Erweiterung der Eichkurvenauswertung um komfortabel bearbeitbare Stoffdaten.
+
+### Neu
+
+- sichtbare Eingabe für den analysierten Stoff und seine molare Masse nach dem CSV-Import
+- optionale Eingabe von Stoffname und molarer Masse bei manueller Datenerfassung
+- automatische Vorbelegung der molaren Masse aus CSV-Metadaten oder interner Stofftabelle
+- manuelle Korrektur oder Ergänzung einer fehlenden molaren Masse
+- Anzeige der Herkunft der verwendeten molaren Masse
+- Stoffdaten werden in CSV-, Markdown- und Sitzungs-JSON-Exporte übernommen
+
+### Verhalten
+
+- mol/L bleibt immer verfügbar
+- mg/L wird nur bei gültiger positiver molarer Masse aktiviert
+- Dezimalpunkt und Dezimalkomma werden bei der Eingabe akzeptiert
+- eine ungültige oder negative molare Masse wird nicht übernommen
+
 ## v0.1.1 – 2026-08-01
 
 Kleine ergonomische und fachliche Nachschärfung der Eichkurvenauswertung.

@@ -1,6 +1,6 @@
 # MESSWERT_LAB – DatenLab
 
-**Version:** v0.1.1  
+**Version:** v0.2.0  
 **Titel der App:** DatenLab – Messwerte auswerten
 
 ## Start
@@ -16,7 +16,7 @@ Die App ist als eigenständige Single-HTML-Anwendung ausgeführt. Für die Nutzu
 - `examples/` – reale CSV-Testexporte aus dem Virtuellen Photometer
 - `development/` – Entwicklungs- und Testdateien; für den Betrieb der App nicht erforderlich
 
-## Schwerpunkt von v0.1.1
+## Schwerpunkt von v0.2.0
 
 - Import von Photometer-Eichkurven
 - Prüfung und nachvollziehbarer Ausschluss einzelner Messwerte
@@ -24,14 +24,15 @@ Die App ist als eigenständige Single-HTML-Anwendung ausgeführt. Für die Nutzu
 - lineare Regression und Eichkurve
 - Bestimmung einer unbekannten Konzentration
 - Export von Diagramm, Markdown, CSV und Sitzungs-JSON
+- editierbare Stoffangabe und molare Masse
+- Umrechnung und Ergebnisanzeige in mol/L und mg/L
 
 Andere Photometer-Exporttypen werden erkannt, aber in dieser Version noch nicht ausgewertet.
 
+## Neu in v0.2.0
 
-## Ergänzungen in v0.1.1
-
-- kompaktere Beschriftung der Standardabweichung in den Messwertkarten
-- umschaltbare Diagramm-x-Achse zwischen mol/L und mg/L bei hinterlegter molarer Masse
-- Kaliumpermanganat: Umrechnung mit M = 158,034 g/mol
-- Konzentration unbekannter Proben in mol/L und zusätzlich mg/L
-- Endergebnisse einheitlich auf drei signifikante Stellen gerundet
+- Die molare Masse kann nach jedem Import kontrolliert, ergänzt oder überschrieben werden.
+- Bei manueller Dateneingabe stehen Felder für Stoffname und molare Masse bereit.
+- Die Herkunft der verwendeten molaren Masse wird angezeigt: Metadaten, interne Stofftabelle oder manuelle Eingabe.
+- Ohne molare Masse bleibt die vollständige Auswertung in mol/L möglich; die mg/L-Ausgabe wird verständlich deaktiviert.
+- Stoffname, molare Masse und deren Herkunft werden in die Exporte übernommen.

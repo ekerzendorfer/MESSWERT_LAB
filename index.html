@@ -48,7 +48,7 @@
     .step{border:0;background:transparent;border-radius:11px;padding:9px 8px;color:var(--muted);font-size:.9rem;font-weight:700}.step.active{background:var(--primary);color:#fff}.step.done{color:var(--primary-dark);background:#e8f3f6}
     .panel{display:none;padding:24px}.panel.active{display:block}
     .panel-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:20px}.panel-head h2{margin:0;font-size:1.5rem}.panel-head p{margin:.3rem 0 0;color:var(--muted)}
-    .summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0}
+    .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0}
     .summary-box{background:var(--surface-2);border:1px solid #d8e4ea;border-radius:13px;padding:14px}.summary-box .label{font-size:.82rem;color:var(--muted);display:block}.summary-box .value{font-size:1.1rem;font-weight:760;display:block;margin-top:3px;overflow-wrap:anywhere}
     .notice{border-radius:13px;padding:13px 15px;margin:14px 0;border-left:5px solid var(--primary);background:#edf7fa}.notice.warn{background:#fff6e8;border-color:#c17b16}.notice.danger{background:#fff0ef;border-color:var(--danger)}.notice.ok{background:#eaf7f0;border-color:var(--ok)}
     .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0}.toolbar .spacer{flex:1}
@@ -63,14 +63,14 @@
     .metric-list{display:grid;gap:10px}.metric{border:1px solid var(--border);background:#f9fbfc;border-radius:12px;padding:13px}.metric span{display:block;color:var(--muted);font-size:.82rem}.metric strong{display:block;font-size:1.12rem;margin-top:2px;font-variant-numeric:tabular-nums}
     details{border:1px solid var(--border);border-radius:13px;padding:10px 13px;background:#fbfdfe;margin-top:13px}summary{cursor:pointer;font-weight:750;color:var(--primary-dark)}
     .formula{font-family:"Cambria Math",Cambria,serif;background:#eef3f5;border-radius:9px;padding:10px;margin:9px 0;overflow:auto}
-    .unknown-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:700}.field input,.field select,.field textarea{border:1px solid #bccbd4;border-radius:10px;padding:10px;background:#fff}.field small{color:var(--muted)}.panel-actions{display:flex;align-items:flex-end;justify-content:flex-end;gap:10px;flex-wrap:wrap}.compact-field{display:grid;gap:4px;min-width:185px}.compact-field label{font-size:.82rem;font-weight:750;color:var(--muted)}.compact-field select{border:1px solid #bccbd4;border-radius:10px;padding:9px 10px;background:#fff}.compact-field small{font-size:.75rem;color:var(--muted);max-width:255px;line-height:1.25}
+    .unknown-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:700}.field input,.field select,.field textarea{border:1px solid #bccbd4;border-radius:10px;padding:10px;background:#fff}.field small{color:var(--muted)}.panel-actions{display:flex;align-items:flex-end;justify-content:flex-end;gap:10px;flex-wrap:wrap}.compact-field{display:grid;gap:4px;min-width:185px}.compact-field label{font-size:.82rem;font-weight:750;color:var(--muted)}.compact-field input,.compact-field select{border:1px solid #bccbd4;border-radius:10px;padding:9px 10px;background:#fff}.compact-field small{font-size:.75rem;color:var(--muted);max-width:255px;line-height:1.25}.substance-editor{display:grid;grid-template-columns:minmax(220px,1fr) minmax(200px,.65fr);gap:12px 16px;align-items:start;background:#f7fbfc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:15px 0}.substance-editor .field{margin:0}.substance-editor .status{grid-column:1/-1;min-height:0;color:var(--muted);font-size:.88rem;border-top:1px solid #dbe5ea;padding-top:10px}.manual-meta{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,.7fr);gap:14px;margin:14px 0}
     .result-hero{border-radius:16px;padding:19px;background:linear-gradient(135deg,#e5f4f7,#f7fbfc);border:1px solid #bcd8e1}.result-hero .big{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:820;color:var(--primary-dark);font-variant-numeric:tabular-nums}.result-hero .secondary-value{font-size:1.18rem;font-weight:780;color:#355563;margin-top:2px;font-variant-numeric:tabular-nums}.rounding-note{font-size:.78rem;color:var(--muted);margin:.35rem 0 0}
     .export-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.export-card{border:1px solid var(--border);border-radius:14px;padding:16px;background:#fbfdfe}.export-card h3{margin:0 0 6px}.export-card p{color:var(--muted);min-height:66px}
     .manual{display:none;margin-top:18px}.manual table{min-width:760px}.manual-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     footer{color:var(--muted);text-align:center;font-size:.86rem;padding:28px 0 14px}
     .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.summary-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid{grid-template-columns:1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
-    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid{grid-template-columns:1fr}.stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.version{font-size:.8rem}}
+    @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid{grid-template-columns:1fr}.substance-editor{grid-template-columns:1fr 1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
+    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.version{font-size:.8rem}}
     @media print{body{background:#fff}.topbar,.stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export{display:none!important}.workspace{display:block!important}.panel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
   </style>
 </head>
@@ -78,7 +78,7 @@
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.1.1 · Eichkurve</span>
+    <span class="version">v0.2.0 · Eichkurve</span>
   </header>
 
   <main>
@@ -95,6 +95,10 @@
 
       <div id="manual" class="manual">
         <div class="notice">Mindestens zwei Standards mit unterschiedlichen Konzentrationen sind erforderlich. Eine Blindprobe und eine unbekannte Probe sind optional.</div>
+        <div class="manual-meta">
+          <div class="field"><label for="manualSubstance">Analysierter Stoff</label><input id="manualSubstance" type="text" placeholder="z. B. Kaliumpermanganat"><small>Der Stoffname erscheint im Diagramm und in den Exporten.</small></div>
+          <div class="field"><label for="manualMolarMass">Molare Masse (g/mol)</label><input id="manualMolarMass" type="text" inputmode="decimal" placeholder="z. B. 158,034"><small>Optional. Erforderlich für die zusätzliche Ausgabe in mg/L.</small></div>
+        </div>
         <div class="table-wrap"><table><thead><tr><th>Probentyp</th><th>Bezeichnung</th><th>Konzentration (mol/L)</th><th>Absorbanz</th><th>Hinweis</th><th></th></tr></thead><tbody id="manualBody"></tbody></table></div>
         <div class="manual-actions"><button id="addManualRow" class="btn btn-secondary">＋ Zeile hinzufügen</button><button id="useManual" class="btn btn-primary">Messwerte übernehmen</button><button id="cancelManual" class="btn btn-ghost">Abbrechen</button></div>
       </div>
@@ -113,6 +117,11 @@
         <div class="panel-head"><div><h2>Import erkannt</h2><p>Kontrolliere die wichtigsten Angaben, bevor du die Daten übernimmst.</p></div><button class="btn btn-ghost" id="newDataset">Neue Datei</button></div>
         <div id="importNotice"></div>
         <div class="summary-grid" id="importSummary"></div>
+        <div class="substance-editor" aria-label="Stoffdaten">
+          <div class="field"><label for="substanceName">Analysierter Stoff</label><input id="substanceName" type="text"><small>Kann bei unvollständigen Metadaten ergänzt oder korrigiert werden.</small></div>
+          <div class="field"><label for="molarMassInput">Molare Masse (g/mol)</label><input id="molarMassInput" type="text" inputmode="decimal" placeholder="z. B. 158,034"><small>Ermöglicht die Umrechnung von mol/L in mg/L.</small></div>
+          <div class="status" id="molarMassStatus"></div>
+        </div>
         <details><summary>Metadaten und Importdetails anzeigen</summary><div id="metadataDetails"></div></details>
         <div class="toolbar"><span class="spacer"></span><button class="btn btn-primary" data-next="data">Daten prüfen →</button></div>
       </section>
@@ -164,12 +173,12 @@
       </section>
     </section>
   </main>
-  <footer>DatenLab v0.1.1 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.2.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.1.1';
+const VERSION='0.2.0';
 const SUBSTANCE_DATA=Object.freeze({
   'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034}
 });
@@ -196,7 +205,7 @@ Schichtdicke_cm;1
 Betriebsart;learning
 Versuchskennung;PH-KM-4590`;
 
-const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false};
+const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false,molarMassOverride:null,substanceNameOverride:''};
 const $=sel=>document.querySelector(sel), $$=sel=>[...document.querySelectorAll(sel)];
 
 function parseLine(line,delimiter=';'){
@@ -256,12 +265,28 @@ function fmtSig(n,sig=3){
   return new Intl.NumberFormat('de-AT',{minimumSignificantDigits:sig,maximumSignificantDigits:sig,useGrouping:false}).format(n);
 }
 function normalizeSubstanceName(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function effectiveSubstanceName(){return state.substanceNameOverride.trim()||state.metadata.Stoff||state.workingRows[0]?.original?.Stoff||''}
+function metadataMolarMass(){return ['Molare_Masse_g_mol','MolareMasse_g_mol','MolarMass_g_mol','molarMass'].map(k=>parseNumber(state.metadata[k])).find(v=>v>0)||null}
 function substanceInfo(){
-  const metaMass=['Molare_Masse_g_mol','MolareMasse_g_mol','MolarMass_g_mol','molarMass'].map(k=>parseNumber(state.metadata[k])).find(v=>v>0);
-  const name=state.metadata.Stoff||state.workingRows[0]?.original?.Stoff||'';
+  const name=effectiveSubstanceName();
   const known=SUBSTANCE_DATA[normalizeSubstanceName(name)];
-  if(metaMass)return {name,formula:state.metadata.Formel||'',molarMass:metaMass,source:'Metadaten'};
+  if(state.molarMassOverride>0)return {name,formula:state.metadata.Formel||known?.formula||'',molarMass:state.molarMassOverride,source:'manuelle Eingabe'};
+  const metaMass=metadataMolarMass();
+  if(metaMass)return {name,formula:state.metadata.Formel||known?.formula||'',molarMass:metaMass,source:'Metadaten'};
   return known?{name,formula:known.formula,molarMass:known.molarMass,source:'Stofftabelle'}:null;
+}
+function setMolarMassOverride(value,{silent=false}={}){
+  const raw=String(value??'').trim();
+  if(!raw){state.molarMassOverride=null;updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart();return true;}
+  const n=parseNumber(raw);
+  if(!(n>0)){if(!silent)alert('Bitte eine positive molare Masse in g/mol eingeben oder das Feld leer lassen.');return false;}
+  state.molarMassOverride=n;updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart();return true;
+}
+function updateSubstanceEditor(){
+  const nameInput=$('#substanceName'),massInput=$('#molarMassInput'),status=$('#molarMassStatus');if(!nameInput||!massInput||!status)return;
+  const info=substanceInfo();nameInput.value=effectiveSubstanceName();
+  if(document.activeElement!==massInput)massInput.value=info?String(info.molarMass).replace('.',','):'';
+  status.innerHTML=info?`<span><strong>M = ${fmt(info.molarMass,6)} g/mol</strong><br>Quelle: ${esc(info.source)}${info.formula?` · ${esc(info.formula)}`:''}</span>`:'<span>Keine molare Masse hinterlegt. Die Auswertung in mol/L funktioniert; mg/L bleibt deaktiviert.</span>';
 }
 function molToMgL(value){const info=substanceInfo();return value==null||!info?null:value*info.molarMass*1000}
 function axisUsesMg(){return $('#axisUnit')?.value==='mg'&&!!substanceInfo()}
@@ -273,10 +298,11 @@ function updateAxisUnitAvailability(){
   const info=substanceInfo(),mgOption=select.querySelector('option[value="mg"]');
   mgOption.disabled=!info;if(!info&&select.value==='mg')select.value='mol';
   hint.textContent=info?`Umrechnung mit M = ${fmt(info.molarMass,4)} g/mol${info.formula?` (${info.formula})`:''}.`:'mg/L ist verfügbar, sobald eine molare Masse hinterlegt ist.';
+  updateSubstanceEditor();
 }
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function timestamp(){const d=new Date();const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;}
-function baseName(){const stoff=(state.metadata.Stoff||state.rawRows[0]?.Stoff||'EICHKURVE').replace(/[^\p{L}\p{N}]+/gu,'_').toUpperCase();return `MESSWERTLAB_EICHKURVE_${stoff}_${timestamp()}`;}
+function baseName(){const stoff=(effectiveSubstanceName()||state.rawRows[0]?.Stoff||'EICHKURVE').replace(/[^\p{L}\p{N}]+/gu,'_').toUpperCase();return `MESSWERTLAB_EICHKURVE_${stoff}_${timestamp()}`;}
 function download(content,name,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 
 function recognize(parsed){
@@ -293,7 +319,7 @@ function importEichkurve(parsed,name,text){
     hint:r.Laborhinweis||'',include:true,reason:'',workingConcentration:parseNumber(r.Konzentration_mol_L),workingAbsorbance:parseNumber(r.Absorbanz)
   })).filter(r=>r.absorbance!=null);
   if(!rows.length)throw new Error('Keine gültigen Absorbanzwerte gefunden.');
-  state.sourceName=name;state.sourceText=text;state.metadata={...parsed.metadata};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=false;
+  state.sourceName=name;state.sourceText=text;state.metadata={...parsed.metadata};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=false;state.molarMassOverride=null;state.substanceNameOverride='';
   openWorkspace();renderAll();
 }
 function loadText(text,name='Messwerte.csv'){
@@ -301,7 +327,7 @@ function loadText(text,name='Messwerte.csv'){
     const parsed=parseSections(text);const kind=recognize(parsed);
     if(kind!=='eichkurve'){
       const labels={kinetik:'Photometer-Kinetik',btb:'Bromthymolblau-Spektren',unknown:'unbekannte CSV-Struktur'};
-      alert(`${labels[kind]} erkannt. v0.1.1 wertet zunächst Eichkurven aus. Die Datei wurde korrekt erkannt, ist aber für eine spätere Version vorgesehen.`);return;
+      alert(`${labels[kind]} erkannt. v0.2.0 wertet zunächst Eichkurven aus. Die Datei wurde korrekt erkannt, ist aber für eine spätere Version vorgesehen.`);return;
     }
     importEichkurve(parsed,name,text);
   }catch(err){alert(`Import nicht möglich: ${err.message}`);}
@@ -319,11 +345,11 @@ function showStep(step){
 }
 function renderAll(){renderImport();renderData();calculateAll();renderRegression();renderUnknown();}
 function renderImport(){
-  updateAxisUnitAvailability();
+  updateAxisUnitAvailability();updateSubstanceEditor();
   const std=state.workingRows.filter(r=>r.type==='standard'), blank=state.workingRows.filter(r=>r.type==='blank'), unk=state.workingRows.filter(r=>r.type==='unknown');
   const concentrations=new Set(std.map(r=>r.concentration).filter(v=>v!=null));
   $('#importNotice').innerHTML=`<div class="notice ok"><strong>Photometer-Eichkurve erkannt.</strong> Die Spalten wurden automatisch zugeordnet. Bitte kontrolliere die Angaben.</div>`;
-  const boxes=[['Stoff',state.metadata.Stoff||state.workingRows[0]?.original.Stoff||'nicht angegeben'],['Messwellenlänge',state.metadata.Messwellenlaenge_nm?`${esc(state.metadata.Messwellenlaenge_nm)} nm`:'nicht angegeben'],['Standards',`${concentrations.size} Stufen · ${std.length} Messungen`],['Unbekannte Probe',unk.length?`${unk.length} Messung${unk.length===1?'':'en'}`:'nicht vorhanden']];
+  const info=substanceInfo();const boxes=[['Stoff',effectiveSubstanceName()||'nicht angegeben'],['Molare Masse',info?`${fmt(info.molarMass,6)} g/mol`:'nicht angegeben'],['Messwellenlänge',state.metadata.Messwellenlaenge_nm?`${esc(state.metadata.Messwellenlaenge_nm)} nm`:'nicht angegeben'],['Standards',`${concentrations.size} Stufen · ${std.length} Messungen`],['Unbekannte Probe',unk.length?`${unk.length} Messung${unk.length===1?'':'en'}`:'nicht vorhanden']];
   $('#importSummary').innerHTML=boxes.map(([l,v])=>`<div class="summary-box"><span class="label">${esc(l)}</span><span class="value">${esc(v)}</span></div>`).join('');
   const metaEntries=Object.entries(state.metadata);
   $('#metadataDetails').innerHTML=`<p><strong>Datei:</strong> ${esc(state.sourceName)}</p><p><strong>Blindprobe:</strong> ${blank.length?`${blank.length} Messung(en)`:'nicht vorhanden'}</p>`+(metaEntries.length?`<table style="min-width:0"><tbody>${metaEntries.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</tbody></table>`:'<p>Keine zusätzlichen Metadaten vorhanden.</p>');
@@ -426,24 +452,25 @@ function drawChart(){
   const r=state.regression;ctx.strokeStyle='#156b86';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(X(xmin),Y(displaySlope*xmin+r.intercept));ctx.lineTo(X(xmax),Y(displaySlope*xmax+r.intercept));ctx.stroke();
   state.groups.forEach(g=>{const px=X(g.x*factor),py=Y(g.mean);if(g.sd!=null){ctx.strokeStyle='#6c7e88';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(px,Y(g.mean-g.sd));ctx.lineTo(px,Y(g.mean+g.sd));ctx.moveTo(px-5,Y(g.mean-g.sd));ctx.lineTo(px+5,Y(g.mean-g.sd));ctx.moveTo(px-5,Y(g.mean+g.sd));ctx.lineTo(px+5,Y(g.mean+g.sd));ctx.stroke();}ctx.beginPath();ctx.arc(px,py,5.5,0,Math.PI*2);ctx.fillStyle='#d66f28';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();});
   if(state.unknown?.concentration!=null&&state.unknown?.mean!=null){const ux=X(state.unknown.concentration*factor),uy=Y(state.unknown.mean);ctx.setLineDash([6,5]);ctx.strokeStyle='#7a4f99';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(pad.l,uy);ctx.lineTo(ux,uy);ctx.lineTo(ux,H-pad.b);ctx.stroke();ctx.setLineDash([]);ctx.beginPath();ctx.arc(ux,uy,6,0,Math.PI*2);ctx.fillStyle='#7a4f99';ctx.fill();}
-  ctx.fillStyle='#21333e';ctx.textAlign='left';ctx.font='bold 13px system-ui';ctx.fillText(state.metadata.Stoff||'Eichkurve',pad.l,pad.t-12);
+  ctx.fillStyle='#21333e';ctx.textAlign='left';ctx.font='bold 13px system-ui';ctx.fillText(effectiveSubstanceName()||'Eichkurve',pad.l,pad.t-12);
 }
 function csvQuote(v){const s=String(v??'').replace(/"/g,'""');return `"${s}"`;}
 function exportCsv(){
   const head=['ID','Probentyp','Probe','Messung','Konzentration_original_mol_L','Absorbanz_original','Konzentration_verwendet_mol_L','Absorbanz_verwendet','In_Auswertung','Begruendung','Laborhinweis'];
-  const lines=[head.join(';'),...state.workingRows.map(r=>[r.id,r.type,r.probe,r.measurement,r.concentration??'',r.absorbance??'',r.workingConcentration??'',r.workingAbsorbance??'',r.include?'ja':'nein',r.reason,r.hint].map(v=>csvQuote(String(v).replace('.',','))).join(';')),'','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${state.sourceName}`,`Stoff;${state.metadata.Stoff||''}`,`Molare_Masse_g_mol;${substanceInfo()?.molarMass||''}`,`Diagramm_Konzentrationseinheit;${axisUnitLabel()}`];
+  const lines=[head.join(';'),...state.workingRows.map(r=>[r.id,r.type,r.probe,r.measurement,r.concentration??'',r.absorbance??'',r.workingConcentration??'',r.workingAbsorbance??'',r.include?'ja':'nein',r.reason,r.hint].map(v=>csvQuote(String(v).replace('.',','))).join(';')),'','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${state.sourceName}`,`Stoff;${effectiveSubstanceName()}`,`Molare_Masse_g_mol;${substanceInfo()?.molarMass||''}`,`Diagramm_Konzentrationseinheit;${axisUnitLabel()}`];
   download('\uFEFF'+lines.join('\r\n'),baseName()+'_ARBEITSDATEN.csv','text/csv;charset=utf-8');
 }
 function mdText(){
   const r=state.regression,u=state.unknown,d=Math.max(parseNumber($('#dilution').value)||1,0),corr=u?.concentration==null?null:u.concentration*d,corrMg=molToMgL(corr),measuredMg=molToMgL(u?.concentration),stat=interpolationStatus(u?.concentration);
   const decisions=state.workingRows.filter(x=>!x.include||rowChanged(x));
-  return `# DatenLab-Auswertung: Eichkurve\n\n- **Stoff:** ${state.metadata.Stoff||'nicht angegeben'}\n- **Messwellenlänge:** ${state.metadata.Messwellenlaenge_nm||'—'} nm\n- **Quelle:** ${state.sourceName}\n- **Auswertung:** ${new Date().toLocaleString('de-AT')}\n\n## Eichgerade\n\n- Gleichung: A = ${r?fmt(r.slope,8):'—'} · c ${r&&r.intercept>=0?'+':'−'} ${r?fmt(Math.abs(r.intercept),8):'—'}\n- R²: ${r?fmtFixed(r.r2,5):'—'}\n- RMSE: ${r?fmtFixed(r.rmse,5):'—'}\n\n## Unbekannte Probe\n\n- Mittlere Absorbanz: ${u?fmtFixed(u.mean,5):'—'}\n- Konzentration der Messlösung: ${u?fmtSig(u.concentration,3):'—'} mol/L${measuredMg!=null?` = ${fmtSig(measuredMg,3)} mg/L`:''}\n- Verdünnungsfaktor: ${fmt(d,4)}\n- Konzentration der ursprünglichen Probe: **${fmtSig(corr,3)} mol/L**${corrMg!=null?` = **${fmtSig(corrMg,3)} mg/L**`:''}
+  return `# DatenLab-Auswertung: Eichkurve\n\n- **Stoff:** ${effectiveSubstanceName()||'nicht angegeben'}\n- **Molare Masse:** ${substanceInfo()?`${fmt(substanceInfo().molarMass,6)} g/mol (${substanceInfo().source})`:'nicht angegeben'}
+- **Messwellenlänge:** ${state.metadata.Messwellenlaenge_nm||'—'} nm\n- **Quelle:** ${state.sourceName}\n- **Auswertung:** ${new Date().toLocaleString('de-AT')}\n\n## Eichgerade\n\n- Gleichung: A = ${r?fmt(r.slope,8):'—'} · c ${r&&r.intercept>=0?'+':'−'} ${r?fmt(Math.abs(r.intercept),8):'—'}\n- R²: ${r?fmtFixed(r.r2,5):'—'}\n- RMSE: ${r?fmtFixed(r.rmse,5):'—'}\n\n## Unbekannte Probe\n\n- Mittlere Absorbanz: ${u?fmtFixed(u.mean,5):'—'}\n- Konzentration der Messlösung: ${u?fmtSig(u.concentration,3):'—'} mol/L${measuredMg!=null?` = ${fmtSig(measuredMg,3)} mg/L`:''}\n- Verdünnungsfaktor: ${fmt(d,4)}\n- Konzentration der ursprünglichen Probe: **${fmtSig(corr,3)} mol/L**${corrMg!=null?` = **${fmtSig(corrMg,3)} mg/L**`:''}
 - Rundung des Endergebnisses: 3 signifikante Stellen
 - Diagramm-x-Achse: ${axisUnitLabel()}\n- Bewertung: **${stat.title}** – ${stat.text}\n\n## Verwendete Mittelwerte\n\n| Konzentration (mol/L) | n | Mittelwert A | Standardabweichung |\n|---:|---:|---:|---:|\n${state.groups.map(g=>`| ${fmt(g.x,10)} | ${g.n} | ${fmtFixed(g.mean,5)} | ${g.sd==null?'—':fmtFixed(g.sd,5)} |`).join('\n')}\n\n## Dokumentierte Datenentscheidungen\n\n${decisions.length?decisions.map(x=>`- ${x.probe}, Messung ${x.measurement}: ${x.include?'korrigiert':'nicht verwendet'} – ${x.reason||'keine Begründung'}`).join('\n'):'Keine Messwerte korrigiert oder ausgeschlossen.'}\n\n> Die fachliche Interpretation und Fehlerdiskussion wurden nicht automatisch erstellt.\n`;
 }
 function exportMd(){download(mdText(),baseName()+'.md','text/markdown;charset=utf-8')}
 function exportJson(){
-  calculateAll();const payload={schema:'MESSWERT_LAB_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:state.sourceName,metadata:state.metadata,originalText:state.sourceText},rawRows:state.rawRows,workingRows:state.workingRows,results:{groups:state.groups,regression:state.regression,unknown:state.unknown,dilutionFactor:parseNumber($('#dilution').value)||1,axisUnit:axisUnitLabel(),molarMass_g_mol:substanceInfo()?.molarMass||null}};
+  calculateAll();const payload={schema:'MESSWERT_LAB_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:state.sourceName,metadata:state.metadata,originalText:state.sourceText,substanceName:effectiveSubstanceName(),molarMassSource:substanceInfo()?.source||null},rawRows:state.rawRows,workingRows:state.workingRows,results:{groups:state.groups,regression:state.regression,unknown:state.unknown,dilutionFactor:parseNumber($('#dilution').value)||1,axisUnit:axisUnitLabel(),molarMass_g_mol:substanceInfo()?.molarMass||null}};
   download(JSON.stringify(payload,null,2),baseName()+'.json','application/json;charset=utf-8');
 }
 function exportPng(){drawChart();const c=$('#chart');c.toBlob(blob=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=baseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png');}
@@ -451,12 +478,15 @@ function manualRow(type='standard',probe='',c='',a='',hint=''){
   const tr=document.createElement('tr');tr.innerHTML=`<td><select class="mtype"><option value="blank" ${type==='blank'?'selected':''}>Blindprobe</option><option value="standard" ${type==='standard'?'selected':''}>Standard</option><option value="unknown" ${type==='unknown'?'selected':''}>Unbekannt</option></select></td><td><input class="cell-input mprobe" value="${esc(probe)}"></td><td><input class="cell-input mc" value="${esc(c)}"></td><td><input class="cell-input ma" value="${esc(a)}"></td><td><input class="cell-input mhint" value="${esc(hint)}"></td><td><button class="btn btn-danger mdel">×</button></td>`;tr.querySelector('.mdel').onclick=()=>tr.remove();$('#manualBody').appendChild(tr);
 }
 function initManual(){
-  $('#manualBody').innerHTML='';manualRow('blank','Blindprobe','0','0','');for(let i=1;i<=5;i++)manualRow('standard',`Standard ${i}`,'','', '');manualRow('unknown','Unbekannte Probe','','','');
+  $('#manualBody').innerHTML='';$('#manualSubstance').value='';$('#manualMolarMass').value='';manualRow('blank','Blindprobe','0','0','');for(let i=1;i<=5;i++)manualRow('standard',`Standard ${i}`,'','', '');manualRow('unknown','Unbekannte Probe','','','');
 }
 function useManual(){
   const rows=[...$('#manualBody').rows].map((tr,i)=>({id:`r${i+1}`,original:{},type:tr.querySelector('.mtype').value,probe:tr.querySelector('.mprobe').value||`Messwert ${i+1}`,concentration:parseNumber(tr.querySelector('.mc').value),absorbance:parseNumber(tr.querySelector('.ma').value),measurement:1,hint:tr.querySelector('.mhint').value,include:true,reason:'',workingConcentration:parseNumber(tr.querySelector('.mc').value),workingAbsorbance:parseNumber(tr.querySelector('.ma').value)})).filter(r=>r.absorbance!=null);
   if(rows.filter(r=>r.type==='standard'&&r.concentration!=null).length<2){alert('Bitte mindestens zwei Standards mit Konzentration und Absorbanz eingeben.');return;}
-  state.sourceName='Manuelle Eingabe';state.sourceText='';state.metadata={Versuchstyp:'Eichkurve',Stoff:'Eigene Messreihe'};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=true;openWorkspace();renderAll();
+  const manualMassRaw=$('#manualMolarMass').value.trim(),manualMass=parseNumber(manualMassRaw);
+  if(manualMassRaw&&!(manualMass>0)){alert('Bitte eine positive molare Masse in g/mol eingeben oder das Feld leer lassen.');$('#manualMolarMass').focus();return;}
+  const substance=$('#manualSubstance').value.trim()||'Eigene Messreihe';
+  state.sourceName='Manuelle Eingabe';state.sourceText='';state.metadata={Versuchstyp:'Eichkurve',Stoff:substance};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=true;state.substanceNameOverride='';state.molarMassOverride=manualMass>0?manualMass:null;openWorkspace();renderAll();
 }
 
 $('#chooseFile').onclick=()=>{$('#dropzone').style.display='block';$('#fileInput').click()};$('#browseFile').onclick=()=>$('#fileInput').click();
@@ -467,6 +497,8 @@ $('#showManual').onclick=()=>{$('#manual').style.display='block';$('#dropzone').
 $('#newDataset').onclick=resetApp;$('#resetWorking').onclick=()=>{state.workingRows=structuredClone(state.rawRows);renderAll()};
 $$('[data-next]').forEach(b=>b.onclick=()=>{if(b.dataset.next==='regression'&&!validateData(true))return;showStep(b.dataset.next)});$$('[data-prev]').forEach(b=>b.onclick=()=>showStep(b.dataset.prev));$$('.step').forEach(b=>b.onclick=()=>{if(['regression','unknown','export'].includes(b.dataset.step)&&!validateData(true))return;showStep(b.dataset.step)});
 $('#refreshRegression').onclick=()=>{calculateAll();drawChart()};$('#axisUnit').addEventListener('change',()=>{renderRegression();drawChart()});$('#dilution').addEventListener('input',()=>{renderUnknown();drawChart()});
+$('#substanceName').addEventListener('change',e=>{state.substanceNameOverride=e.target.value.trim();updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart()});
+$('#molarMassInput').addEventListener('change',e=>{if(!setMolarMassOverride(e.target.value))updateSubstanceEditor();});
 $('#exportPng').onclick=exportPng;$('#exportMd').onclick=exportMd;$('#exportCsv').onclick=exportCsv;$('#exportJson').onclick=exportJson;
 window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart()});
 if(new URLSearchParams(location.search).get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');

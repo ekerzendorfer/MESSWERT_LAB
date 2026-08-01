@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>DatenLab – Messwerte auswerten</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;--surface:#ffffff;--surface-2:#eef4f8;--text:#17212b;--muted:#5f6f7e;
+      --primary:#156b86;--primary-dark:#0d4f65;--accent:#d66f28;--border:#ccd8e1;
+      --ok:#177245;--warn:#9a5a00;--danger:#a53434;--shadow:0 12px 35px rgba(31,54,71,.10);
+      --radius:18px;--radius-sm:11px;--focus:0 0 0 4px rgba(21,107,134,.18)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#edf5f8 0,#f7f9fc 320px);color:var(--text);line-height:1.5}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    a{color:var(--primary-dark)}
+    .app-shell{max-width:1280px;margin:0 auto;padding:22px}
+    .topbar{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;padding:18px 0 22px}
+    .brand{display:flex;gap:15px;align-items:center}
+    .logo{width:54px;height:54px;border-radius:16px;background:linear-gradient(145deg,var(--primary),#27a0b2);display:grid;place-items:center;color:#fff;font-size:30px;box-shadow:var(--shadow)}
+    h1{font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.1;margin:0}
+    .subtitle{color:var(--muted);margin:.35rem 0 0}
+    .version{background:#e4f1f5;color:var(--primary-dark);font-weight:750;border:1px solid #b7d5df;border-radius:999px;padding:7px 12px;white-space:nowrap}
+    .card{background:var(--surface);border:1px solid rgba(176,194,205,.7);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero{padding:clamp(22px,5vw,46px);overflow:hidden;position:relative}
+    .hero:after{content:"";position:absolute;right:-80px;top:-105px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(45,157,177,.2),transparent 65%);pointer-events:none}
+    .hero h2{font-size:clamp(1.6rem,4vw,2.65rem);max-width:770px;line-height:1.13;margin:0 0 14px}
+    .hero p{max-width:810px;color:var(--muted);font-size:1.08rem}
+    .launch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+    .launch{border:1px solid var(--border);background:#fff;border-radius:16px;padding:22px;text-align:left;min-height:175px;transition:.18s transform,.18s border-color,.18s box-shadow}
+    .launch:hover{transform:translateY(-2px);border-color:#7db3c2;box-shadow:0 10px 28px rgba(31,88,105,.13)}
+    .launch:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:none;box-shadow:var(--focus)}
+    .launch .icon{font-size:29px;display:block;margin-bottom:13px}.launch strong{font-size:1.08rem}.launch small{display:block;color:var(--muted);margin-top:6px}
+    .dropzone{border:2px dashed #91b6c2;background:#f7fbfc;border-radius:16px;padding:22px;margin-top:18px;text-align:center;display:none}
+    .dropzone.drag{background:#e7f5f8;border-color:var(--primary)}
+    .btn{border:none;border-radius:11px;padding:10px 15px;font-weight:720;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+    .btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-dark)}
+    .btn-secondary{background:#e7f0f4;color:var(--primary-dark);border:1px solid #bfd0da}.btn-secondary:hover{background:#dce9ee}
+    .btn-ghost{background:transparent;color:var(--primary-dark);border:1px solid var(--border)}
+    .btn-danger{background:#fff1f0;color:var(--danger);border:1px solid #e6b7b4}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+    .workspace{display:none}
+    .stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 18px;position:sticky;top:8px;z-index:20;background:rgba(244,247,251,.94);backdrop-filter:blur(10px);padding:9px;border-radius:16px;border:1px solid rgba(190,205,215,.75)}
+    .step{border:0;background:transparent;border-radius:11px;padding:9px 8px;color:var(--muted);font-size:.9rem;font-weight:700}.step.active{background:var(--primary);color:#fff}.step.done{color:var(--primary-dark);background:#e8f3f6}
+    .panel{display:none;padding:24px}.panel.active{display:block}
+    .panel-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:20px}.panel-head h2{margin:0;font-size:1.5rem}.panel-head p{margin:.3rem 0 0;color:var(--muted)}
+    .summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0}
+    .summary-box{background:var(--surface-2);border:1px solid #d8e4ea;border-radius:13px;padding:14px}.summary-box .label{font-size:.82rem;color:var(--muted);display:block}.summary-box .value{font-size:1.1rem;font-weight:760;display:block;margin-top:3px;overflow-wrap:anywhere}
+    .notice{border-radius:13px;padding:13px 15px;margin:14px 0;border-left:5px solid var(--primary);background:#edf7fa}.notice.warn{background:#fff6e8;border-color:#c17b16}.notice.danger{background:#fff0ef;border-color:var(--danger)}.notice.ok{background:#eaf7f0;border-color:var(--ok)}
+    .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0}.toolbar .spacer{flex:1}
+    .table-wrap{overflow:auto;border:1px solid var(--border);border-radius:14px;max-height:520px;background:#fff}
+    table{border-collapse:collapse;width:100%;min-width:900px}th,td{padding:10px 11px;border-bottom:1px solid #e1e8ed;text-align:left;vertical-align:top}th{position:sticky;top:0;background:#eaf2f6;color:#344d5b;font-size:.84rem;z-index:2}tr:last-child td{border-bottom:0}tbody tr:hover{background:#f8fbfc}
+    .num{text-align:right;font-variant-numeric:tabular-nums}.center{text-align:center}.muted{color:var(--muted)}
+    .badge{display:inline-flex;padding:3px 8px;border-radius:999px;font-size:.76rem;font-weight:750;background:#e5edf1;color:#40535e}.badge.standard{background:#e5f2f6;color:#075873}.badge.blank{background:#efefef;color:#555}.badge.unknown{background:#fff0df;color:#8b4b00}.badge.changed{background:#fff1d6;color:#7b4a00}.badge.excluded{background:#ffe7e5;color:#962c2c}
+    .cell-input{width:100%;min-width:90px;border:1px solid #c6d4dc;border-radius:8px;padding:7px 8px;background:#fff}.cell-input.changed{border-color:#d38b24;background:#fffaf1}.reason{min-width:180px}
+    .check{width:19px;height:19px;accent-color:var(--primary)}
+    .group-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0}.group-card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fbfdfe}.group-card h3{margin:0 0 8px;font-size:1rem}.group-card dl{display:grid;grid-template-columns:1fr auto;gap:6px;margin:0}.group-card dt{color:var(--muted)}.group-card dd{margin:0;font-weight:720;font-variant-numeric:tabular-nums}
+    .chart-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,.75fr);gap:18px;align-items:start}.chart-card{border:1px solid var(--border);border-radius:15px;padding:12px;background:#fff}.chart-box{height:480px;position:relative}.chart-box canvas{width:100%;height:100%;display:block}
+    .metric-list{display:grid;gap:10px}.metric{border:1px solid var(--border);background:#f9fbfc;border-radius:12px;padding:13px}.metric span{display:block;color:var(--muted);font-size:.82rem}.metric strong{display:block;font-size:1.12rem;margin-top:2px;font-variant-numeric:tabular-nums}
+    details{border:1px solid var(--border);border-radius:13px;padding:10px 13px;background:#fbfdfe;margin-top:13px}summary{cursor:pointer;font-weight:750;color:var(--primary-dark)}
+    .formula{font-family:"Cambria Math",Cambria,serif;background:#eef3f5;border-radius:9px;padding:10px;margin:9px 0;overflow:auto}
+    .unknown-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:700}.field input,.field select,.field textarea{border:1px solid #bccbd4;border-radius:10px;padding:10px;background:#fff}.field small{color:var(--muted)}
+    .result-hero{border-radius:16px;padding:19px;background:linear-gradient(135deg,#e5f4f7,#f7fbfc);border:1px solid #bcd8e1}.result-hero .big{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:820;color:var(--primary-dark);font-variant-numeric:tabular-nums}
+    .export-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.export-card{border:1px solid var(--border);border-radius:14px;padding:16px;background:#fbfdfe}.export-card h3{margin:0 0 6px}.export-card p{color:var(--muted);min-height:66px}
+    .manual{display:none;margin-top:18px}.manual table{min-width:760px}.manual-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    footer{color:var(--muted);text-align:center;font-size:.86rem;padding:28px 0 14px}
+    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.summary-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid{grid-template-columns:1fr}.chart-box{height:400px}}
+    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid{grid-template-columns:1fr}.stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.version{font-size:.8rem}}
+    @media print{body{background:#fff}.topbar,.stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export{display:none!important}.workspace{display:block!important}.panel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
+  </style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
+    <span class="version">v0.1.0 · Eichkurve</span>
+  </header>
+
+  <main>
+    <section id="start" class="card hero">
+      <h2>Vom Messwert zur Eichkurve – Schritt für Schritt</h2>
+      <p>Öffne einen Eichkurven-Export aus dem Virtuellen Photometer, gib eigene Messwerte ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
+      <div class="launch-grid">
+        <button class="launch" id="chooseFile"><span class="icon">📂</span><strong>Photometer-CSV öffnen</strong><small>Metadaten und Spalten werden automatisch erkannt.</small></button>
+        <button class="launch" id="showManual"><span class="icon">⌨️</span><strong>Messwerte selbst eingeben</strong><small>Für reale Messungen oder andere Eichreihen.</small></button>
+        <button class="launch" id="loadSample"><span class="icon">🧪</span><strong>Beispieldaten ausprobieren</strong><small>Kaliumpermanganat mit mehreren Wiederholungen.</small></button>
+      </div>
+      <input id="fileInput" type="file" accept=".csv,text/csv" class="sr-only">
+      <div id="dropzone" class="dropzone">CSV-Datei hier ablegen oder <button class="btn btn-secondary" id="browseFile" type="button">Datei auswählen</button></div>
+
+      <div id="manual" class="manual">
+        <div class="notice">Mindestens zwei Standards mit unterschiedlichen Konzentrationen sind erforderlich. Eine Blindprobe und eine unbekannte Probe sind optional.</div>
+        <div class="table-wrap"><table><thead><tr><th>Probentyp</th><th>Bezeichnung</th><th>Konzentration (mol/L)</th><th>Absorbanz</th><th>Hinweis</th><th></th></tr></thead><tbody id="manualBody"></tbody></table></div>
+        <div class="manual-actions"><button id="addManualRow" class="btn btn-secondary">＋ Zeile hinzufügen</button><button id="useManual" class="btn btn-primary">Messwerte übernehmen</button><button id="cancelManual" class="btn btn-ghost">Abbrechen</button></div>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace">
+      <nav class="stepper" aria-label="Arbeitsschritte">
+        <button class="step active" data-step="import">1 <span>Import</span></button>
+        <button class="step" data-step="data">2 <span>Daten prüfen</span></button>
+        <button class="step" data-step="regression">3 <span>Eichkurve</span></button>
+        <button class="step" data-step="unknown">4 <span>Probe</span></button>
+        <button class="step" data-step="export">5 <span>Export</span></button>
+      </nav>
+
+      <section id="panel-import" class="card panel active">
+        <div class="panel-head"><div><h2>Import erkannt</h2><p>Kontrolliere die wichtigsten Angaben, bevor du die Daten übernimmst.</p></div><button class="btn btn-ghost" id="newDataset">Neue Datei</button></div>
+        <div id="importNotice"></div>
+        <div class="summary-grid" id="importSummary"></div>
+        <details><summary>Metadaten und Importdetails anzeigen</summary><div id="metadataDetails"></div></details>
+        <div class="toolbar"><span class="spacer"></span><button class="btn btn-primary" data-next="data">Daten prüfen →</button></div>
+      </section>
+
+      <section id="panel-data" class="card panel">
+        <div class="panel-head"><div><h2>Daten prüfen</h2><p>Rohdaten bleiben erhalten. Ausschlüsse und Korrekturen gelten nur für diese Auswertung.</p></div><button class="btn btn-secondary" id="resetWorking">Arbeitsdaten zurücksetzen</button></div>
+        <div class="notice warn">Laborhinweise sind keine automatische Fehlerentscheidung. Prüfe jeden Messwert fachlich und begründe einen Ausschluss oder eine Korrektur.</div>
+        <div class="table-wrap"><table id="dataTable"><thead><tr><th>Verwenden</th><th>Typ</th><th>Probe</th><th class="num">Konzentration<br>(mol/L)</th><th class="num">Absorbanz</th><th>Laborhinweis</th><th>Begründung bei Änderung</th></tr></thead><tbody></tbody></table></div>
+        <h3>Zusammenfassung der verwendeten Messwerte</h3>
+        <div id="groupCards" class="group-cards"></div>
+        <div id="dataValidity"></div>
+        <div class="toolbar"><button class="btn btn-ghost" data-prev="import">← Import</button><span class="spacer"></span><button class="btn btn-primary" id="toRegression" data-next="regression">Eichkurve erstellen →</button></div>
+      </section>
+
+      <section id="panel-regression" class="card panel">
+        <div class="panel-head"><div><h2>Eichkurve</h2><p>Die Regression wird aus den Mittelwerten der verwendeten Standards und der Blindprobe berechnet.</p></div><button class="btn btn-secondary" id="refreshRegression">Neu berechnen</button></div>
+        <div class="chart-grid">
+          <div class="chart-card"><div class="chart-box"><canvas id="chart" aria-label="Eichkurvendiagramm"></canvas></div></div>
+          <aside><div class="metric-list" id="regressionMetrics"></div><details><summary>Was bedeuten die Kennwerte?</summary><p><strong>Steigung:</strong> Änderung der Absorbanz je Konzentrationseinheit.</p><p><strong>Achsenabschnitt:</strong> vorhergesagte Absorbanz bei Konzentration null.</p><p><strong>R²:</strong> Anteil der Streuung, den das lineare Modell beschreibt. Ein hoher Wert beweist allein noch keine fachlich gute Eichung.</p></details></aside>
+        </div>
+        <div class="formula" id="regressionFormula"></div>
+        <details><summary>Residuen anzeigen</summary><div class="table-wrap"><table style="min-width:650px"><thead><tr><th>Konzentration</th><th>Messwert-Mittel</th><th>Modellwert</th><th>Residuum</th></tr></thead><tbody id="residualBody"></tbody></table></div></details>
+        <div class="toolbar"><button class="btn btn-ghost" data-prev="data">← Daten</button><span class="spacer"></span><button class="btn btn-primary" data-next="unknown">Unbekannte Probe →</button></div>
+      </section>
+
+      <section id="panel-unknown" class="card panel">
+        <div class="panel-head"><div><h2>Unbekannte Probe bestimmen</h2><p>Aus der mittleren Absorbanz wird die Konzentration mithilfe der Eichgeraden berechnet.</p></div></div>
+        <div class="unknown-grid">
+          <div>
+            <div id="unknownMeasurements"></div>
+            <div class="field"><label for="dilution">Verdünnungsfaktor</label><input id="dilution" type="number" min="0.000001" step="any" value="1"><small>1 = unverdünnte Probe; 10 = Probe wurde vor der Messung zehnfach verdünnt.</small></div>
+            <details><summary>Rechenweg anzeigen</summary><div id="unknownCalculation"></div></details>
+          </div>
+          <aside class="result-hero" id="unknownResult"></aside>
+        </div>
+        <div class="toolbar"><button class="btn btn-ghost" data-prev="regression">← Eichkurve</button><span class="spacer"></span><button class="btn btn-primary" data-next="export">Ergebnisse exportieren →</button></div>
+      </section>
+
+      <section id="panel-export" class="card panel">
+        <div class="panel-head"><div><h2>Ergebnisse exportieren</h2><p>Wähle das passende Format für Protokoll, Weiterarbeit oder Dokumentation.</p></div></div>
+        <div class="export-grid">
+          <div class="export-card"><h3>Diagramm</h3><p>Eichkurve als PNG-Grafik für ein Protokoll oder eine Präsentation.</p><button class="btn btn-primary" id="exportPng">PNG speichern</button></div>
+          <div class="export-card"><h3>Auswertung</h3><p>Kompakte Markdown-Zusammenfassung mit Kennwerten und Datenentscheidung.</p><button class="btn btn-primary" id="exportMd">Markdown speichern</button></div>
+          <div class="export-card"><h3>Arbeitsdaten</h3><p>Rohwerte, verwendete Werte, Korrekturen und Ausschlussbegründungen als CSV.</p><button class="btn btn-primary" id="exportCsv">CSV speichern</button></div>
+          <div class="export-card"><h3>Sitzung</h3><p>Vollständiger DatenLab-Stand zum späteren Nachvollziehen oder Weiterarbeiten.</p><button class="btn btn-primary" id="exportJson">JSON speichern</button></div>
+        </div>
+        <div class="notice ok" style="margin-top:18px">Die Exporte enthalten keine automatisch formulierte Interpretation. Die fachliche Deutung und Fehlerdiskussion bleiben Teil des eigenen Protokolls.</div>
+        <div class="toolbar"><button class="btn btn-ghost" data-prev="unknown">← Probe</button><span class="spacer"></span><button class="btn btn-secondary" onclick="window.print()">Druckansicht</button></div>
+      </section>
+    </section>
+  </main>
+  <footer>DatenLab v0.1.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+</div>
+
+<script>
+'use strict';
+const VERSION='0.1.0';
+const SAMPLE_CSV=`Aufgaben_ID;Aufgabenkennung;Versuchskennung;Stoff;Probentyp;Probe;Konzentration_mol_L;Wellenlaenge_nm;Schichtdicke_cm;Messung;Absorbanz;Laborhinweis;Zeitstempel
+"";"";"PH-KM-4590";"Kaliumpermanganat";"blank";"Blindprobe";"0,0000000";"525";"1,0000000";"1";"0,0000000";"normale Messstreuung";"2026-08-01T11:58:09.671Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 1";"0,000050000000";"525";"1,0000000";"1";"0,18983250";"verschmutzte Küvette";"2026-08-01T11:58:24.532Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 2";"0,00010000000";"525";"1,0000000";"1";"0,32358874";"verschmutzte Küvette";"2026-08-01T11:58:47.655Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 2";"0,00010000000";"525";"1,0000000";"2";"0,27301501";"normale Messstreuung";"2026-08-01T11:59:04.677Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 3";"0,00015000000";"525";"1,0000000";"1";"0,40743268";"normale Messstreuung";"2026-08-01T11:59:11.154Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 4";"0,00020000000";"525";"1,0000000";"1";"0,50473474";"Pipettier- oder Verdünnungsfehler";"2026-08-01T11:59:30.757Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 4";"0,00020000000";"525";"1,0000000";"2";"0,55074011";"normale Messstreuung";"2026-08-01T11:59:55.325Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 5";"0,00025000000";"525";"1,0000000";"1";"0,63005188";"Wellenlängenabweichung";"2026-08-01T12:00:09.327Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"standard";"Standard 5";"0,00025000000";"525";"1,0000000";"2";"0,69501107";"normale Messstreuung";"2026-08-01T12:00:17.047Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"unknown";"U-KM-130";"unbekannt";"525";"1,0000000";"1";"0,49216030";"Luftblase oder unvollständig gefüllte Küvette";"2026-08-01T12:00:36.293Z"
+"";"";"PH-KM-4590";"Kaliumpermanganat";"unknown";"U-KM-130";"unbekannt";"525";"1,0000000";"2";"0,52375150";"Pipettier- oder Verdünnungsfehler";"2026-08-01T12:00:48.117Z"
+
+Metadaten
+App_Version;0.9.2
+Exportzeit;2026-08-01T12:01:12.879Z
+Versuchstyp;Eichkurve
+Stoff;Kaliumpermanganat
+Messwellenlaenge_nm;525
+Schichtdicke_cm;1
+Betriebsart;learning
+Versuchskennung;PH-KM-4590`;
+
+const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false};
+const $=sel=>document.querySelector(sel), $$=sel=>[...document.querySelectorAll(sel)];
+
+function parseLine(line,delimiter=';'){
+  const out=[];let field='';let quoted=false;
+  for(let i=0;i<line.length;i++){
+    const ch=line[i];
+    if(ch==='"'){
+      if(quoted && line[i+1]==='"'){field+='"';i++;} else quoted=!quoted;
+    } else if(ch===delimiter && !quoted){out.push(field);field='';}
+    else field+=ch;
+  }
+  out.push(field);return out;
+}
+function detectDelimiter(line){
+  const options=[';','\t',','];let best=';',count=-1;
+  options.forEach(d=>{const c=parseLine(line,d).length;if(c>count){best=d;count=c;}});return best;
+}
+function parseTable(lines,delimiter){
+  if(!lines.length)return {headers:[],rows:[]};
+  const headers=parseLine(lines[0],delimiter).map(s=>s.trim());
+  const rows=lines.slice(1).filter(l=>l.trim()).map(line=>{
+    const vals=parseLine(line,delimiter);const obj={};headers.forEach((h,i)=>obj[h]=(vals[i]??'').trim());return obj;
+  });
+  return {headers,rows};
+}
+function parseSections(text){
+  const clean=text.replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n').trim();
+  const blocks=clean.split(/\n\s*\n+/).map(b=>b.trim()).filter(Boolean);
+  if(!blocks.length)throw new Error('Die Datei enthält keine Daten.');
+  const firstLines=blocks[0].split('\n');const delimiter=detectDelimiter(firstLines[0]);
+  const main=parseTable(firstLines,delimiter);const sections={};const metadata={};
+  blocks.slice(1).forEach(block=>{
+    const lines=block.split('\n').filter(Boolean);const label=lines[0].trim();
+    if(label.toLowerCase()==='metadaten'){
+      lines.slice(1).forEach(l=>{const p=parseLine(l,delimiter);if(p[0])metadata[p[0].trim()]=(p.slice(1).join(delimiter)||'').trim();});
+    } else if(lines.length>=2){sections[label]=parseTable(lines.slice(1),delimiter);}
+  });
+  return {delimiter,main,sections,metadata};
+}
+function parseNumber(v){
+  if(typeof v==='number')return Number.isFinite(v)?v:null;
+  if(v==null)return null;let s=String(v).trim();if(!s||/^unbekannt$/i.test(s))return null;
+  s=s.replace(/\s/g,'');
+  if(s.includes(',')&&s.includes('.')){if(s.lastIndexOf(',')>s.lastIndexOf('.'))s=s.replace(/\./g,'').replace(',','.');else s=s.replace(/,/g,'');}
+  else s=s.replace(',','.');
+  const n=Number(s);return Number.isFinite(n)?n:null;
+}
+function fmt(n,digits=6){
+  if(n==null||!Number.isFinite(n))return '—';
+  const a=Math.abs(n);if(a!==0&&(a<0.0001||a>=100000))return n.toExponential(4).replace('.',',');
+  return new Intl.NumberFormat('de-AT',{maximumFractionDigits:digits,minimumFractionDigits:0}).format(n);
+}
+function fmtFixed(n,d=4){return n==null||!Number.isFinite(n)?'—':new Intl.NumberFormat('de-AT',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function timestamp(){const d=new Date();const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;}
+function baseName(){const stoff=(state.metadata.Stoff||state.rawRows[0]?.Stoff||'EICHKURVE').replace(/[^\p{L}\p{N}]+/gu,'_').toUpperCase();return `MESSWERTLAB_EICHKURVE_${stoff}_${timestamp()}`;}
+function download(content,name,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+
+function recognize(parsed){
+  const h=parsed.main.headers;const type=parsed.metadata.Versuchstyp||'';
+  if(type==='Eichkurve'||['Probentyp','Konzentration_mol_L','Absorbanz'].every(x=>h.includes(x)))return 'eichkurve';
+  if(type.startsWith('Kinetik_'))return 'kinetik';
+  if(type==='Gleichgewicht_Bromthymolblau')return 'btb';
+  return 'unknown';
+}
+function importEichkurve(parsed,name,text){
+  const rows=parsed.main.rows.map((r,i)=>({
+    id:`r${i+1}`,original:{...r},type:(r.Probentyp||'standard').toLowerCase(),probe:r.Probe||`Messwert ${i+1}`,
+    concentration:parseNumber(r.Konzentration_mol_L),absorbance:parseNumber(r.Absorbanz),measurement:parseNumber(r.Messung)||1,
+    hint:r.Laborhinweis||'',include:true,reason:'',workingConcentration:parseNumber(r.Konzentration_mol_L),workingAbsorbance:parseNumber(r.Absorbanz)
+  })).filter(r=>r.absorbance!=null);
+  if(!rows.length)throw new Error('Keine gültigen Absorbanzwerte gefunden.');
+  state.sourceName=name;state.sourceText=text;state.metadata={...parsed.metadata};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=false;
+  openWorkspace();renderAll();
+}
+function loadText(text,name='Messwerte.csv'){
+  try{
+    const parsed=parseSections(text);const kind=recognize(parsed);
+    if(kind!=='eichkurve'){
+      const labels={kinetik:'Photometer-Kinetik',btb:'Bromthymolblau-Spektren',unknown:'unbekannte CSV-Struktur'};
+      alert(`${labels[kind]} erkannt. v0.1.0 wertet zunächst Eichkurven aus. Die Datei wurde korrekt erkannt, ist aber für eine spätere Version vorgesehen.`);return;
+    }
+    importEichkurve(parsed,name,text);
+  }catch(err){alert(`Import nicht möglich: ${err.message}`);}
+}
+function openWorkspace(){ $('#start').style.display='none';$('#workspace').style.display='block';showStep('import');window.scrollTo({top:0}); }
+function resetApp(){location.reload();}
+function showStep(step){
+  $$('.panel').forEach(p=>p.classList.toggle('active',p.id===`panel-${step}`));
+  const order=['import','data','regression','unknown','export'];const idx=order.indexOf(step);
+  $$('.step').forEach((b,i)=>{b.classList.toggle('active',i===idx);b.classList.toggle('done',i<idx);});
+  if(step==='regression'){calculateAll();setTimeout(drawChart,30)}
+  if(step==='unknown'){calculateAll();renderUnknown();setTimeout(drawChart,30)}
+  if(step==='export')calculateAll();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderAll(){renderImport();renderData();calculateAll();renderRegression();renderUnknown();}
+function renderImport(){
+  const std=state.workingRows.filter(r=>r.type==='standard'), blank=state.workingRows.filter(r=>r.type==='blank'), unk=state.workingRows.filter(r=>r.type==='unknown');
+  const concentrations=new Set(std.map(r=>r.concentration).filter(v=>v!=null));
+  $('#importNotice').innerHTML=`<div class="notice ok"><strong>Photometer-Eichkurve erkannt.</strong> Die Spalten wurden automatisch zugeordnet. Bitte kontrolliere die Angaben.</div>`;
+  const boxes=[['Stoff',state.metadata.Stoff||state.workingRows[0]?.original.Stoff||'nicht angegeben'],['Messwellenlänge',state.metadata.Messwellenlaenge_nm?`${esc(state.metadata.Messwellenlaenge_nm)} nm`:'nicht angegeben'],['Standards',`${concentrations.size} Stufen · ${std.length} Messungen`],['Unbekannte Probe',unk.length?`${unk.length} Messung${unk.length===1?'':'en'}`:'nicht vorhanden']];
+  $('#importSummary').innerHTML=boxes.map(([l,v])=>`<div class="summary-box"><span class="label">${esc(l)}</span><span class="value">${esc(v)}</span></div>`).join('');
+  const metaEntries=Object.entries(state.metadata);
+  $('#metadataDetails').innerHTML=`<p><strong>Datei:</strong> ${esc(state.sourceName)}</p><p><strong>Blindprobe:</strong> ${blank.length?`${blank.length} Messung(en)`:'nicht vorhanden'}</p>`+(metaEntries.length?`<table style="min-width:0"><tbody>${metaEntries.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</tbody></table>`:'<p>Keine zusätzlichen Metadaten vorhanden.</p>');
+}
+function rowChanged(r){return r.workingConcentration!==r.concentration||r.workingAbsorbance!==r.absorbance}
+function renderData(){
+  const tbody=$('#dataTable tbody');tbody.innerHTML=state.workingRows.map(r=>{
+    const isUnknown=r.type==='unknown';
+    return `<tr data-id="${r.id}">
+      <td class="center"><input class="check include" type="checkbox" ${r.include?'checked':''} aria-label="Messwert verwenden"></td>
+      <td><span class="badge ${esc(r.type)}">${r.type==='blank'?'Blindprobe':r.type==='unknown'?'Unbekannt':'Standard'}</span>${rowChanged(r)?' <span class="badge changed">korrigiert</span>':''}${!r.include?' <span class="badge excluded">ausgeschlossen</span>':''}</td>
+      <td>${esc(r.probe)}${r.measurement?`<div class="muted">Messung ${r.measurement}</div>`:''}</td>
+      <td><input class="cell-input concentration ${r.workingConcentration!==r.concentration?'changed':''}" type="text" value="${isUnknown?'unbekannt':esc(String(r.workingConcentration??'').replace('.',','))}" ${isUnknown?'disabled':''}></td>
+      <td><input class="cell-input absorbance ${r.workingAbsorbance!==r.absorbance?'changed':''}" type="text" value="${esc(String(r.workingAbsorbance??'').replace('.',','))}"></td>
+      <td>${esc(r.hint||'—')}</td>
+      <td><input class="cell-input reason" type="text" value="${esc(r.reason)}" placeholder="${(!r.include||rowChanged(r))?'Begründung erforderlich':'optional'}"></td>
+    </tr>`;
+  }).join('');
+  tbody.querySelectorAll('tr').forEach(tr=>{
+    const r=state.workingRows.find(x=>x.id===tr.dataset.id);
+    tr.querySelector('.include').addEventListener('change',e=>{r.include=e.target.checked;renderData();calculateAll();});
+    const c=tr.querySelector('.concentration');if(!c.disabled)c.addEventListener('change',e=>{const n=parseNumber(e.target.value);if(n==null){alert('Bitte eine gültige Konzentration eingeben.');e.target.value=String(r.workingConcentration).replace('.',',');return;}r.workingConcentration=n;renderData();calculateAll();});
+    tr.querySelector('.absorbance').addEventListener('change',e=>{const n=parseNumber(e.target.value);if(n==null){alert('Bitte eine gültige Absorbanz eingeben.');e.target.value=String(r.workingAbsorbance).replace('.',',');return;}r.workingAbsorbance=n;renderData();calculateAll();});
+    tr.querySelector('.reason').addEventListener('input',e=>{r.reason=e.target.value;validateData(false);});
+  });
+  calculateGroups();renderGroupCards();validateData(false);
+}
+function calculateGroups(){
+  const map=new Map();
+  state.workingRows.filter(r=>r.include&&['blank','standard'].includes(r.type)&&r.workingConcentration!=null&&r.workingAbsorbance!=null).forEach(r=>{
+    const key=r.workingConcentration;if(!map.has(key))map.set(key,[]);map.get(key).push(r.workingAbsorbance);
+  });
+  state.groups=[...map.entries()].sort((a,b)=>a[0]-b[0]).map(([x,vals])=>({x,vals,n:vals.length,mean:mean(vals),sd:sampleSd(vals)}));
+}
+function mean(a){return a.length?a.reduce((s,v)=>s+v,0)/a.length:null}
+function sampleSd(a){if(a.length<2)return null;const m=mean(a);return Math.sqrt(a.reduce((s,v)=>s+(v-m)**2,0)/(a.length-1));}
+function renderGroupCards(){
+  $('#groupCards').innerHTML=state.groups.map(g=>`<article class="group-card"><h3>${g.x===0?'Blindprobe':`c = ${fmt(g.x,10)} mol/L`}</h3><dl><dt>Messungen n</dt><dd>${g.n}</dd><dt>Mittelwert A</dt><dd>${fmtFixed(g.mean,4)}</dd><dt>Standardabweichung</dt><dd>${g.sd==null?'— (n < 2)':fmtFixed(g.sd,4)}</dd></dl></article>`).join('')||'<p>Keine verwendbaren Standardwerte vorhanden.</p>';
+}
+function validateData(showAlert=false){
+  calculateGroups();const reasonsMissing=state.workingRows.filter(r=>(!r.include||rowChanged(r))&&!r.reason.trim());
+  const validGroups=state.groups.filter(g=>Number.isFinite(g.x)&&Number.isFinite(g.mean));const distinct=new Set(validGroups.map(g=>g.x));
+  const problems=[];if(distinct.size<2)problems.push('Mindestens zwei unterschiedliche Konzentrationsstufen sind erforderlich.');if(reasonsMissing.length)problems.push(`${reasonsMissing.length} Änderung(en) oder Ausschluss/Ausschlüsse sind noch nicht begründet.`);
+  $('#dataValidity').innerHTML=problems.length?`<div class="notice danger"><strong>Bitte noch prüfen:</strong> ${problems.map(esc).join(' ')}</div>`:'<div class="notice ok">Die Arbeitsdaten sind für eine lineare Regression verwendbar.</div>';
+  $('#toRegression').disabled=problems.length>0;if(showAlert&&problems.length)alert(problems.join('\n'));return problems.length===0;
+}
+function linearRegression(points){
+  const n=points.length;if(n<2)return null;const mx=mean(points.map(p=>p.x)),my=mean(points.map(p=>p.y));
+  const sxx=points.reduce((s,p)=>s+(p.x-mx)**2,0);if(sxx===0)return null;
+  const slope=points.reduce((s,p)=>s+(p.x-mx)*(p.y-my),0)/sxx;const intercept=my-slope*mx;
+  const fitted=points.map(p=>({...p,pred:slope*p.x+intercept,residual:p.y-(slope*p.x+intercept)}));
+  const ssRes=fitted.reduce((s,p)=>s+p.residual**2,0),ssTot=points.reduce((s,p)=>s+(p.y-my)**2,0);const r2=ssTot===0?1:1-ssRes/ssTot;const rmse=Math.sqrt(ssRes/n);
+  return {slope,intercept,r2,rmse,n,fitted};
+}
+function calculateAll(){
+  calculateGroups();state.regression=linearRegression(state.groups.map(g=>({x:g.x,y:g.mean,sd:g.sd,n:g.n})));
+  const vals=state.workingRows.filter(r=>r.include&&r.type==='unknown'&&r.workingAbsorbance!=null).map(r=>r.workingAbsorbance);
+  const am=mean(vals),asd=sampleSd(vals);let x=null;if(state.regression&&state.regression.slope!==0&&am!=null)x=(am-state.regression.intercept)/state.regression.slope;
+  state.unknown={values:vals,mean:am,sd:asd,concentration:x};renderRegression();renderUnknown();
+}
+function renderRegression(){
+  const r=state.regression;if(!r){$('#regressionMetrics').innerHTML='<div class="notice danger">Keine Regression möglich.</div>';return;}
+  $('#regressionMetrics').innerHTML=[['Steigung m',fmt(r.slope,6)],['Achsenabschnitt b',fmtFixed(r.intercept,5)],['Bestimmtheitsmaß R²',fmtFixed(r.r2,5)],['RMSE',fmtFixed(r.rmse,5)]].map(([l,v])=>`<div class="metric"><span>${l}</span><strong>${v}</strong></div>`).join('');
+  $('#regressionFormula').innerHTML=`<strong>Regressionsgleichung:</strong> A = ${fmt(r.slope,6)} · c ${r.intercept>=0?'+':'−'} ${fmt(Math.abs(r.intercept),6)}`;
+  $('#residualBody').innerHTML=r.fitted.map(p=>`<tr><td class="num">${fmt(p.x,10)}</td><td class="num">${fmtFixed(p.y,5)}</td><td class="num">${fmtFixed(p.pred,5)}</td><td class="num">${fmtFixed(p.residual,5)}</td></tr>`).join('');
+  requestAnimationFrame(drawChart);
+}
+function interpolationStatus(x){
+  if(x==null||!state.groups.length)return {kind:'danger',title:'Nicht bestimmbar',text:'Es fehlen geeignete Daten.'};
+  const min=Math.min(...state.groups.map(g=>g.x)),max=Math.max(...state.groups.map(g=>g.x));const range=max-min;const margin=range*.05;
+  if(x<min||x>max)return {kind:'danger',title:'Extrapolation',text:`Der Wert liegt außerhalb des Eichbereichs (${fmt(min,10)} bis ${fmt(max,10)} mol/L). Probe verdünnen oder Eichbereich erweitern.`};
+  if(x-min<margin||max-x<margin)return {kind:'warn',title:'Randbereich',text:'Der Wert liegt sehr nahe am Rand des Eichbereichs. Das Ergebnis sollte besonders kritisch geprüft werden.'};
+  return {kind:'ok',title:'Interpolation',text:'Der Wert liegt innerhalb des Eichbereichs.'};
+}
+function renderUnknown(){
+  const u=state.unknown||{values:[]};const d=Math.max(parseNumber($('#dilution')?.value)||1,0);const corrected=u.concentration==null?null:u.concentration*d;const stat=interpolationStatus(u.concentration);
+  $('#unknownMeasurements').innerHTML=u.values.length?`<div class="group-cards"><article class="group-card"><h3>Unbekannte Probe</h3><dl><dt>Messungen n</dt><dd>${u.values.length}</dd><dt>Mittelwert A</dt><dd>${fmtFixed(u.mean,5)}</dd><dt>Standardabweichung</dt><dd>${u.sd==null?'— (n < 2)':fmtFixed(u.sd,5)}</dd></dl></article></div>`:'<div class="notice warn">Keine verwendete Messung einer unbekannten Probe vorhanden.</div>';
+  $('#unknownCalculation').innerHTML=state.regression&&u.mean!=null?`<div class="formula">c = (A − b) / m<br>c = (${fmtFixed(u.mean,5)} − ${fmtFixed(state.regression.intercept,5)}) / ${fmt(state.regression.slope,6)}<br>c = ${fmt(u.concentration,10)} mol/L</div><p>Mit Verdünnungsfaktor ${fmt(d,4)}: c<sub>ursprünglich</sub> = ${fmt(corrected,10)} mol/L</p>`:'<p>Kein Rechenweg verfügbar.</p>';
+  $('#unknownResult').innerHTML=`<span class="badge ${stat.kind==='ok'?'standard':stat.kind==='warn'?'changed':'excluded'}">${stat.title}</span><p class="muted">Konzentration der ursprünglichen Probe</p><div class="big">${fmt(corrected,10)} mol/L</div><p>${esc(stat.text)}</p>${d!==1&&u.concentration!=null?`<p class="muted">Messlösung: ${fmt(u.concentration,10)} mol/L · Faktor ${fmt(d,4)}</p>`:''}`;
+}
+function drawChart(){
+  const canvas=$('#chart');if(!canvas||!state.regression||!state.groups.length)return;const box=canvas.getBoundingClientRect();if(box.width<10)return;
+  const dpr=window.devicePixelRatio||1;canvas.width=Math.round(box.width*dpr);canvas.height=Math.round(box.height*dpr);const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  const W=box.width,H=box.height,pad={l:78,r:30,t:34,b:66};ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+  let xs=state.groups.map(g=>g.x),ys=state.groups.flatMap(g=>[g.mean,(g.mean-(g.sd||0)),(g.mean+(g.sd||0))]);
+  if(state.unknown?.concentration!=null&&state.unknown?.mean!=null){xs.push(state.unknown.concentration);ys.push(state.unknown.mean)}
+  let xmin=Math.min(0,...xs),xmax=Math.max(...xs),ymin=Math.min(0,...ys),ymax=Math.max(...ys);if(xmax===xmin)xmax=xmin+1;if(ymax===ymin)ymax=ymin+1;
+  const xm=(xmax-xmin)*.09,ym=(ymax-ymin)*.12;xmin-=xm;xmax+=xm;ymin=Math.min(0,ymin-ym);ymax+=ym;
+  const X=x=>pad.l+(x-xmin)/(xmax-xmin)*(W-pad.l-pad.r),Y=y=>H-pad.b-(y-ymin)/(ymax-ymin)*(H-pad.t-pad.b);
+  ctx.font='12px system-ui';ctx.lineWidth=1;ctx.strokeStyle='#dce5ea';ctx.fillStyle='#5d6b75';
+  for(let i=0;i<=5;i++){const x=xmin+(xmax-xmin)*i/5,px=X(x);ctx.beginPath();ctx.moveTo(px,pad.t);ctx.lineTo(px,H-pad.b);ctx.stroke();ctx.textAlign='center';ctx.fillText(fmt(x,8),px,H-pad.b+22);}
+  for(let i=0;i<=5;i++){const y=ymin+(ymax-ymin)*i/5,py=Y(y);ctx.beginPath();ctx.moveTo(pad.l,py);ctx.lineTo(W-pad.r,py);ctx.stroke();ctx.textAlign='right';ctx.fillText(fmt(y,3),pad.l-10,py+4);}
+  ctx.strokeStyle='#263a45';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,H-pad.b);ctx.lineTo(W-pad.r,H-pad.b);ctx.stroke();
+  ctx.fillStyle='#263a45';ctx.textAlign='center';ctx.font='13px system-ui';ctx.fillText('Konzentration c (mol/L)',(pad.l+W-pad.r)/2,H-18);ctx.save();ctx.translate(20,(pad.t+H-pad.b)/2);ctx.rotate(-Math.PI/2);ctx.fillText('Absorbanz A',0,0);ctx.restore();
+  const r=state.regression;ctx.strokeStyle='#156b86';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(X(xmin),Y(r.slope*xmin+r.intercept));ctx.lineTo(X(xmax),Y(r.slope*xmax+r.intercept));ctx.stroke();
+  state.groups.forEach(g=>{const px=X(g.x),py=Y(g.mean);if(g.sd!=null){ctx.strokeStyle='#6c7e88';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(px,Y(g.mean-g.sd));ctx.lineTo(px,Y(g.mean+g.sd));ctx.moveTo(px-5,Y(g.mean-g.sd));ctx.lineTo(px+5,Y(g.mean-g.sd));ctx.moveTo(px-5,Y(g.mean+g.sd));ctx.lineTo(px+5,Y(g.mean+g.sd));ctx.stroke();}ctx.beginPath();ctx.arc(px,py,5.5,0,Math.PI*2);ctx.fillStyle='#d66f28';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();});
+  if(state.unknown?.concentration!=null&&state.unknown?.mean!=null){const ux=X(state.unknown.concentration),uy=Y(state.unknown.mean);ctx.setLineDash([6,5]);ctx.strokeStyle='#7a4f99';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(pad.l,uy);ctx.lineTo(ux,uy);ctx.lineTo(ux,H-pad.b);ctx.stroke();ctx.setLineDash([]);ctx.beginPath();ctx.arc(ux,uy,6,0,Math.PI*2);ctx.fillStyle='#7a4f99';ctx.fill();}
+  ctx.fillStyle='#21333e';ctx.textAlign='left';ctx.font='bold 13px system-ui';ctx.fillText(state.metadata.Stoff||'Eichkurve',pad.l,pad.t-12);
+}
+function csvQuote(v){const s=String(v??'').replace(/"/g,'""');return `"${s}"`;}
+function exportCsv(){
+  const head=['ID','Probentyp','Probe','Messung','Konzentration_original_mol_L','Absorbanz_original','Konzentration_verwendet_mol_L','Absorbanz_verwendet','In_Auswertung','Begruendung','Laborhinweis'];
+  const lines=[head.join(';'),...state.workingRows.map(r=>[r.id,r.type,r.probe,r.measurement,r.concentration??'',r.absorbance??'',r.workingConcentration??'',r.workingAbsorbance??'',r.include?'ja':'nein',r.reason,r.hint].map(v=>csvQuote(String(v).replace('.',','))).join(';')),'','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${state.sourceName}`,`Stoff;${state.metadata.Stoff||''}`];
+  download('\uFEFF'+lines.join('\r\n'),baseName()+'_ARBEITSDATEN.csv','text/csv;charset=utf-8');
+}
+function mdText(){
+  const r=state.regression,u=state.unknown,d=Math.max(parseNumber($('#dilution').value)||1,0),corr=u?.concentration==null?null:u.concentration*d,stat=interpolationStatus(u?.concentration);
+  const decisions=state.workingRows.filter(x=>!x.include||rowChanged(x));
+  return `# DatenLab-Auswertung: Eichkurve\n\n- **Stoff:** ${state.metadata.Stoff||'nicht angegeben'}\n- **Messwellenlänge:** ${state.metadata.Messwellenlaenge_nm||'—'} nm\n- **Quelle:** ${state.sourceName}\n- **Auswertung:** ${new Date().toLocaleString('de-AT')}\n\n## Eichgerade\n\n- Gleichung: A = ${r?fmt(r.slope,8):'—'} · c ${r&&r.intercept>=0?'+':'−'} ${r?fmt(Math.abs(r.intercept),8):'—'}\n- R²: ${r?fmtFixed(r.r2,5):'—'}\n- RMSE: ${r?fmtFixed(r.rmse,5):'—'}\n\n## Unbekannte Probe\n\n- Mittlere Absorbanz: ${u?fmtFixed(u.mean,5):'—'}\n- Konzentration der Messlösung: ${u?fmt(u.concentration,10):'—'} mol/L\n- Verdünnungsfaktor: ${fmt(d,4)}\n- Konzentration der ursprünglichen Probe: **${fmt(corr,10)} mol/L**\n- Bewertung: **${stat.title}** – ${stat.text}\n\n## Verwendete Mittelwerte\n\n| Konzentration (mol/L) | n | Mittelwert A | Standardabweichung |\n|---:|---:|---:|---:|\n${state.groups.map(g=>`| ${fmt(g.x,10)} | ${g.n} | ${fmtFixed(g.mean,5)} | ${g.sd==null?'—':fmtFixed(g.sd,5)} |`).join('\n')}\n\n## Dokumentierte Datenentscheidungen\n\n${decisions.length?decisions.map(x=>`- ${x.probe}, Messung ${x.measurement}: ${x.include?'korrigiert':'nicht verwendet'} – ${x.reason||'keine Begründung'}`).join('\n'):'Keine Messwerte korrigiert oder ausgeschlossen.'}\n\n> Die fachliche Interpretation und Fehlerdiskussion wurden nicht automatisch erstellt.\n`;
+}
+function exportMd(){download(mdText(),baseName()+'.md','text/markdown;charset=utf-8')}
+function exportJson(){
+  calculateAll();const payload={schema:'MESSWERT_LAB_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:state.sourceName,metadata:state.metadata,originalText:state.sourceText},rawRows:state.rawRows,workingRows:state.workingRows,results:{groups:state.groups,regression:state.regression,unknown:state.unknown,dilutionFactor:parseNumber($('#dilution').value)||1}};
+  download(JSON.stringify(payload,null,2),baseName()+'.json','application/json;charset=utf-8');
+}
+function exportPng(){drawChart();const c=$('#chart');c.toBlob(blob=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=baseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png');}
+function manualRow(type='standard',probe='',c='',a='',hint=''){
+  const tr=document.createElement('tr');tr.innerHTML=`<td><select class="mtype"><option value="blank" ${type==='blank'?'selected':''}>Blindprobe</option><option value="standard" ${type==='standard'?'selected':''}>Standard</option><option value="unknown" ${type==='unknown'?'selected':''}>Unbekannt</option></select></td><td><input class="cell-input mprobe" value="${esc(probe)}"></td><td><input class="cell-input mc" value="${esc(c)}"></td><td><input class="cell-input ma" value="${esc(a)}"></td><td><input class="cell-input mhint" value="${esc(hint)}"></td><td><button class="btn btn-danger mdel">×</button></td>`;tr.querySelector('.mdel').onclick=()=>tr.remove();$('#manualBody').appendChild(tr);
+}
+function initManual(){
+  $('#manualBody').innerHTML='';manualRow('blank','Blindprobe','0','0','');for(let i=1;i<=5;i++)manualRow('standard',`Standard ${i}`,'','', '');manualRow('unknown','Unbekannte Probe','','','');
+}
+function useManual(){
+  const rows=[...$('#manualBody').rows].map((tr,i)=>({id:`r${i+1}`,original:{},type:tr.querySelector('.mtype').value,probe:tr.querySelector('.mprobe').value||`Messwert ${i+1}`,concentration:parseNumber(tr.querySelector('.mc').value),absorbance:parseNumber(tr.querySelector('.ma').value),measurement:1,hint:tr.querySelector('.mhint').value,include:true,reason:'',workingConcentration:parseNumber(tr.querySelector('.mc').value),workingAbsorbance:parseNumber(tr.querySelector('.ma').value)})).filter(r=>r.absorbance!=null);
+  if(rows.filter(r=>r.type==='standard'&&r.concentration!=null).length<2){alert('Bitte mindestens zwei Standards mit Konzentration und Absorbanz eingeben.');return;}
+  state.sourceName='Manuelle Eingabe';state.sourceText='';state.metadata={Versuchstyp:'Eichkurve',Stoff:'Eigene Messreihe'};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=true;openWorkspace();renderAll();
+}
+
+$('#chooseFile').onclick=()=>{$('#dropzone').style.display='block';$('#fileInput').click()};$('#browseFile').onclick=()=>$('#fileInput').click();
+$('#fileInput').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>loadText(reader.result,f.name);reader.onerror=()=>alert('Datei konnte nicht gelesen werden.');reader.readAsText(f,'utf-8')};
+const dz=$('#dropzone');['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('drag')}));dz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(!f)return;const r=new FileReader();r.onload=()=>loadText(r.result,f.name);r.readAsText(f,'utf-8')});
+$('#loadSample').onclick=()=>loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
+$('#showManual').onclick=()=>{$('#manual').style.display='block';$('#dropzone').style.display='none';initManual();$('#manual').scrollIntoView({behavior:'smooth'})};$('#cancelManual').onclick=()=>$('#manual').style.display='none';$('#addManualRow').onclick=()=>manualRow();$('#useManual').onclick=useManual;
+$('#newDataset').onclick=resetApp;$('#resetWorking').onclick=()=>{state.workingRows=structuredClone(state.rawRows);renderAll()};
+$$('[data-next]').forEach(b=>b.onclick=()=>{if(b.dataset.next==='regression'&&!validateData(true))return;showStep(b.dataset.next)});$$('[data-prev]').forEach(b=>b.onclick=()=>showStep(b.dataset.prev));$$('.step').forEach(b=>b.onclick=()=>{if(['regression','unknown','export'].includes(b.dataset.step)&&!validateData(true))return;showStep(b.dataset.step)});
+$('#refreshRegression').onclick=()=>{calculateAll();drawChart()};$('#dilution').addEventListener('input',()=>{renderUnknown();drawChart()});
+$('#exportPng').onclick=exportPng;$('#exportMd').onclick=exportMd;$('#exportCsv').onclick=exportCsv;$('#exportJson').onclick=exportJson;
+window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart()});
+if(new URLSearchParams(location.search).get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
+</script>
+</body>
+</html>

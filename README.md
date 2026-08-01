@@ -1,6 +1,6 @@
 # MESSWERT_LAB – DatenLab
 
-**Version:** v0.2.1  
+**Version:** v0.3.0  
 **Titel der App:** DatenLab – Messwerte auswerten
 
 ## Start
@@ -14,28 +14,42 @@ Die App ist als eigenständige Single-HTML-Anwendung ausgeführt. Für die Nutzu
 - `index.html` – lauffähige Anwendung
 - `docs/` – Projektkonzept
 - `examples/` – reale CSV-Testexporte aus dem Virtuellen Photometer
-- `development/` – Entwicklungs- und Testdateien; für den Betrieb der App nicht erforderlich
+- `development/` – Entwicklungs- und Testdateien; für den Betrieb nicht erforderlich
 
-## Schwerpunkt von v0.2.1
+## Unterstützte Anwendungsfälle
 
-- Import von Photometer-Eichkurven
-- Prüfung und nachvollziehbarer Ausschluss einzelner Messwerte
-- Zusammenfassung von Wiederholungsmessungen
-- lineare Regression und Eichkurve
-- Bestimmung einer unbekannten Konzentration
-- Export von Diagramm, Markdown, CSV und Sitzungs-JSON
-- editierbare Stoffangabe und molare Masse
-- Umrechnung und Ergebnisanzeige in mol/L und mg/L
+### Eichkurve
 
-Andere Photometer-Exporttypen werden erkannt, aber in dieser Version noch nicht ausgewertet.
+- automatischer Import von Photometer-Eichkurven
+- manuelle Eingabe in mol/L oder mg/L
+- nachvollziehbares Korrigieren oder Ausschließen von Messwerten
+- Mittelwerte und Stichproben-Standardabweichungen
+- lineare Regression, R², RMSE und Residuen
+- Bestimmung unbekannter Konzentrationen
+- Ergebnisanzeige in mol/L und bei bekannter molarer Masse zusätzlich in mg/L
 
-## Neu in v0.2.1
+### Photometrische Kinetik
 
-- Bei manueller Dateneingabe kann die Konzentration wahlweise in mol/L oder mg/L erfasst werden.
-- Bei mg/L-Eingabe ist eine positive molare Masse verpflichtend.
-- Die eingegebene Einheit bleibt beim Prüfen und Bearbeiten der Daten sichtbar; intern wird einheitlich in mol/L gerechnet.
-- Die molare Masse kann nach jedem Import kontrolliert, ergänzt oder überschrieben werden.
-- Bei manueller Dateneingabe stehen Felder für Stoffname und molare Masse bereit.
-- Die Herkunft der verwendeten molaren Masse wird angezeigt: Metadaten, interne Stofftabelle oder manuelle Eingabe.
-- Ohne molare Masse bleibt die vollständige Auswertung in mol/L möglich; die mg/L-Ausgabe wird verständlich deaktiviert.
-- Stoffname, molare Masse und deren Herkunft werden in die Exporte übernommen.
+- Import der Photometer-Exporte für Kristallviolett, Brillantblau/Hypochlorit und Iod-/Vitamin-C-Uhr
+- Auswahl und getrennte Prüfung mehrerer Messreihen
+- unveränderte Rohdaten sowie begründete Korrekturen und Ausschlüsse
+- Messkurve A gegen t
+- Plateauprüfung und transparente Festlegung von A∞
+- anpassbarer Auswertungszeitraum
+- Vergleich der Linearisierungen für 0., 1. und 2. Ordnung
+- R², RMSE, Residuen, formale Geschwindigkeitskonstante und Halbwertszeit
+- Schwellenzeit und relative Vergleichsrate 1/t bei der Iod-/Vitamin-C-Uhr
+- Vergleich aller Messreihen und Versuchsbedingungen
+
+## Hinweise zur Kinetikauswertung
+
+Die App bezeichnet die Linearisierung mit dem höchsten geeigneten R² nur als mathematischen Hinweis. Daraus wird nicht automatisch eine Reaktionsordnung abgeleitet. Bei den Transformationen wird vorausgesetzt, dass die Absorbanz proportional zur Konzentration des beobachteten Stoffes ist.
+
+A∞ wird nur dann automatisch aus den letzten fünf Messpunkten bestimmt, wenn deren Spannweite auf ein ausreichend konstantes Plateau hindeutet. Andernfalls schlägt DatenLab A∞ = 0 vor; der Wert kann kontrolliert und manuell geändert werden.
+
+## Noch nicht enthalten
+
+- manuelle Eingabe kinetischer Zeitreihen
+- Bromthymolblau-Spektrenauswertung
+- Titrationsauswertung mit erster und zweiter Ableitung
+- allgemeiner Aufgaben- und LehrerInnenmodus

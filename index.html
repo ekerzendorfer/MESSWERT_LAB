@@ -30,7 +30,7 @@
     .hero:after{content:"";position:absolute;right:-80px;top:-105px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(45,157,177,.2),transparent 65%);pointer-events:none}
     .hero h2{font-size:clamp(1.6rem,4vw,2.65rem);max-width:770px;line-height:1.13;margin:0 0 14px}
     .hero p{max-width:810px;color:var(--muted);font-size:1.08rem}
-    .launch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+    .launch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:16px;margin-top:28px}
     .launch{border:1px solid var(--border);background:#fff;border-radius:16px;padding:22px;text-align:left;min-height:175px;transition:.18s transform,.18s border-color,.18s box-shadow}
     .launch:hover{transform:translateY(-2px);border-color:#7db3c2;box-shadow:0 10px 28px rgba(31,88,105,.13)}
     .launch:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:none;box-shadow:var(--focus)}
@@ -68,27 +68,34 @@
     .export-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.export-card{border:1px solid var(--border);border-radius:14px;padding:16px;background:#fbfdfe}.export-card h3{margin:0 0 6px}.export-card p{color:var(--muted);min-height:66px}
     .manual{display:none;margin-top:18px}.manual table{min-width:760px}.manual-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     footer{color:var(--muted);text-align:center;font-size:.86rem;padding:28px 0 14px}
+
+    .kin-workspace{display:none}.kin-stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 18px;position:sticky;top:8px;z-index:20;background:rgba(244,247,251,.94);backdrop-filter:blur(10px);padding:9px;border-radius:16px;border:1px solid rgba(190,205,215,.75)}
+    .kstep{border:0;background:transparent;border-radius:11px;padding:9px 8px;color:var(--muted);font-size:.9rem;font-weight:700}.kstep.active{background:var(--primary);color:#fff}.kstep.done{color:var(--primary-dark);background:#e8f3f6}.kpanel{display:none;padding:24px}.kpanel.active{display:block}
+    .series-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:14px 0}.series-bar .field{margin:0;min-width:220px}.series-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;margin:14px 0}.series-card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fbfdfe}.series-card.active{border-color:#6aa8ba;background:#eef8fa}.series-card h3{margin:0 0 8px;font-size:1rem}.series-card p{margin:3px 0;color:var(--muted);font-size:.88rem}.series-card strong{color:var(--text)}
+    .kin-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;background:#f7fbfc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:14px 0}.kin-controls .field{margin:0;min-width:0}.kin-controls input,.kin-controls select{width:100%;min-width:0}.kin-controls .field input:disabled{background:#eef1f3;color:#6b7780}.model-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}.model-card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fbfdfe;position:relative}.model-card.best{border-color:#63a57f;background:#eff8f3}.model-card.selected{box-shadow:var(--focus)}.model-card h3{margin:0 0 7px;font-size:1rem}.model-card dl{display:grid;grid-template-columns:1fr auto;gap:5px 10px;margin:0}.model-card dt{color:var(--muted);font-size:.86rem}.model-card dd{margin:0;font-weight:750;font-variant-numeric:tabular-nums}.best-tag{display:inline-flex;margin-bottom:8px;padding:3px 8px;border-radius:999px;background:#dff1e6;color:#17653d;font-size:.74rem;font-weight:780}
+    .kin-result-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px;align-items:start}.result-list{display:grid;gap:10px}.result-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;border-bottom:1px solid #dce5ea;padding:8px 0}.result-row:last-child{border-bottom:0}.result-row span{color:var(--muted)}.result-row strong{font-variant-numeric:tabular-nums;text-align:right}.mini-table{min-width:760px}.kin-clock-only,.kin-decay-only{display:none}
     .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid{grid-template-columns:1fr}.substance-editor{grid-template-columns:1fr 1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
-    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.version{font-size:.8rem}}
-    @media print{body{background:#fff}.topbar,.stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export{display:none!important}.workspace{display:block!important}.panel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
+    @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid,.kin-result-grid{grid-template-columns:1fr}.substance-editor{grid-template-columns:1fr 1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
+    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper,.kin-stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span,.kstep span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.model-grid{grid-template-columns:1fr}.version{font-size:.8rem}}
+    @media print{body{background:#fff}.topbar,.stepper,.kin-stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export,#kin-panel-import,#kin-panel-data,#kin-panel-export{display:none!important}.workspace,.kin-workspace{display:block!important}.panel,.kpanel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
   </style>
 </head>
 <body>
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.2.1 · Eichkurve</span>
+    <span class="version">v0.3.0 · Eichkurve &amp; Kinetik</span>
   </header>
 
   <main>
     <section id="start" class="card hero">
-      <h2>Vom Messwert zur Eichkurve – Schritt für Schritt</h2>
-      <p>Öffne einen Eichkurven-Export aus dem Virtuellen Photometer, gib eigene Messwerte ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
+      <h2>Messdaten auswerten – geführt und nachvollziehbar</h2>
+      <p>Öffne einen Eichkurven- oder Kinetik-Export aus dem Virtuellen Photometer, gib eine eigene Eichreihe ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
       <div class="launch-grid">
         <button class="launch" id="chooseFile"><span class="icon">📂</span><strong>Photometer-CSV öffnen</strong><small>Metadaten und Spalten werden automatisch erkannt.</small></button>
-        <button class="launch" id="showManual"><span class="icon">⌨️</span><strong>Messwerte selbst eingeben</strong><small>Für reale Messungen oder andere Eichreihen.</small></button>
-        <button class="launch" id="loadSample"><span class="icon">🧪</span><strong>Beispieldaten ausprobieren</strong><small>Kaliumpermanganat mit mehreren Wiederholungen.</small></button>
+        <button class="launch" id="showManual"><span class="icon">⌨️</span><strong>Eichkurve selbst eingeben</strong><small>Für reale Messungen oder andere Eichreihen.</small></button>
+        <button class="launch" id="loadSample"><span class="icon">🧪</span><strong>Eichkurven-Beispiel</strong><small>Kaliumpermanganat mit mehreren Wiederholungen.</small></button>
+        <button class="launch" id="loadKineticSample"><span class="icon">📈</span><strong>Kinetik-Beispiel</strong><small>Kristallviolett: vier Zeitreihen bei verschiedenen Bedingungen.</small></button>
       </div>
       <input id="fileInput" type="file" accept=".csv,text/csv" class="sr-only">
       <div id="dropzone" class="dropzone">CSV-Datei hier ablegen oder <button class="btn btn-secondary" id="browseFile" type="button">Datei auswählen</button></div>
@@ -173,13 +180,91 @@
         <div class="toolbar"><button class="btn btn-ghost" data-prev="unknown">← Probe</button><span class="spacer"></span><button class="btn btn-secondary" onclick="window.print()">Druckansicht</button></div>
       </section>
     </section>
+
+    <section id="kinWorkspace" class="kin-workspace">
+      <nav class="kin-stepper" aria-label="Arbeitsschritte der Kinetikauswertung">
+        <button class="kstep active" data-kstep="import">1 <span>Import</span></button>
+        <button class="kstep" data-kstep="data">2 <span>Daten prüfen</span></button>
+        <button class="kstep" data-kstep="analysis">3 <span>Auswertung</span></button>
+        <button class="kstep" data-kstep="result">4 <span>Ergebnis</span></button>
+        <button class="kstep" data-kstep="export">5 <span>Export</span></button>
+      </nav>
+
+      <section id="kin-panel-import" class="card kpanel active">
+        <div class="panel-head"><div><h2>Kinetik-Import erkannt</h2><p>Kontrolliere Versuchstyp, Messreihen und Bedingungen.</p></div><button class="btn btn-ghost" id="kinNewDataset">Neue Datei</button></div>
+        <div id="kinImportNotice"></div>
+        <div class="summary-grid" id="kinImportSummary"></div>
+        <h3>Enthaltene Messreihen</h3>
+        <div id="kinSeriesSummary" class="series-summary"></div>
+        <details><summary>Metadaten und erkannte Spalten anzeigen</summary><div id="kinMetadataDetails"></div></details>
+        <div class="toolbar"><span class="spacer"></span><button class="btn btn-primary" data-knext="data">Daten prüfen →</button></div>
+      </section>
+
+      <section id="kin-panel-data" class="card kpanel">
+        <div class="panel-head"><div><h2>Zeitreihe prüfen</h2><p>Wähle eine Messreihe. Rohdaten bleiben erhalten; Korrekturen und Ausschlüsse benötigen eine Begründung.</p></div><button class="btn btn-secondary" id="kinResetWorking">Alle Arbeitsdaten zurücksetzen</button></div>
+        <div class="series-bar"><div class="field"><label for="kinSeriesSelectData">Messreihe</label><select id="kinSeriesSelectData"></select></div><div id="kinConditionInline" class="notice" style="margin:0;flex:1"></div></div>
+        <div class="notice warn">Ein Laborhinweis oder ein auffälliger Kurvenpunkt ist noch kein automatischer Ausschlussgrund. Prüfe den zeitlichen Verlauf und dokumentiere jede Datenentscheidung.</div>
+        <div class="table-wrap"><table id="kinDataTable"><thead><tr><th>Verwenden</th><th class="num">Zeit (s)</th><th class="num">Absorbanz</th><th>Begründung bei Änderung</th></tr></thead><tbody></tbody></table></div>
+        <div id="kinDataValidity"></div>
+        <div class="toolbar"><button class="btn btn-ghost" data-kprev="import">← Import</button><span class="spacer"></span><button class="btn btn-primary" id="kinToAnalysis" data-knext="analysis">Zeitreihe auswerten →</button></div>
+      </section>
+
+      <section id="kin-panel-analysis" class="card kpanel">
+        <div class="panel-head"><div><h2 id="kinAnalysisTitle">Kinetische Auswertung</h2><p id="kinAnalysisSubtitle">Messkurve und Linearisierungen werden getrennt dargestellt.</p></div><button class="btn btn-secondary" id="kinRefreshAnalysis">Neu berechnen</button></div>
+        <div class="series-bar"><div class="field"><label for="kinSeriesSelectAnalysis">Messreihe</label><select id="kinSeriesSelectAnalysis"></select></div></div>
+
+        <div class="kin-decay-only">
+          <div class="kin-controls">
+            <div class="field"><label for="kinBaselineMode">Endwert A∞</label><select id="kinBaselineMode"><option value="auto">automatisch</option><option value="zero">A∞ = 0</option><option value="manual">manuell</option></select><small>Bei einer Restabsorbanz wird A−A∞ ausgewertet.</small></div>
+            <div class="field"><label for="kinBaselineValue">A∞</label><input id="kinBaselineValue" type="text" inputmode="decimal"><small id="kinBaselineHint"></small></div>
+            <div class="field"><label for="kinFitStart">Auswertung ab (s)</label><input id="kinFitStart" type="number" step="any"></div>
+            <div class="field"><label for="kinFitEnd">Auswertung bis (s)</label><input id="kinFitEnd" type="number" step="any"><small>Der Vorschlag vermeidet den stark verrauschten Endbereich.</small></div>
+            <div class="field"><label for="kinChartView">Diagramm</label><select id="kinChartView"><option value="raw">Messkurve A gegen t</option><option value="zero">0. Ordnung: A−A∞</option><option value="first">1. Ordnung: ln(A−A∞)</option><option value="second">2. Ordnung: 1/(A−A∞)</option></select></div>
+          </div>
+          <div id="kinRangeNotice"></div>
+          <div id="kinModelCards" class="model-grid"></div>
+        </div>
+
+        <div class="kin-clock-only">
+          <div class="kin-controls"><div class="field"><label for="kinThreshold">Schwellenwert der Absorbanz</label><input id="kinThreshold" type="text" inputmode="decimal"><small>Die Schwellenzeit wird durch lineare Interpolation zwischen zwei Messpunkten bestimmt.</small></div></div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="chart-card"><div class="chart-box"><canvas id="kinChart" aria-label="Kinetikdiagramm"></canvas></div></div>
+          <aside><div class="metric-list" id="kinMetrics"></div><details><summary>Didaktischer Hinweis</summary><p id="kinDidacticHint"></p></details></aside>
+        </div>
+        <div class="formula" id="kinFormula"></div>
+        <details id="kinResidualDetails"><summary>Residuen anzeigen</summary><div class="table-wrap"><table style="min-width:650px"><thead><tr><th>Zeit (s)</th><th>transformierter Messwert</th><th>Modellwert</th><th>Residuum</th></tr></thead><tbody id="kinResidualBody"></tbody></table></div></details>
+        <div class="toolbar"><button class="btn btn-ghost" data-kprev="data">← Daten</button><span class="spacer"></span><button class="btn btn-primary" id="kinToResult" data-knext="result">Ergebnisse vergleichen →</button></div>
+      </section>
+
+      <section id="kin-panel-result" class="card kpanel">
+        <div class="panel-head"><div><h2>Ergebnisse</h2><p id="kinResultSubtitle">Kennwerte werden ohne automatische fachliche Schlussfolgerung zusammengefasst.</p></div></div>
+        <div class="kin-result-grid"><div id="kinSelectedResult"></div><aside class="result-hero" id="kinResultHero"></aside></div>
+        <h3 style="margin-top:24px">Vergleich aller Messreihen</h3>
+        <div class="table-wrap"><table class="mini-table"><thead id="kinOverviewHead"></thead><tbody id="kinOverviewBody"></tbody></table></div>
+        <div class="notice warn" id="kinResultNotice" style="margin-top:16px"></div>
+        <div class="toolbar"><button class="btn btn-ghost" data-kprev="analysis">← Auswertung</button><span class="spacer"></span><button class="btn btn-primary" data-knext="export">Ergebnisse exportieren →</button></div>
+      </section>
+
+      <section id="kin-panel-export" class="card kpanel">
+        <div class="panel-head"><div><h2>Kinetik exportieren</h2><p>Speichere Diagramm, Auswertungsübersicht, Arbeitsdaten oder die vollständige Sitzung.</p></div></div>
+        <div class="export-grid">
+          <div class="export-card"><h3>Diagramm</h3><p>Aktuelle Messkurve oder Linearisierung als PNG.</p><button class="btn btn-primary" id="kinExportPng">PNG speichern</button></div>
+          <div class="export-card"><h3>Auswertung</h3><p>Markdown mit Bedingungen, Datenbereich und Kennwerten.</p><button class="btn btn-primary" id="kinExportMd">Markdown speichern</button></div>
+          <div class="export-card"><h3>Arbeitsdaten</h3><p>Originalwerte, Arbeitswerte und Datenentscheidungen als CSV.</p><button class="btn btn-primary" id="kinExportCsv">CSV speichern</button></div>
+          <div class="export-card"><h3>Sitzung</h3><p>Vollständiger DatenLab-Stand als JSON.</p><button class="btn btn-primary" id="kinExportJson">JSON speichern</button></div>
+        </div>
+        <div class="toolbar"><button class="btn btn-ghost" data-kprev="result">← Ergebnis</button><span class="spacer"></span><button class="btn btn-secondary" onclick="window.print()">Druckansicht</button></div>
+      </section>
+    </section>
   </main>
-  <footer>DatenLab v0.2.1 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.3.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.2.1';
+const VERSION='0.3.0';
 const SUBSTANCE_DATA=Object.freeze({
   'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034}
 });
@@ -206,7 +291,165 @@ Schichtdicke_cm;1
 Betriebsart;learning
 Versuchskennung;PH-KM-4590`;
 
+const KINETIC_SAMPLE_CSV=`Versuch;Zeit_s;Absorbanz_590nm;CV0_mol_L;OH_mol_L;Schichtdicke_cm
+1;0;0,65970;0,000012000000;0,0050000000;1,0000000
+1;5;0,63684;0,000012000000;0,0050000000;1,0000000
+1;10;0,62563;0,000012000000;0,0050000000;1,0000000
+1;15;0,60142;0,000012000000;0,0050000000;1,0000000
+1;20;0,58487;0,000012000000;0,0050000000;1,0000000
+1;25;0,57190;0,000012000000;0,0050000000;1,0000000
+1;30;0,55372;0,000012000000;0,0050000000;1,0000000
+1;35;0,54098;0,000012000000;0,0050000000;1,0000000
+1;40;0,52254;0,000012000000;0,0050000000;1,0000000
+1;45;0,50798;0,000012000000;0,0050000000;1,0000000
+1;50;0,49559;0,000012000000;0,0050000000;1,0000000
+1;55;0,48013;0,000012000000;0,0050000000;1,0000000
+1;60;0,46490;0,000012000000;0,0050000000;1,0000000
+1;65;0,45123;0,000012000000;0,0050000000;1,0000000
+1;70;0,44064;0,000012000000;0,0050000000;1,0000000
+1;75;0,42502;0,000012000000;0,0050000000;1,0000000
+1;80;0,41152;0,000012000000;0,0050000000;1,0000000
+1;85;0,39937;0,000012000000;0,0050000000;1,0000000
+1;90;0,39148;0,000012000000;0,0050000000;1,0000000
+1;95;0,37938;0,000012000000;0,0050000000;1,0000000
+1;100;0,36737;0,000012000000;0,0050000000;1,0000000
+1;105;0,36005;0,000012000000;0,0050000000;1,0000000
+1;110;0,35045;0,000012000000;0,0050000000;1,0000000
+1;115;0,33779;0,000012000000;0,0050000000;1,0000000
+1;120;0,33022;0,000012000000;0,0050000000;1,0000000
+1;125;0,31997;0,000012000000;0,0050000000;1,0000000
+1;130;0,31110;0,000012000000;0,0050000000;1,0000000
+1;135;0,30178;0,000012000000;0,0050000000;1,0000000
+1;140;0,29462;0,000012000000;0,0050000000;1,0000000
+1;145;0,28526;0,000012000000;0,0050000000;1,0000000
+1;150;0,28015;0,000012000000;0,0050000000;1,0000000
+1;155;0,27097;0,000012000000;0,0050000000;1,0000000
+1;160;0,26118;0,000012000000;0,0050000000;1,0000000
+1;165;0,25511;0,000012000000;0,0050000000;1,0000000
+1;170;0,24704;0,000012000000;0,0050000000;1,0000000
+1;175;0,24095;0,000012000000;0,0050000000;1,0000000
+1;180;0,23481;0,000012000000;0,0050000000;1,0000000
+2;0;0,66192;0,000012000000;0,010000000;1,0000000
+2;5;0,62160;0,000012000000;0,010000000;1,0000000
+2;10;0,59016;0,000012000000;0,010000000;1,0000000
+2;15;0,55111;0,000012000000;0,010000000;1,0000000
+2;20;0,52059;0,000012000000;0,010000000;1,0000000
+2;25;0,49471;0,000012000000;0,010000000;1,0000000
+2;30;0,46348;0,000012000000;0,010000000;1,0000000
+2;35;0,44165;0,000012000000;0,010000000;1,0000000
+2;40;0,41121;0,000012000000;0,010000000;1,0000000
+2;45;0,38974;0,000012000000;0,010000000;1,0000000
+2;50;0,37221;0,000012000000;0,010000000;1,0000000
+2;55;0,34884;0,000012000000;0,010000000;1,0000000
+2;60;0,32996;0,000012000000;0,010000000;1,0000000
+2;65;0,30997;0,000012000000;0,010000000;1,0000000
+2;70;0,29534;0,000012000000;0,010000000;1,0000000
+2;75;0,27729;0,000012000000;0,010000000;1,0000000
+2;80;0,26122;0,000012000000;0,010000000;1,0000000
+2;85;0,24570;0,000012000000;0,010000000;1,0000000
+2;90;0,23333;0,000012000000;0,010000000;1,0000000
+2;95;0,22099;0,000012000000;0,010000000;1,0000000
+2;100;0,20879;0,000012000000;0,010000000;1,0000000
+2;105;0,19756;0,000012000000;0,010000000;1,0000000
+2;110;0,18768;0,000012000000;0,010000000;1,0000000
+2;115;0,17673;0,000012000000;0,010000000;1,0000000
+2;120;0,16856;0,000012000000;0,010000000;1,0000000
+2;125;0,16109;0,000012000000;0,010000000;1,0000000
+2;130;0,15112;0,000012000000;0,010000000;1,0000000
+2;135;0,14047;0,000012000000;0,010000000;1,0000000
+2;140;0,13376;0,000012000000;0,010000000;1,0000000
+2;145;0,12855;0,000012000000;0,010000000;1,0000000
+2;150;0,12360;0,000012000000;0,010000000;1,0000000
+2;155;0,11651;0,000012000000;0,010000000;1,0000000
+2;160;0,11004;0,000012000000;0,010000000;1,0000000
+2;165;0,10333;0,000012000000;0,010000000;1,0000000
+2;170;0,09951;0,000012000000;0,010000000;1,0000000
+2;175;0,09536;0,000012000000;0,010000000;1,0000000
+2;180;0,08911;0,000012000000;0,010000000;1,0000000
+3;0;0,65957;0,000012000000;0,020000000;1,0000000
+3;5;0,58380;0,000012000000;0,020000000;1,0000000
+3;10;0,52243;0,000012000000;0,020000000;1,0000000
+3;15;0,46449;0,000012000000;0,020000000;1,0000000
+3;20;0,41172;0,000012000000;0,020000000;1,0000000
+3;25;0,36833;0,000012000000;0,020000000;1,0000000
+3;30;0,32773;0,000012000000;0,020000000;1,0000000
+3;35;0,29395;0,000012000000;0,020000000;1,0000000
+3;40;0,26257;0,000012000000;0,020000000;1,0000000
+3;45;0,23237;0,000012000000;0,020000000;1,0000000
+3;50;0,20963;0,000012000000;0,020000000;1,0000000
+3;55;0,18789;0,000012000000;0,020000000;1,0000000
+3;60;0,16678;0,000012000000;0,020000000;1,0000000
+3;65;0,14954;0,000012000000;0,020000000;1,0000000
+3;70;0,13610;0,000012000000;0,020000000;1,0000000
+3;75;0,12032;0,000012000000;0,020000000;1,0000000
+3;80;0,10759;0,000012000000;0,020000000;1,0000000
+3;85;0,09709;0,000012000000;0,020000000;1,0000000
+3;90;0,08799;0,000012000000;0,020000000;1,0000000
+3;95;0,08085;0,000012000000;0,020000000;1,0000000
+3;100;0,07314;0,000012000000;0,020000000;1,0000000
+3;105;0,06612;0,000012000000;0,020000000;1,0000000
+3;110;0,06306;0,000012000000;0,020000000;1,0000000
+3;115;0,05602;0,000012000000;0,020000000;1,0000000
+3;120;0,05268;0,000012000000;0,020000000;1,0000000
+3;125;0,04725;0,000012000000;0,020000000;1,0000000
+3;130;0,04505;0,000012000000;0,020000000;1,0000000
+3;135;0,04126;0,000012000000;0,020000000;1,0000000
+3;140;0,03625;0,000012000000;0,020000000;1,0000000
+3;145;0,03500;0,000012000000;0,020000000;1,0000000
+3;150;0,03430;0,000012000000;0,020000000;1,0000000
+3;155;0,02904;0,000012000000;0,020000000;1,0000000
+3;160;0,02733;0,000012000000;0,020000000;1,0000000
+3;165;0,02656;0,000012000000;0,020000000;1,0000000
+3;170;0,02638;0,000012000000;0,020000000;1,0000000
+3;175;0,02350;0,000012000000;0,020000000;1,0000000
+3;180;0,02438;0,000012000000;0,020000000;1,0000000
+4;0;0,66026;0,000012000000;0,030000000;1,0000000
+4;5;0,54993;0,000012000000;0,030000000;1,0000000
+4;10;0,46540;0,000012000000;0,030000000;1,0000000
+4;15;0,38947;0,000012000000;0,030000000;1,0000000
+4;20;0,32674;0,000012000000;0,030000000;1,0000000
+4;25;0,27762;0,000012000000;0,030000000;1,0000000
+4;30;0,23502;0,000012000000;0,030000000;1,0000000
+4;35;0,19897;0,000012000000;0,030000000;1,0000000
+4;40;0,16695;0,000012000000;0,030000000;1,0000000
+4;45;0,14202;0,000012000000;0,030000000;1,0000000
+4;50;0,12319;0,000012000000;0,030000000;1,0000000
+4;55;0,10523;0,000012000000;0,030000000;1,0000000
+4;60;0,08917;0,000012000000;0,030000000;1,0000000
+4;65;0,07730;0,000012000000;0,030000000;1,0000000
+4;70;0,06615;0,000012000000;0,030000000;1,0000000
+4;75;0,05742;0,000012000000;0,030000000;1,0000000
+4;80;0,05256;0,000012000000;0,030000000;1,0000000
+4;85;0,04541;0,000012000000;0,030000000;1,0000000
+4;90;0,04094;0,000012000000;0,030000000;1,0000000
+4;95;0,03698;0,000012000000;0,030000000;1,0000000
+4;100;0,03085;0,000012000000;0,030000000;1,0000000
+4;105;0,02915;0,000012000000;0,030000000;1,0000000
+4;110;0,02841;0,000012000000;0,030000000;1,0000000
+4;115;0,02591;0,000012000000;0,030000000;1,0000000
+4;120;0,02458;0,000012000000;0,030000000;1,0000000
+4;125;0,02123;0,000012000000;0,030000000;1,0000000
+4;130;0,01943;0,000012000000;0,030000000;1,0000000
+4;135;0,01888;0,000012000000;0,030000000;1,0000000
+4;140;0,01915;0,000012000000;0,030000000;1,0000000
+4;145;0,01728;0,000012000000;0,030000000;1,0000000
+4;150;0,01771;0,000012000000;0,030000000;1,0000000
+4;155;0,01788;0,000012000000;0,030000000;1,0000000
+4;160;0,01789;0,000012000000;0,030000000;1,0000000
+4;165;0,01754;0,000012000000;0,030000000;1,0000000
+4;170;0,01586;0,000012000000;0,030000000;1,0000000
+4;175;0,01543;0,000012000000;0,030000000;1,0000000
+4;180;0,01464;0,000012000000;0,030000000;1,0000000
+
+Metadaten
+App_Version;0.9.2
+Exportzeit;2026-08-01T12:06:54.093Z
+Versuchstyp;Kinetik_Kristallviolett
+Messwellenlaenge_nm;590
+Messreihen;4`;
+
 const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false,molarMassOverride:null,substanceNameOverride:'',dataUnit:'mol'};
+const kinState={sourceName:'',sourceText:'',metadata:{},headers:[],rawRows:[],workingRows:[],series:[],selectedSeries:'',kind:'decay',subtype:'',absorbanceHeader:'',parameterHeaders:[],analysis:null,settingsInitializedFor:null};
 const $=sel=>document.querySelector(sel), $$=sel=>[...document.querySelectorAll(sel)];
 
 function parseLine(line,delimiter=';'){
@@ -278,7 +521,7 @@ function substanceInfo(){
 }
 function setMolarMassOverride(value,{silent=false}={}){
   const raw=String(value??'').trim();
-  if(!raw){if(state.manual&&state.dataUnit==='mg'){if(!silent)alert('Für eine manuell in mg/L eingegebene Eichreihe muss die molare Masse erhalten bleiben.');return false;}state.molarMassOverride=null;updateAxisUnitAvailability();renderImport();renderData();renderRegression();renderUnknown();drawChart();return true;}
+  if(!raw){state.molarMassOverride=null;updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart();return true;}
   const n=parseNumber(raw);
   if(!(n>0)){if(!silent)alert('Bitte eine positive molare Masse in g/mol eingeben oder das Feld leer lassen.');return false;}
   state.molarMassOverride=n;updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart();return true;
@@ -331,11 +574,10 @@ function importEichkurve(parsed,name,text){
 function loadText(text,name='Messwerte.csv'){
   try{
     const parsed=parseSections(text);const kind=recognize(parsed);
-    if(kind!=='eichkurve'){
-      const labels={kinetik:'Photometer-Kinetik',btb:'Bromthymolblau-Spektren',unknown:'unbekannte CSV-Struktur'};
-      alert(`${labels[kind]} erkannt. v0.2.1 wertet zunächst Eichkurven aus. Die Datei wurde korrekt erkannt, ist aber für eine spätere Version vorgesehen.`);return;
-    }
-    importEichkurve(parsed,name,text);
+    if(kind==='eichkurve'){importEichkurve(parsed,name,text);return;}
+    if(kind==='kinetik'){importKinetic(parsed,name,text);return;}
+    const labels={btb:'Bromthymolblau-Spektren',unknown:'unbekannte CSV-Struktur'};
+    alert(`${labels[kind]} erkannt. v0.3.0 wertet Eichkurven und photometrische Kinetik aus; dieses Format ist für eine spätere Version vorgesehen.`);
   }catch(err){alert(`Import nicht möglich: ${err.message}`);}
 }
 function openWorkspace(){ $('#start').style.display='none';$('#workspace').style.display='block';showStep('import');window.scrollTo({top:0}); }
@@ -470,7 +712,7 @@ function exportCsv(){
     return [r.id,r.type,r.probe,r.measurement,inputValue,inputUnit,r.concentration??'',molToMgL(r.concentration)??'',r.absorbance??'',r.workingConcentration??'',molToMgL(r.workingConcentration)??'',r.workingAbsorbance??'',r.include?'ja':'nein',r.reason,r.hint].map(v=>csvQuote(String(v).replace('.',','))).join(';');
   });
   const lines=[head.join(';'),...dataLines,'','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${state.sourceName}`,`Stoff;${effectiveSubstanceName()}`,`Molare_Masse_g_mol;${substanceInfo()?.molarMass||''}`,`Eingabeeinheit_Konzentration;${state.manual?dataUnitLabel():'mol/L'}`,`Diagramm_Konzentrationseinheit;${axisUnitLabel()}`];
-  download('\uFEFF'+lines.join('\n'),baseName()+'.csv','text/csv;charset=utf-8');
+  download('﻿'+lines.join('\n'),baseName()+'.csv','text/csv;charset=utf-8');
 }
 function mdText(){
   const r=state.regression,u=state.unknown,d=Math.max(parseNumber($('#dilution').value)||1,0),corr=u?.concentration==null?null:u.concentration*d,corrMg=molToMgL(corr),measuredMg=molToMgL(u?.concentration),stat=interpolationStatus(u?.concentration);
@@ -486,6 +728,179 @@ function exportJson(){
   download(JSON.stringify(payload,null,2),baseName()+'.json','application/json;charset=utf-8');
 }
 function exportPng(){drawChart();const c=$('#chart');c.toBlob(blob=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=baseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png');}
+
+
+// --- Kinetikmodul ---------------------------------------------------------
+const KIN_TYPE_INFO={
+  Kinetik_Kristallviolett:{label:'Kristallviolett + Hydroxid',kind:'decay',reagent:'OH_mol_L'},
+  Kinetik_Brillantblau_Hypochlorit:{label:'Brillantblau + Hypochlorit',kind:'decay',reagent:'OCl_mol_L'},
+  Kinetik_Iod_VitaminC_Uhr:{label:'Iod-/Vitamin-C-Uhr',kind:'clock',reagent:'VitaminC_mol_L'}
+};
+function kinTypeInfo(){return KIN_TYPE_INFO[kinState.subtype]||{label:kinState.subtype||'Photometer-Kinetik',kind:kinState.kind,reagent:''}}
+function importKinetic(parsed,name,text){
+  const headers=parsed.main.headers,absHeader=headers.find(h=>/^Absorbanz(?:_|$)/i.test(h));
+  if(!headers.includes('Versuch')||!headers.includes('Zeit_s')||!absHeader)throw new Error('Die Kinetikspalten Versuch, Zeit_s und Absorbanz wurden nicht vollständig gefunden.');
+  const subtype=parsed.metadata.Versuchstyp||'Kinetik',info=KIN_TYPE_INFO[subtype]||{label:subtype,kind:'decay'};
+  const reserved=new Set(['Versuch','Zeit_s',absHeader,'Schwellenzeit_s']);
+  const parameterHeaders=headers.filter(h=>!reserved.has(h));
+  const rows=parsed.main.rows.map((r,i)=>({
+    id:`k${i+1}`,series:String(r.Versuch||'1'),time:parseNumber(r.Zeit_s),absorbance:parseNumber(r[absHeader]),
+    workingTime:parseNumber(r.Zeit_s),workingAbsorbance:parseNumber(r[absHeader]),include:true,reason:'',
+    thresholdTime:parseNumber(r.Schwellenzeit_s),parameters:Object.fromEntries(parameterHeaders.map(h=>[h,r[h]??''])),original:{...r}
+  })).filter(r=>r.time!=null&&r.absorbance!=null);
+  if(rows.length<3)throw new Error('Zu wenige gültige Zeit-/Absorbanzwerte gefunden.');
+  kinState.sourceName=name;kinState.sourceText=text;kinState.metadata={...parsed.metadata};kinState.headers=headers;kinState.rawRows=structuredClone(rows);kinState.workingRows=structuredClone(rows);kinState.series=[...new Set(rows.map(r=>r.series))].sort((a,b)=>Number(a)-Number(b));kinState.selectedSeries=kinState.series[0];kinState.kind=info.kind;kinState.subtype=subtype;kinState.absorbanceHeader=absHeader;kinState.parameterHeaders=parameterHeaders;kinState.analysis=null;kinState.settingsInitializedFor=null;
+  openKineticWorkspace();renderKineticAll();
+}
+function openKineticWorkspace(){
+  $('#start').style.display='none';$('#workspace').style.display='none';$('#kinWorkspace').style.display='block';showKinStep('import');window.scrollTo({top:0});
+}
+function showKinStep(step){
+  $$('.kpanel').forEach(p=>p.classList.toggle('active',p.id===`kin-panel-${step}`));
+  const order=['import','data','analysis','result','export'],idx=order.indexOf(step);
+  $$('.kstep').forEach((b,i)=>{b.classList.toggle('active',i===idx);b.classList.toggle('done',i<idx)});
+  if(step==='analysis'){prepareKineticSettings(false);renderKineticAnalysis();setTimeout(drawKineticChart,30)}
+  if(step==='result'){calculateKineticAnalysis();renderKineticResult()}
+  if(step==='export')calculateKineticAnalysis();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function kinRows(series=kinState.selectedSeries,included=false){return kinState.workingRows.filter(r=>r.series===String(series)&&(!included||r.include)).sort((a,b)=>a.workingTime-b.workingTime)}
+function kinOriginalRows(series=kinState.selectedSeries){return kinState.rawRows.filter(r=>r.series===String(series)).sort((a,b)=>a.time-b.time)}
+function kinRowChanged(r){return r.workingTime!==r.time||r.workingAbsorbance!==r.absorbance}
+function kinParamLabel(h){return ({CV0_mol_L:'c₀(Kristallviolett)',OH_mol_L:'c(OH⁻)',Farbstoff0_mol_L:'c₀(Brillantblau)',OCl_mol_L:'c(OCl⁻)',H2O2_mol_L:'c(H₂O₂)',Iodid_mol_L:'c(I⁻)',VitaminC_mol_L:'c(Vitamin C)',Schichtdicke_cm:'Schichtdicke'})[h]||h.replace(/_/g,' ')}
+function kinParamValue(h,v){const n=parseNumber(v);if(n==null)return String(v||'—');if(h.endsWith('_mol_L'))return `${fmtSig(n,3)} mol/L`;if(h.endsWith('_cm'))return `${fmt(n,4)} cm`;return fmt(n,6)}
+function kinSeriesParameters(series){return kinRows(series)[0]?.parameters||kinOriginalRows(series)[0]?.parameters||{}}
+function kinConditionsText(series,separator=' · '){const p=kinSeriesParameters(series);return kinState.parameterHeaders.filter(h=>p[h]!==''&&p[h]!=null).map(h=>`${kinParamLabel(h)} = ${kinParamValue(h,p[h])}`).join(separator)||'keine zusätzlichen Bedingungen'}
+function median(a){if(!a.length)return null;const b=[...a].sort((x,y)=>x-y),m=Math.floor(b.length/2);return b.length%2?b[m]:(b[m-1]+b[m])/2}
+function kinInterval(){const diffs=[];kinState.series.forEach(s=>{const r=kinOriginalRows(s);for(let i=1;i<r.length;i++)if(r[i].time>r[i-1].time)diffs.push(r[i].time-r[i-1].time)});return median(diffs)}
+function fillKinSeriesSelects(){
+  ['kinSeriesSelectData','kinSeriesSelectAnalysis'].forEach(id=>{const el=$('#'+id);if(!el)return;const current=kinState.selectedSeries;el.innerHTML=kinState.series.map(s=>`<option value="${esc(s)}">Messreihe ${esc(s)}</option>`).join('');el.value=current});
+}
+function selectKinSeries(value,{resetSettings=true}={}){kinState.selectedSeries=String(value);if(resetSettings)kinState.settingsInitializedFor=null;fillKinSeriesSelects();renderKineticData();prepareKineticSettings(false);renderKineticAnalysis();renderKineticResult()}
+function renderKineticAll(){renderKineticImport();renderKineticData();prepareKineticSettings(true);renderKineticAnalysis();renderKineticResult()}
+function renderKineticImport(){
+  const info=kinTypeInfo(),all=kinState.rawRows,times=all.map(r=>r.time),interval=kinInterval();
+  $('#kinImportNotice').innerHTML=`<div class="notice ok"><strong>${esc(info.label)} erkannt.</strong> Die Zeitreihen und Versuchsbedingungen wurden automatisch zugeordnet.</div>`;
+  const boxes=[['Versuchstyp',info.label],['Messwellenlänge',kinState.metadata.Messwellenlaenge_nm?`${kinState.metadata.Messwellenlaenge_nm} nm`:'nicht angegeben'],['Messreihen',kinState.series.length],['Messpunkte',all.length],['Zeitbereich',`${fmt(Math.min(...times),3)}–${fmt(Math.max(...times),3)} s`],['Messintervall',interval!=null?`${fmt(interval,3)} s`:'unregelmäßig']];
+  $('#kinImportSummary').innerHTML=boxes.map(([l,v])=>`<div class="summary-box"><span class="label">${esc(l)}</span><span class="value">${esc(v)}</span></div>`).join('');
+  $('#kinSeriesSummary').innerHTML=kinState.series.map(s=>{const r=kinOriginalRows(s);return `<article class="series-card ${s===kinState.selectedSeries?'active':''}"><h3>Messreihe ${esc(s)}</h3><p><strong>${r.length}</strong> Punkte · ${fmt(r[0]?.time,3)}–${fmt(r.at(-1)?.time,3)} s</p><p>${esc(kinConditionsText(s))}</p></article>`}).join('');
+  const meta=Object.entries(kinState.metadata).map(([k,v])=>`<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('');
+  $('#kinMetadataDetails').innerHTML=`<p><strong>Datei:</strong> ${esc(kinState.sourceName)}</p><p><strong>Absorbanzspalte:</strong> ${esc(kinState.absorbanceHeader)}</p><p><strong>Bedingungsspalten:</strong> ${esc(kinState.parameterHeaders.join(', ')||'keine')}</p><div class="table-wrap"><table style="min-width:520px"><tbody>${meta||'<tr><td>Keine Metadaten</td></tr>'}</tbody></table></div>`;
+  fillKinSeriesSelects();
+}
+function renderKineticData(){
+  fillKinSeriesSelects();const rows=kinRows();$('#kinConditionInline').innerHTML=`<strong>Messreihe ${esc(kinState.selectedSeries)}</strong><br>${esc(kinConditionsText(kinState.selectedSeries))}`;
+  $('#kinDataTable tbody').innerHTML=rows.map(r=>`<tr class="${!r.include?'excluded-row':''}"><td class="center"><input class="check kinclude" type="checkbox" data-id="${r.id}" ${r.include?'checked':''}></td><td><input class="cell-input num ktime ${kinRowChanged(r)?'changed':''}" data-id="${r.id}" value="${fmt(r.workingTime,6)}"></td><td><input class="cell-input num kabs ${kinRowChanged(r)?'changed':''}" data-id="${r.id}" value="${fmt(r.workingAbsorbance,7)}"></td><td><input class="cell-input reason kreason" data-id="${r.id}" placeholder="bei Änderung erforderlich" value="${esc(r.reason)}"></td></tr>`).join('');
+  $$('.kinclude').forEach(el=>el.onchange=e=>{const r=kinState.workingRows.find(x=>x.id===e.target.dataset.id);r.include=e.target.checked;renderKineticData();calculateKineticAnalysis()});
+  $$('.ktime').forEach(el=>el.onchange=e=>{const r=kinState.workingRows.find(x=>x.id===e.target.dataset.id),v=parseNumber(e.target.value);if(v==null){alert('Bitte eine gültige Zeit eingeben.');renderKineticData();return}r.workingTime=v;renderKineticData();calculateKineticAnalysis()});
+  $$('.kabs').forEach(el=>el.onchange=e=>{const r=kinState.workingRows.find(x=>x.id===e.target.dataset.id),v=parseNumber(e.target.value);if(v==null){alert('Bitte eine gültige Absorbanz eingeben.');renderKineticData();return}r.workingAbsorbance=v;renderKineticData();calculateKineticAnalysis()});
+  $$('.kreason').forEach(el=>el.oninput=e=>{const r=kinState.workingRows.find(x=>x.id===e.target.dataset.id);r.reason=e.target.value;validateKineticData(false)});
+  validateKineticData(false);
+}
+function validateKineticData(showAlert=false){
+  const rows=kinRows(),used=rows.filter(r=>r.include),missing=rows.filter(r=>(!r.include||kinRowChanged(r))&&!r.reason.trim()),problems=[];
+  if(used.length<3)problems.push('Mindestens drei verwendete Messpunkte sind erforderlich.');
+  if(new Set(used.map(r=>r.workingTime)).size!==used.length)problems.push('Verwendete Zeitwerte dürfen innerhalb einer Messreihe nicht doppelt vorkommen.');
+  if(missing.length)problems.push(`${missing.length} Änderung(en) oder Ausschluss/Ausschlüsse sind noch nicht begründet.`);
+  $('#kinDataValidity').innerHTML=problems.length?`<div class="notice danger"><strong>Bitte noch prüfen:</strong> ${problems.map(esc).join(' ')}</div>`:'<div class="notice ok">Die Zeitreihe ist für die Auswertung verwendbar.</div>';
+  $('#kinToAnalysis').disabled=problems.length>0;if(showAlert&&problems.length)alert(problems.join('\n'));return !problems.length;
+}
+function kineticPlateauInfo(series=kinState.selectedSeries){
+  const rows=kinRows(series,true),tailRows=rows.slice(-Math.min(5,rows.length)),tail=tailRows.map(r=>r.workingAbsorbance),tailMean=mean(tail)??0;
+  if(rows.length<5)return {detected:false,value:0,tailMean,tailRange:null};
+  const tailRange=Math.max(...tail)-Math.min(...tail),dynamic=Math.abs(rows[0].workingAbsorbance-tailMean),limit=Math.max(0.005,dynamic*.01);
+  return {detected:tailRange<=limit,value:tailRange<=limit?tailMean:0,tailMean,tailRange,limit};
+}
+function autoKineticBaseline(series=kinState.selectedSeries){return kineticPlateauInfo(series).value}
+function suggestedFitRange(series=kinState.selectedSeries){
+  const rows=kinRows(series,true);if(!rows.length)return {start:0,end:0};const baseline=autoKineticBaseline(series),signal0=Math.max(0,rows[0].workingAbsorbance-baseline),limit=baseline+signal0*.05;const useful=rows.filter(r=>r.workingAbsorbance>limit);return {start:rows[0].workingTime,end:(useful.at(-1)||rows.at(-1)).workingTime};
+}
+function prepareKineticSettings(force=false){
+  if(kinState.kind==='clock'){
+    if(force||!$('#kinThreshold').value)$('#kinThreshold').value=String(parseNumber(kinState.metadata.Schwellenwert_A)??0.2).replace('.',',');return;
+  }
+  if(!force&&kinState.settingsInitializedFor===kinState.selectedSeries)return;
+  const baseline=autoKineticBaseline(),range=suggestedFitRange();$('#kinBaselineMode').value='auto';$('#kinBaselineValue').value=fmtFixed(baseline,5);$('#kinBaselineValue').disabled=true;$('#kinFitStart').value=range.start;$('#kinFitEnd').value=range.end;$('#kinChartView').value='raw';kinState.settingsInitializedFor=kinState.selectedSeries;updateKineticBaselineUi();
+}
+function currentKineticBaseline(){const mode=$('#kinBaselineMode')?.value||'auto';if(mode==='zero')return 0;if(mode==='manual')return parseNumber($('#kinBaselineValue').value)??0;return autoKineticBaseline()}
+function updateKineticBaselineUi(){
+  if(kinState.kind!=='decay')return;const mode=$('#kinBaselineMode').value,input=$('#kinBaselineValue');input.disabled=mode!=='manual';if(mode==='auto')input.value=fmtFixed(autoKineticBaseline(),5);if(mode==='zero')input.value='0';
+  const plateau=kineticPlateauInfo();$('#kinBaselineHint').textContent=mode==='auto'?(plateau.detected?`Plateau erkannt: Mittel der letzten fünf Punkte (Spannweite ${fmt(plateau.tailRange,5)}).`:'Kein ausreichend konstantes Plateau erkannt: A∞ = 0 vorgeschlagen.'):(mode==='zero'?'Keine Endwertkorrektur.':'Manuell festgelegte Restabsorbanz.');
+}
+function kineticTransformRows(model,series=kinState.selectedSeries,settings=null){
+  const rows=kinRows(series,true),baseline=settings?.baseline??currentKineticBaseline(),start=settings?.start??parseNumber($('#kinFitStart')?.value),end=settings?.end??parseNumber($('#kinFitEnd')?.value);const lo=start==null?-Infinity:start,hi=end==null?Infinity:end;let ignored=0;
+  const points=[];rows.forEach(r=>{if(r.workingTime<lo||r.workingTime>hi)return;const corrected=r.workingAbsorbance-baseline;let y;if(model==='zero')y=corrected;else if(model==='first'){if(!(corrected>0)){ignored++;return}y=Math.log(corrected)}else if(model==='second'){if(!(corrected>0)){ignored++;return}y=1/corrected}else y=r.workingAbsorbance;if(Number.isFinite(y))points.push({x:r.workingTime,y,rawA:r.workingAbsorbance,corrected,row:r})});
+  return {points,ignored,baseline,start:lo,end:hi};
+}
+function calculateDecayAnalysis(){
+  updateKineticBaselineUi();const baseline=currentKineticBaseline(),start=parseNumber($('#kinFitStart').value),end=parseNumber($('#kinFitEnd').value),fits={};
+  ['zero','first','second'].forEach(model=>{const t=kineticTransformRows(model,kinState.selectedSeries,{baseline,start,end});fits[model]={...t,fit:linearRegression(t.points)}});
+  const valid=Object.entries(fits).filter(([m,x])=>x.fit&&((m==='second'&&x.fit.slope>0)||(m!=='second'&&x.fit.slope<0)));const best=valid.sort((a,b)=>b[1].fit.r2-a[1].fit.r2)[0]?.[0]||null;
+  kinState.analysis={kind:'decay',baseline,start,end,fits,best,view:$('#kinChartView').value};return kinState.analysis;
+}
+function thresholdForRows(rows,threshold){
+  const sorted=rows.filter(r=>r.include).sort((a,b)=>a.workingTime-b.workingTime);let detected=null;
+  for(let i=0;i<sorted.length;i++){const r=sorted[i];if(r.workingAbsorbance>=threshold){if(i===0)detected=r.workingTime;else{const p=sorted[i-1],dy=r.workingAbsorbance-p.workingAbsorbance;detected=dy===0?r.workingTime:p.workingTime+(threshold-p.workingAbsorbance)*(r.workingTime-p.workingTime)/dy}break}}
+  return detected;
+}
+function calculateClockAnalysis(){const threshold=parseNumber($('#kinThreshold').value)??parseNumber(kinState.metadata.Schwellenwert_A)??0.2,rows=kinRows(),detected=thresholdForRows(rows,threshold),given=rows.map(r=>r.thresholdTime).find(v=>v!=null)??null;kinState.analysis={kind:'clock',threshold,detected,given,relativeRate:detected>0?1/detected:null};return kinState.analysis}
+function calculateKineticAnalysis(){return kinState.kind==='clock'?calculateClockAnalysis():calculateDecayAnalysis()}
+function modelLabel(m){return ({zero:'0. Ordnung',first:'1. Ordnung',second:'2. Ordnung'})[m]||m}
+function modelYLabel(m){return ({raw:'Absorbanz A',zero:'A − A∞',first:'ln(A − A∞)',second:'1 / (A − A∞)'})[m]||'Messwert'}
+function kineticModelResult(model,fit,points){
+  if(!fit)return {k:null,unit:'',half:null};const a0=points[0]?.y;
+  if(model==='first'){const k=-fit.slope;return {k:k>0?k:null,unit:'s⁻¹',half:k>0?Math.log(2)/k:null}}
+  if(model==='zero'){const k=-fit.slope;return {k:k>0?k:null,unit:'Abs·s⁻¹',half:k>0&&a0>0?a0/(2*k):null}}
+  const k=fit.slope;return {k:k>0?k:null,unit:'Abs⁻¹·s⁻¹',half:k>0&&a0>0?1/(k*a0):null};
+}
+function renderKineticAnalysis(){
+  fillKinSeriesSelects();const decay=kinState.kind==='decay';$$('.kin-decay-only').forEach(x=>x.style.display=decay?'block':'none');$$('.kin-clock-only').forEach(x=>x.style.display=decay?'none':'block');$('#kinResidualDetails').style.display=decay?'block':'none';
+  $('#kinAnalysisTitle').textContent=decay?'Reaktionsordnung untersuchen':'Schwellenzeit bestimmen';$('#kinAnalysisSubtitle').textContent=decay?'Messkurve, Endwertkorrektur und drei Linearisierungen werden transparent verglichen.':'Die Uhrreaktion wird über den Absorbanzanstieg und eine definierte Schwelle ausgewertet.';
+  const a=calculateKineticAnalysis();
+  const invalidRange=decay&&a.start!=null&&a.end!=null&&a.start>a.end;$('#kinToResult').disabled=!!invalidRange;
+  if(decay){
+    const view=$('#kinChartView').value;$('#kinModelCards').innerHTML=['zero','first','second'].map(m=>{const x=a.fits[m],r=x.fit,res=r?kineticModelResult(m,r,x.points):{};return `<article class="model-card ${a.best===m?'best':''} ${view===m?'selected':''}" data-model="${m}">${a.best===m?'<span class="best-tag">höchstes geeignetes R²</span>':''}<h3>${modelLabel(m)}</h3><dl><dt>R²</dt><dd>${r?fmtFixed(r.r2,5):'—'}</dd><dt>Steigung</dt><dd>${r?fmt(r.slope,7):'—'}</dd><dt>${m==='first'?'kapp':'k auf A-Basis'}</dt><dd>${res.k!=null?`${fmtSig(res.k,3)} ${res.unit}`:'—'}</dd><dt>Halbwertszeit</dt><dd>${res.half!=null?`${fmtSig(res.half,3)} s`:'—'}</dd></dl></article>`}).join('');
+    $$('.model-card').forEach(c=>c.onclick=()=>{$('#kinChartView').value=c.dataset.model;renderKineticAnalysis()});
+    const f=a.fits[view==='raw'?'zero':view],r=view==='raw'?null:f?.fit,res=r?kineticModelResult(view,r,f.points):null;
+    $('#kinMetrics').innerHTML=view==='raw'?[['Messpunkte',kinRows(undefined,true).length],['A∞',fmtFixed(a.baseline,5)],['Auswertungsbereich',`${fmt(a.start,3)}–${fmt(a.end,3)} s`]].map(([l,v])=>`<div class="metric"><span>${l}</span><strong>${v}</strong></div>`).join(''):[['Modell',modelLabel(view)],['Steigung',r?fmt(r.slope,7):'—'],['R²',r?fmtFixed(r.r2,5):'—'],['RMSE',r?fmtFixed(r.rmse,5):'—'],['k',res?.k!=null?`${fmtSig(res.k,3)} ${res.unit}`:'—'],['t½',res?.half!=null?`${fmtSig(res.half,3)} s`:'—']].map(([l,v])=>`<div class="metric"><span>${l}</span><strong>${v}</strong></div>`).join('');
+    $('#kinFormula').innerHTML=view==='raw'?`<strong>Messkurve:</strong> A gegen t · Endwert A∞ = ${fmtFixed(a.baseline,5)}.`:r?`<strong>${modelYLabel(view)} = ${fmt(r.slope,7)} · t ${r.intercept>=0?'+':'−'} ${fmt(Math.abs(r.intercept),7)}</strong>`:'Keine lineare Regression möglich.';
+    $('#kinResidualBody').innerHTML=r?r.fitted.map(p=>`<tr><td class="num">${fmt(p.x,4)}</td><td class="num">${fmt(p.y,7)}</td><td class="num">${fmt(p.pred,7)}</td><td class="num">${fmt(p.residual,7)}</td></tr>`).join(''):'';
+    const ignored=Math.max(...Object.values(a.fits).map(x=>x.ignored));$('#kinRangeNotice').innerHTML=invalidRange?'<div class="notice danger"><strong>Ungültiger Auswertungsbereich:</strong> Der Startzeitpunkt muss vor dem Endzeitpunkt liegen.</div>':`<div class="notice ${ignored?'warn':'ok'}">Ausgewertet werden Messpunkte von ${fmt(a.start,3)} bis ${fmt(a.end,3)} s. ${ignored?`${ignored} Punkt(e) konnten nach der Endwertkorrektur nicht logarithmiert bzw. invertiert werden.`:'Alle Punkte im Bereich sind für die Transformationen verwendbar.'}</div>`;
+    $('#kinDidacticHint').textContent='Vergleiche nicht nur R², sondern auch die Form der transformierten Kurve, die Residuen und den gewählten Zeitbereich. A∞ und das Messrauschen beeinflussen besonders die späten Messpunkte.';
+  }else{
+    const rows=kinRows(),given=a.given;$('#kinMetrics').innerHTML=[['Schwellenwert A',fmtFixed(a.threshold,3)],['berechnete Schwellenzeit',a.detected!=null?`${fmtSig(a.detected,4)} s`:'nicht erreicht'],['Exportwert',given!=null?`${fmtSig(given,4)} s`:'nicht angegeben'],['relative Rate 1/t',a.relativeRate!=null?`${fmtSig(a.relativeRate,3)} s⁻¹`:'—'],['Messpunkte',rows.filter(r=>r.include).length]].map(([l,v])=>`<div class="metric"><span>${l}</span><strong>${v}</strong></div>`).join('');
+    $('#kinFormula').innerHTML=a.detected!=null?`<strong>Interpolierte Schwellenzeit:</strong> t<sub>S</sub> = ${fmtSig(a.detected,4)} s · relative Vergleichsrate = 1/t<sub>S</sub> = ${fmtSig(a.relativeRate,3)} s⁻¹`:'Der eingestellte Schwellenwert wird in dieser Messreihe nicht erreicht.';
+    $('#kinDidacticHint').textContent='Die Größe 1/tS dient hier nur als relative Vergleichsrate zwischen gleichartig durchgeführten Uhrreaktionen. Sie ist nicht automatisch eine vollständige Reaktionsgeschwindigkeit mit Stoffmengeneinheit.';
+  }
+  requestAnimationFrame(drawKineticChart);
+}
+function allDecayOverview(){return kinState.series.map(series=>{const rows=kinRows(series,true);if(rows.length<3)return {series,fit:null};const baseline=autoKineticBaseline(series),range=suggestedFitRange(series),fits={};['zero','first','second'].forEach(m=>{const t=kineticTransformRows(m,series,{baseline,start:range.start,end:range.end});fits[m]={...t,fit:linearRegression(t.points)}});const valid=Object.entries(fits).filter(([m,x])=>x.fit&&((m==='second'&&x.fit.slope>0)||(m!=='second'&&x.fit.slope<0))).sort((a,b)=>b[1].fit.r2-a[1].fit.r2);const best=valid[0]?.[0]||null,first=fits.first.fit;return {series,baseline,range,fits,best,first,k:first&&first.slope<0?-first.slope:null}})}
+function allClockOverview(){const threshold=parseNumber($('#kinThreshold').value)??0.2;return kinState.series.map(series=>{const rows=kinRows(series),detected=thresholdForRows(rows,threshold),given=rows.map(r=>r.thresholdTime).find(v=>v!=null)??null;return {series,detected,given,rate:detected>0?1/detected:null}})}
+function renderKineticResult(){
+  if(!kinState.analysis)calculateKineticAnalysis();const a=kinState.analysis,decay=kinState.kind==='decay';
+  $('#kinResultNotice').textContent=decay?'Die mathematisch beste Linearisierung ist ein Hinweis, aber kein alleiniger Beweis für eine Reaktionsordnung. Mechanismus, Versuchsbedingungen, Residuen und Datenbereich müssen fachlich berücksichtigt werden.':'Die Größe 1/tS erlaubt einen relativen Vergleich gleichartig durchgeführter Uhrreaktionen. Änderungen mehrerer Ausgangskonzentrationen gleichzeitig dürfen nicht vorschnell einer einzelnen Einflussgröße zugeschrieben werden.';
+  if(decay){const best=a.best,bx=best?a.fits[best]:null,br=bx?.fit,bres=br?kineticModelResult(best,br,bx.points):null;$('#kinResultHero').innerHTML=`<span class="badge ${best?'standard':'excluded'}">mathematischer Vergleich</span><p class="muted">Höchstes geeignetes R²</p><div class="big">${best?modelLabel(best):'nicht bestimmbar'}</div><div class="secondary-value">${br?`R² = ${fmtFixed(br.r2,5)}`:'zu wenige Daten'}</div><p class="rounding-note">Kein automatischer Beweis für die Reaktionsordnung.</p>`;
+    $('#kinSelectedResult').innerHTML=`<div class="result-list"><div class="result-row"><span>Messreihe</span><strong>${esc(kinState.selectedSeries)}</strong></div><div class="result-row"><span>Bedingungen</span><strong>${esc(kinConditionsText(kinState.selectedSeries))}</strong></div><div class="result-row"><span>Endwert A∞</span><strong>${fmtFixed(a.baseline,5)}</strong></div><div class="result-row"><span>Auswertungsbereich</span><strong>${fmt(a.start,3)}–${fmt(a.end,3)} s</strong></div><div class="result-row"><span>Linearisierung mit höchstem R²</span><strong>${best?modelLabel(best):'—'}</strong></div><div class="result-row"><span>Geschwindigkeitskonstante</span><strong>${bres?.k!=null?`${fmtSig(bres.k,3)} ${bres.unit}`:'—'}</strong></div><div class="result-row"><span>Halbwertszeit</span><strong>${bres?.half!=null?`${fmtSig(bres.half,3)} s`:'—'}</strong></div></div>`;
+    const ov=allDecayOverview();$('#kinOverviewHead').innerHTML='<tr><th>Reihe</th><th>Bedingungen</th><th>höchstes R² bei</th><th class="num">R²</th><th class="num">kapp aus ln(A−A∞)</th></tr>';$('#kinOverviewBody').innerHTML=ov.map(o=>{const b=o.best?o.fits[o.best].fit:null;return `<tr><td>${esc(o.series)}</td><td>${esc(kinConditionsText(o.series))}</td><td>${o.best?modelLabel(o.best):'—'}</td><td class="num">${b?fmtFixed(b.r2,5):'—'}</td><td class="num">${o.k!=null?`${fmtSig(o.k,3)} s⁻¹`:'—'}</td></tr>`}).join('');
+  }else{const ov=allClockOverview(),sel=ov.find(o=>o.series===kinState.selectedSeries);$('#kinResultHero').innerHTML=`<span class="badge standard">Schwellenmethode</span><p class="muted">Interpolierte Schwellenzeit</p><div class="big">${sel?.detected!=null?`${fmtSig(sel.detected,4)} s`:'nicht erreicht'}</div><div class="secondary-value">${sel?.rate!=null?`1/t = ${fmtSig(sel.rate,3)} s⁻¹`:''}</div>`;$('#kinSelectedResult').innerHTML=`<div class="result-list"><div class="result-row"><span>Messreihe</span><strong>${esc(kinState.selectedSeries)}</strong></div><div class="result-row"><span>Bedingungen</span><strong>${esc(kinConditionsText(kinState.selectedSeries))}</strong></div><div class="result-row"><span>Schwellenwert A</span><strong>${fmtFixed(kinState.analysis.threshold,3)}</strong></div><div class="result-row"><span>berechnete Schwellenzeit</span><strong>${sel?.detected!=null?`${fmtSig(sel.detected,4)} s`:'—'}</strong></div><div class="result-row"><span>im Export gespeicherte Zeit</span><strong>${sel?.given!=null?`${fmtSig(sel.given,4)} s`:'—'}</strong></div></div>`;$('#kinOverviewHead').innerHTML=`<tr><th>Reihe</th><th>Bedingungen</th><th class="num">tS berechnet (s)</th><th class="num">tS Export (s)</th><th class="num">1/tS (s⁻¹)</th></tr>`;$('#kinOverviewBody').innerHTML=ov.map(o=>`<tr><td>${esc(o.series)}</td><td>${esc(kinConditionsText(o.series))}</td><td class="num">${fmt(o.detected,4)}</td><td class="num">${fmt(o.given,4)}</td><td class="num">${fmtSig(o.rate,3)}</td></tr>`).join('')}
+}
+function drawKineticChart(){
+  const canvas=$('#kinChart');if(!canvas||!kinState.analysis)return;const box=canvas.getBoundingClientRect();if(box.width<10)return;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(box.width*dpr);canvas.height=Math.round(box.height*dpr);const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const W=box.width,H=box.height,pad={l:78,r:30,t:34,b:66};ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+  let points=[],fit=null,yLabel='Absorbanz A',thresholdLine=null;const a=kinState.analysis;
+  if(a.kind==='clock'){points=kinRows(undefined,true).map(r=>({x:r.workingTime,y:r.workingAbsorbance}));thresholdLine=a.threshold;yLabel='Absorbanz A'}else{const view=$('#kinChartView').value;if(view==='raw'){points=kinRows(undefined,true).map(r=>({x:r.workingTime,y:r.workingAbsorbance}))}else{const t=a.fits[view];points=t.points;fit=t.fit}yLabel=modelYLabel(view)}
+  if(!points.length)return;let xs=points.map(p=>p.x),ys=points.map(p=>p.y);if(thresholdLine!=null)ys.push(thresholdLine);let xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);if(xmax===xmin)xmax=xmin+1;if(ymax===ymin)ymax=ymin+1;const dataXmin=xmin,xm=(xmax-xmin)*.05,ym=(ymax-ymin)*.12;xmin=dataXmin>=0?Math.max(0,xmin-xm):xmin-xm;xmax+=xm;ymin-=ym;ymax+=ym;const X=x=>pad.l+(x-xmin)/(xmax-xmin)*(W-pad.l-pad.r),Y=y=>H-pad.b-(y-ymin)/(ymax-ymin)*(H-pad.t-pad.b);
+  ctx.font='12px system-ui';ctx.lineWidth=1;ctx.strokeStyle='#dce5ea';ctx.fillStyle='#5d6b75';for(let i=0;i<=5;i++){const x=xmin+(xmax-xmin)*i/5,px=X(x);ctx.beginPath();ctx.moveTo(px,pad.t);ctx.lineTo(px,H-pad.b);ctx.stroke();ctx.textAlign='center';ctx.fillText(fmt(x,4),px,H-pad.b+22)}for(let i=0;i<=5;i++){const y=ymin+(ymax-ymin)*i/5,py=Y(y);ctx.beginPath();ctx.moveTo(pad.l,py);ctx.lineTo(W-pad.r,py);ctx.stroke();ctx.textAlign='right';ctx.fillText(fmt(y,4),pad.l-10,py+4)}ctx.strokeStyle='#263a45';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,H-pad.b);ctx.lineTo(W-pad.r,H-pad.b);ctx.stroke();ctx.fillStyle='#263a45';ctx.textAlign='center';ctx.font='13px system-ui';ctx.fillText('Zeit t (s)',(pad.l+W-pad.r)/2,H-18);ctx.save();ctx.translate(20,(pad.t+H-pad.b)/2);ctx.rotate(-Math.PI/2);ctx.fillText(yLabel,0,0);ctx.restore();
+  ctx.strokeStyle='#7aa3af';ctx.lineWidth=1.3;ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(X(p.x),Y(p.y)):ctx.moveTo(X(p.x),Y(p.y)));ctx.stroke();points.forEach(p=>{ctx.beginPath();ctx.arc(X(p.x),Y(p.y),4,0,Math.PI*2);ctx.fillStyle='#d66f28';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1;ctx.stroke()});if(fit){ctx.strokeStyle='#156b86';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(X(xmin),Y(fit.slope*xmin+fit.intercept));ctx.lineTo(X(xmax),Y(fit.slope*xmax+fit.intercept));ctx.stroke()}if(thresholdLine!=null){ctx.setLineDash([7,5]);ctx.strokeStyle='#7a4f99';ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(pad.l,Y(thresholdLine));ctx.lineTo(W-pad.r,Y(thresholdLine));ctx.stroke();ctx.setLineDash([])}ctx.fillStyle='#21333e';ctx.textAlign='left';ctx.font='bold 13px system-ui';ctx.fillText(`${kinTypeInfo().label} · Messreihe ${kinState.selectedSeries}`,pad.l,pad.t-12);
+}
+function kinBaseName(){return `MESSWERTLAB_${kinState.subtype||'KINETIK'}_REIHE_${kinState.selectedSeries}_${timestamp()}`.replace(/[^\p{L}\p{N}_-]+/gu,'_').toUpperCase()}
+function kineticCsvText(){const head=['Versuch','Original_Zeit_s','Arbeitswert_Zeit_s','Original_Absorbanz','Arbeitswert_Absorbanz','Verwendet','Geaendert','Begruendung',...kinState.parameterHeaders];const rows=kinState.workingRows.map(r=>[r.series,r.time,r.workingTime,r.absorbance,r.workingAbsorbance,r.include?'ja':'nein',kinRowChanged(r)?'ja':'nein',r.reason,...kinState.parameterHeaders.map(h=>r.parameters[h]??'')].map(csvQuote).join(';'));const meta=['','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${kinState.sourceName}`,`Versuchstyp;${kinState.subtype}`,`Ausgewaehlte_Messreihe;${kinState.selectedSeries}`];return '\uFEFF'+[head.join(';'),...rows,...meta].join('\n')}
+function kineticMdText(){calculateKineticAnalysis();const decisions=kinState.workingRows.filter(r=>!r.include||kinRowChanged(r)),info=kinTypeInfo();let body=`# DatenLab-Auswertung: ${info.label}\n\n- **Quelle:** ${kinState.sourceName}\n- **Messwellenlänge:** ${kinState.metadata.Messwellenlaenge_nm||'—'} nm\n- **Messreihen:** ${kinState.series.length}\n- **Ausgewählte Reihe:** ${kinState.selectedSeries}\n- **Bedingungen:** ${kinConditionsText(kinState.selectedSeries)}\n- **Auswertung:** ${new Date().toLocaleString('de-AT')}\n\n`;
+  if(kinState.kind==='decay'){const a=kinState.analysis;body+=`## Linearisierungsvergleich\n\n- Endwert A∞: ${fmtFixed(a.baseline,5)}\n- Auswertungsbereich: ${fmt(a.start,3)} bis ${fmt(a.end,3)} s\n- Höchstes geeignetes R²: ${a.best?modelLabel(a.best):'nicht bestimmbar'}\n\n| Modell | Steigung | R² | RMSE |\n|---|---:|---:|---:|\n${['zero','first','second'].map(m=>{const r=a.fits[m].fit;return `| ${modelLabel(m)} | ${r?fmt(r.slope,7):'—'} | ${r?fmtFixed(r.r2,5):'—'} | ${r?fmtFixed(r.rmse,5):'—'} |`}).join('\n')}\n\n> Die Linearisierung mit dem höchsten R² ist kein alleiniger Beweis für die Reaktionsordnung.\n`}
+  else{const a=kinState.analysis;body+=`## Schwellenmethode\n\n- Schwellenwert A: ${fmtFixed(a.threshold,3)}\n- Berechnete Schwellenzeit: ${fmtSig(a.detected,4)} s\n- Relative Vergleichsrate 1/tS: ${fmtSig(a.relativeRate,3)} s⁻¹\n`}
+  body+=`\n## Dokumentierte Datenentscheidungen\n\n${decisions.length?decisions.map(r=>`- Reihe ${r.series}, t = ${fmt(r.time,4)} s: ${r.include?'korrigiert':'nicht verwendet'} – ${r.reason||'keine Begründung'}`).join('\n'):'Keine Messpunkte korrigiert oder ausgeschlossen.'}\n\n> Die fachliche Interpretation und Fehlerdiskussion wurden nicht automatisch erstellt.\n`;return body}
+function exportKineticPng(){drawKineticChart();const c=$('#kinChart');c.toBlob(blob=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=kinBaseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png')}
+function exportKineticJson(){calculateKineticAnalysis();const payload={schema:'MESSWERT_LAB_KINETIC_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:kinState.sourceName,metadata:kinState.metadata,originalText:kinState.sourceText,subtype:kinState.subtype},configuration:{selectedSeries:kinState.selectedSeries,kind:kinState.kind},rawRows:kinState.rawRows,workingRows:kinState.workingRows,analysis:kinState.analysis};download(JSON.stringify(payload,null,2),kinBaseName()+'.json','application/json;charset=utf-8')}
+
 function manualRow(type='standard',probe='',c='',a='',hint=''){
   const tr=document.createElement('tr');tr.innerHTML=`<td><select class="mtype"><option value="blank" ${type==='blank'?'selected':''}>Blindprobe</option><option value="standard" ${type==='standard'?'selected':''}>Standard</option><option value="unknown" ${type==='unknown'?'selected':''}>Unbekannt</option></select></td><td><input class="cell-input mprobe" value="${esc(probe)}"></td><td><input class="cell-input mc" value="${esc(c)}"></td><td><input class="cell-input ma" value="${esc(a)}"></td><td><input class="cell-input mhint" value="${esc(hint)}"></td><td><button class="btn btn-danger mdel">×</button></td>`;tr.querySelector('.mdel').onclick=()=>tr.remove();$('#manualBody').appendChild(tr);
 }
@@ -519,6 +934,7 @@ $('#chooseFile').onclick=()=>{$('#dropzone').style.display='block';$('#fileInput
 $('#fileInput').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>loadText(reader.result,f.name);reader.onerror=()=>alert('Datei konnte nicht gelesen werden.');reader.readAsText(f,'utf-8')};
 const dz=$('#dropzone');['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('drag')}));dz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(!f)return;const r=new FileReader();r.onload=()=>loadText(r.result,f.name);r.readAsText(f,'utf-8')});
 $('#loadSample').onclick=()=>loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
+$('#loadKineticSample').onclick=()=>loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');
 $('#showManual').onclick=()=>{$('#manual').style.display='block';$('#dropzone').style.display='none';initManual();$('#manual').scrollIntoView({behavior:'smooth'})};$('#cancelManual').onclick=()=>$('#manual').style.display='none';$('#manualConcentrationUnit').addEventListener('change',updateManualUnitUi);$('#addManualRow').onclick=()=>manualRow();$('#useManual').onclick=useManual;
 $('#newDataset').onclick=resetApp;$('#resetWorking').onclick=()=>{state.workingRows=structuredClone(state.rawRows);renderAll()};
 $$('[data-next]').forEach(b=>b.onclick=()=>{if(b.dataset.next==='regression'&&!validateData(true))return;showStep(b.dataset.next)});$$('[data-prev]').forEach(b=>b.onclick=()=>showStep(b.dataset.prev));$$('.step').forEach(b=>b.onclick=()=>{if(['regression','unknown','export'].includes(b.dataset.step)&&!validateData(true))return;showStep(b.dataset.step)});
@@ -526,7 +942,12 @@ $('#refreshRegression').onclick=()=>{calculateAll();drawChart()};$('#axisUnit').
 $('#substanceName').addEventListener('change',e=>{state.substanceNameOverride=e.target.value.trim();updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart()});
 $('#molarMassInput').addEventListener('change',e=>{if(!setMolarMassOverride(e.target.value))updateSubstanceEditor();});
 $('#exportPng').onclick=exportPng;$('#exportMd').onclick=exportMd;$('#exportCsv').onclick=exportCsv;$('#exportJson').onclick=exportJson;
-window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart()});
+$('#kinNewDataset').onclick=resetApp;$('#kinResetWorking').onclick=()=>{kinState.workingRows=structuredClone(kinState.rawRows);kinState.settingsInitializedFor=null;renderKineticAll()};
+$$('[data-knext]').forEach(b=>b.onclick=()=>{if(b.dataset.knext==='analysis'&&!validateKineticData(true))return;showKinStep(b.dataset.knext)});$$('[data-kprev]').forEach(b=>b.onclick=()=>showKinStep(b.dataset.kprev));$$('.kstep').forEach(b=>b.onclick=()=>{if(['analysis','result','export'].includes(b.dataset.kstep)&&!validateKineticData(true))return;showKinStep(b.dataset.kstep)});
+$('#kinSeriesSelectData').addEventListener('change',e=>selectKinSeries(e.target.value));$('#kinSeriesSelectAnalysis').addEventListener('change',e=>selectKinSeries(e.target.value));
+$('#kinBaselineMode').addEventListener('change',()=>{updateKineticBaselineUi();renderKineticAnalysis()});$('#kinBaselineValue').addEventListener('change',()=>{if($('#kinBaselineMode').value==='manual'&&parseNumber($('#kinBaselineValue').value)==null){alert('Bitte für A∞ einen gültigen Zahlenwert eingeben.');$('#kinBaselineValue').value='0';}renderKineticAnalysis()});$('#kinFitStart').addEventListener('change',renderKineticAnalysis);$('#kinFitEnd').addEventListener('change',renderKineticAnalysis);$('#kinChartView').addEventListener('change',renderKineticAnalysis);$('#kinThreshold').addEventListener('change',()=>{if(parseNumber($('#kinThreshold').value)==null){alert('Bitte einen gültigen Schwellenwert eingeben.');$('#kinThreshold').value=String(parseNumber(kinState.metadata.Schwellenwert_A)??0.2).replace('.',',');}renderKineticAnalysis();renderKineticResult()});$('#kinRefreshAnalysis').onclick=()=>{renderKineticAnalysis();renderKineticResult()};
+$('#kinExportPng').onclick=exportKineticPng;$('#kinExportMd').onclick=()=>download(kineticMdText(),kinBaseName()+'.md','text/markdown;charset=utf-8');$('#kinExportCsv').onclick=()=>download(kineticCsvText(),kinBaseName()+'.csv','text/csv;charset=utf-8');$('#kinExportJson').onclick=exportKineticJson;
+window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart();if($('#kin-panel-analysis').classList.contains('active'))drawKineticChart()});
 if(new URLSearchParams(location.search).get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
 </script>
 </body>

@@ -1,5 +1,34 @@
 # Änderungsprotokoll
 
+## v0.3.0 – 2026-08-01
+
+Erster vollständiger Anwendungsfall für photometrische Kinetik.
+
+### Neu
+
+- automatische Auswertung der Photometer-Exporte für Kristallviolett, Brillantblau/Hypochlorit und Iod-/Vitamin-C-Uhr
+- komfortable Auswahl mehrerer Messreihen samt Versuchsbedingungen
+- Prüfung, Korrektur und begründeter Ausschluss einzelner Zeitpunkte bei unveränderten Rohdaten
+- Messkurve A gegen t
+- Endwertkorrektur mit A∞
+- automatische Plateauprüfung: Mittel der letzten fünf Punkte nur bei ausreichend konstantem Endbereich, sonst Vorschlag A∞ = 0
+- manuelle Wahl von A∞ und des auszuwertenden Zeitbereichs
+- Linearisierungen A−A∞, ln(A−A∞) und 1/(A−A∞)
+- Vergleich von 0., 1. und 2. Ordnung über R², RMSE und Residuen
+- formale Geschwindigkeitskonstanten und Halbwertszeiten mit fachlich korrekter Einheitenkennzeichnung
+- Schwellenwertauswertung der Iod-/Vitamin-C-Uhr mit linear interpolierter Schwellenzeit
+- relative Vergleichsrate 1/tS für gleichartig durchgeführte Uhrreaktionen
+- Vergleichstabelle aller Messreihen
+- PNG-, Markdown-, CSV- und Sitzungs-JSON-Export für Kinetik
+- eingebettetes Kristallviolett-Beispiel
+
+### Didaktische Leitplanken
+
+- das höchste R² wird ausdrücklich nicht als automatischer Beweis einer Reaktionsordnung ausgegeben
+- A∞, Datenbereich und nicht transformierbare Punkte bleiben sichtbar
+- Rohdaten werden nie durch Korrekturen oder Ausschlüsse überschrieben
+- die fachliche Interpretation bleibt Teil des SchülerInnenprotokolls
+
 ## v0.2.1 – 2026-08-01
 
 Komforterweiterung der manuellen Eichkurveneingabe.

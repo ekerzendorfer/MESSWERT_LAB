@@ -73,29 +73,34 @@
     .kstep{border:0;background:transparent;border-radius:11px;padding:9px 8px;color:var(--muted);font-size:.9rem;font-weight:700}.kstep.active{background:var(--primary);color:#fff}.kstep.done{color:var(--primary-dark);background:#e8f3f6}.kpanel{display:none;padding:24px}.kpanel.active{display:block}
     .series-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:14px 0}.series-bar .field{margin:0;min-width:220px}.series-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;margin:14px 0}.series-card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fbfdfe}.series-card.active{border-color:#6aa8ba;background:#eef8fa}.series-card h3{margin:0 0 8px;font-size:1rem}.series-card p{margin:3px 0;color:var(--muted);font-size:.88rem}.series-card strong{color:var(--text)}
     .kin-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;background:#f7fbfc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:14px 0}.kin-controls .field{margin:0;min-width:0}.kin-controls input,.kin-controls select{width:100%;min-width:0}.kin-controls .field input:disabled{background:#eef1f3;color:#6b7780}.model-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}.model-card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fbfdfe;position:relative}.model-card.best{border-color:#63a57f;background:#eff8f3}.model-card.selected{box-shadow:var(--focus)}.model-card h3{margin:0 0 7px;font-size:1rem}.model-card dl{display:grid;grid-template-columns:1fr auto;gap:5px 10px;margin:0}.model-card dt{color:var(--muted);font-size:.86rem}.model-card dd{margin:0;font-weight:750;font-variant-numeric:tabular-nums}.best-tag{display:inline-flex;margin-bottom:8px;padding:3px 8px;border-radius:999px;background:#dff1e6;color:#17653d;font-size:.74rem;font-weight:780}
-    .kin-result-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px;align-items:start}.result-list{display:grid;gap:10px}.result-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;border-bottom:1px solid #dce5ea;padding:8px 0}.result-row:last-child{border-bottom:0}.result-row span{color:var(--muted)}.result-row strong{font-variant-numeric:tabular-nums;text-align:right}.mini-table{min-width:760px}.kin-clock-only,.kin-decay-only{display:none}
+    .kin-result-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px;align-items:start}.result-list{display:grid;gap:10px}.result-row{display:grid;grid-template-columns:minmax(135px,.45fr) minmax(0,1.55fr);gap:12px;border-bottom:1px solid #dce5ea;padding:8px 0;align-items:start}.result-row:last-child{border-bottom:0}.result-row span{color:var(--muted)}.result-row strong{min-width:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;text-align:right}.result-row.condition-row strong{text-align:left}.mini-table{min-width:760px}.kin-clock-only,.kin-decay-only{display:none}
+    .key-control{background:#e7f4f7;border:2px solid #6aa8ba!important;border-radius:13px;padding:10px;box-shadow:0 0 0 3px rgba(21,107,134,.08)}.key-control label{color:var(--primary-dark)}.key-control select{border-color:#6aa8ba!important;font-weight:750;background:#fff}
+    .btb-workspace{display:none}.btb-stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 18px;position:sticky;top:8px;z-index:20;background:rgba(244,247,251,.94);backdrop-filter:blur(10px);padding:9px;border-radius:16px;border:1px solid rgba(190,205,215,.75)}.bstep{border:0;background:transparent;border-radius:11px;padding:9px 8px;color:var(--muted);font-size:.9rem;font-weight:700}.bstep.active{background:var(--primary);color:#fff}.bstep.done{color:var(--primary-dark);background:#e8f3f6}.bpanel{display:none;padding:24px}.bpanel.active{display:block}
+    .spectrum-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;background:#f7fbfc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:14px 0}.spectrum-controls .field{margin:0;min-width:0}.spectrum-controls select,.spectrum-controls input{width:100%;min-width:0}.spectrum-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0}.spectrum-card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fbfdfe}.spectrum-card.active{border-color:#6aa8ba;background:#eef8fa}.spectrum-card h3{margin:0 0 7px}.spectrum-card p{margin:3px 0;color:var(--muted);font-size:.88rem}.spectrum-swatch{display:inline-block;width:14px;height:4px;border-radius:99px;margin-right:7px;vertical-align:middle}.btb-result-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px;align-items:start}.btb-chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.btb-chip{border:1px solid var(--border);background:#f7fbfc;border-radius:999px;padding:5px 10px;font-size:.84rem}.btb-table{min-width:980px}.btb-reference{background:#fff6e8!important}.btb-excluded{opacity:.55}.btb-chart-note{font-size:.84rem;color:var(--muted);margin-top:8px}
+    @media(max-width:700px){.result-row{grid-template-columns:1fr}.result-row strong{text-align:left}.btb-result-grid{grid-template-columns:1fr}}
     .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid,.kin-result-grid{grid-template-columns:1fr}.substance-editor{grid-template-columns:1fr 1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
-    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper,.kin-stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span,.kstep span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.model-grid{grid-template-columns:1fr}.version{font-size:.8rem}}
-    @media print{body{background:#fff}.topbar,.stepper,.kin-stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export,#kin-panel-import,#kin-panel-data,#kin-panel-export{display:none!important}.workspace,.kin-workspace{display:block!important}.panel,.kpanel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
+    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper,.kin-stepper,.btb-stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span,.kstep span,.bstep span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.model-grid{grid-template-columns:1fr}.version{font-size:.8rem}}
+    @media print{body{background:#fff}.topbar,.stepper,.kin-stepper,.btb-stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export,#kin-panel-import,#kin-panel-data,#kin-panel-export,#btb-panel-import,#btb-panel-data,#btb-panel-export{display:none!important}.workspace,.kin-workspace,.btb-workspace{display:block!important}.panel,.kpanel,.bpanel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
   </style>
 </head>
 <body>
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.3.0 · Eichkurve &amp; Kinetik</span>
+    <span class="version">v0.4.0 · Eichkurve, Kinetik &amp; Gleichgewicht</span>
   </header>
 
   <main>
     <section id="start" class="card hero">
       <h2>Messdaten auswerten – geführt und nachvollziehbar</h2>
-      <p>Öffne einen Eichkurven- oder Kinetik-Export aus dem Virtuellen Photometer, gib eine eigene Eichreihe ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
+      <p>Öffne einen Eichkurven-, Kinetik- oder Gleichgewichts-Export aus dem Virtuellen Photometer, gib eine eigene Eichreihe ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
       <div class="launch-grid">
         <button class="launch" id="chooseFile"><span class="icon">📂</span><strong>Photometer-CSV öffnen</strong><small>Metadaten und Spalten werden automatisch erkannt.</small></button>
         <button class="launch" id="showManual"><span class="icon">⌨️</span><strong>Eichkurve selbst eingeben</strong><small>Für reale Messungen oder andere Eichreihen.</small></button>
         <button class="launch" id="loadSample"><span class="icon">🧪</span><strong>Eichkurven-Beispiel</strong><small>Kaliumpermanganat mit mehreren Wiederholungen.</small></button>
         <button class="launch" id="loadKineticSample"><span class="icon">📈</span><strong>Kinetik-Beispiel</strong><small>Kristallviolett: vier Zeitreihen bei verschiedenen Bedingungen.</small></button>
+        <button class="launch" id="loadBtbSample"><span class="icon">🌈</span><strong>Gleichgewichts-Beispiel</strong><small>Bromthymolblau: Spektren und pK<sub>a</sub>-Bestimmung.</small></button>
       </div>
       <input id="fileInput" type="file" accept=".csv,text/csv" class="sr-only">
       <div id="dropzone" class="dropzone">CSV-Datei hier ablegen oder <button class="btn btn-secondary" id="browseFile" type="button">Datei auswählen</button></div>
@@ -257,14 +262,82 @@
         </div>
         <div class="toolbar"><button class="btn btn-ghost" data-kprev="result">← Ergebnis</button><span class="spacer"></span><button class="btn btn-secondary" onclick="window.print()">Druckansicht</button></div>
       </section>
+
+    </section>
+
+    <section id="btbWorkspace" class="btb-workspace">
+      <nav class="btb-stepper" aria-label="Arbeitsschritte der Gleichgewichtsauswertung">
+        <button class="bstep active" data-bstep="import">1 <span>Import</span></button>
+        <button class="bstep" data-bstep="data">2 <span>Spektren prüfen</span></button>
+        <button class="bstep" data-bstep="analysis">3 <span>Auswertung</span></button>
+        <button class="bstep" data-bstep="result">4 <span>Ergebnis</span></button>
+        <button class="bstep" data-bstep="export">5 <span>Export</span></button>
+      </nav>
+
+      <section id="btb-panel-import" class="card bpanel active">
+        <div class="panel-head"><div><h2>Bromthymolblau-Serie erkannt</h2><p>Kontrolliere Spektren, pH-Werte und gemeinsame Messbedingungen.</p></div><button class="btn btn-ghost" id="btbNewDataset">Neue Datei</button></div>
+        <div id="btbImportNotice"></div>
+        <div class="summary-grid" id="btbImportSummary"></div>
+        <h3>Enthaltene Spektren</h3>
+        <div id="btbSpectrumSummary" class="spectrum-list"></div>
+        <details><summary>Metadaten und Importdetails anzeigen</summary><div id="btbMetadataDetails"></div></details>
+        <div class="toolbar"><span class="spacer"></span><button class="btn btn-primary" data-bnext="data">Spektren prüfen →</button></div>
+      </section>
+
+      <section id="btb-panel-data" class="card bpanel">
+        <div class="panel-head"><div><h2>Spektren prüfen</h2><p>Die Rohspektren bleiben unverändert. Einzelne Spektren können mit Begründung von der pK<sub>a</sub>-Mittelung ausgeschlossen werden.</p></div><button class="btn btn-secondary" id="btbResetWorking">Alle Spektren verwenden</button></div>
+        <div class="notice warn">Ein Spektrum wird nicht automatisch als fehlerhaft bewertet. Ein Ausschluss betrifft nur die pK<sub>a</sub>-Mittelung; die Rohdaten und die Kurve bleiben erhalten.</div>
+        <div class="table-wrap"><table class="btb-table"><thead><tr><th>Verwenden</th><th class="num">pH</th><th class="num">HIn laut Export (%)</th><th class="num">In⁻ laut Export (%)</th><th class="num">c (mol/L)</th><th class="num">Schichtdicke (cm)</th><th class="num">Messpunkte</th><th class="num">λ<sub>max</sub> (nm)</th><th>Begründung bei Ausschluss</th></tr></thead><tbody id="btbDataBody"></tbody></table></div>
+        <div id="btbDataValidity"></div>
+        <div class="toolbar"><button class="btn btn-ghost" data-bprev="import">← Import</button><span class="spacer"></span><button class="btn btn-primary" id="btbToAnalysis" data-bnext="analysis">Gleichgewicht auswerten →</button></div>
+      </section>
+
+      <section id="btb-panel-analysis" class="card bpanel">
+        <div class="panel-head"><div><h2>Spektren und Säure-Base-Gleichgewicht</h2><p>Die saure und basische Referenz bestimmen die Zusammensetzung der übrigen Lösungen.</p></div><button class="btn btn-secondary" id="btbRefreshAnalysis">Neu berechnen</button></div>
+        <div class="spectrum-controls">
+          <div class="field"><label for="btbAcidRef">Saure Referenz</label><select id="btbAcidRef"></select><small>Üblicherweise das Spektrum mit dem niedrigsten pH-Wert.</small></div>
+          <div class="field"><label for="btbBaseRef">Basische Referenz</label><select id="btbBaseRef"></select><small>Üblicherweise das Spektrum mit dem höchsten pH-Wert.</small></div>
+          <div class="field"><label for="btbWavelength">Auswertungswellenlänge</label><select id="btbWavelength"></select><small id="btbWavelengthHint"></small></div>
+          <div class="field key-control"><label for="btbChartView">Diagramm auswählen</label><select id="btbChartView"><option value="spectra">Alle Absorptionsspektren</option><option value="composition">Anteile HIn und In⁻ gegen pH</option><option value="pka">pKₐ-Werte gegen pH</option></select><small>Wechsle zwischen spektraler und gleichgewichtsbezogener Darstellung.</small></div>
+        </div>
+        <div id="btbAnalysisNotice"></div>
+        <div class="chart-grid">
+          <div class="chart-card"><div class="chart-box"><canvas id="btbChart" aria-label="Bromthymolblau-Auswertung"></canvas></div><p class="btb-chart-note" id="btbChartNote"></p></div>
+          <aside><div class="metric-list" id="btbMetrics"></div><details><summary>Wie wird die Zusammensetzung bestimmt?</summary><div class="formula">α(In⁻) = (A − A<sub>HIn</sub>) / (A<sub>In⁻</sub> − A<sub>HIn</sub>)</div><p>Voraussetzung sind gleiche Gesamtkonzentration und gleiche Schichtdicke. Werte sehr nahe 0 % oder 100 % sind für die logarithmische pK<sub>a</sub>-Berechnung besonders empfindlich.</p></details></aside>
+        </div>
+        <h3>Berechnete Zusammensetzung bei <span id="btbTableLambda"></span></h3>
+        <div class="table-wrap"><table class="btb-table"><thead><tr><th class="num">pH</th><th class="num">Absorbanz</th><th class="num">HIn berechnet (%)</th><th class="num">In⁻ berechnet (%)</th><th class="num">In⁻ laut Export (%)</th><th class="num">pK<sub>a</sub></th><th>Verwendung</th></tr></thead><tbody id="btbCompositionBody"></tbody></table></div>
+        <div class="formula" id="btbFormula"></div>
+        <div class="toolbar"><button class="btn btn-ghost" data-bprev="data">← Spektren</button><span class="spacer"></span><button class="btn btn-primary" data-bnext="result">Ergebnis zusammenfassen →</button></div>
+      </section>
+
+      <section id="btb-panel-result" class="card bpanel">
+        <div class="panel-head"><div><h2>Ergebnisse</h2><p>Spektrale Merkmale und pK<sub>a</sub>-Bestimmung werden getrennt und nachvollziehbar zusammengefasst.</p></div></div>
+        <div class="btb-result-grid"><div id="btbSelectedResult"></div><aside class="result-hero" id="btbResultHero"></aside></div>
+        <h3 style="margin-top:24px">Übersicht der pH-Serie</h3>
+        <div class="table-wrap"><table class="btb-table"><thead><tr><th class="num">pH</th><th class="num">λ<sub>max</sub> (nm)</th><th class="num">A bei Auswertungs-λ</th><th class="num">In⁻ berechnet (%)</th><th class="num">In⁻ Export (%)</th><th class="num">pK<sub>a</sub></th><th>Status</th></tr></thead><tbody id="btbResultBody"></tbody></table></div>
+        <div class="notice warn" style="margin-top:16px">Ein näherungsweise konstanter pK<sub>a</sub>-Wert unterstützt das Modell eines einfachen Säure-Base-Gleichgewichts. Die fachliche Interpretation des Spektrenverlaufs bleibt Teil des eigenen Protokolls.</div>
+        <div class="toolbar"><button class="btn btn-ghost" data-bprev="analysis">← Auswertung</button><span class="spacer"></span><button class="btn btn-primary" data-bnext="export">Ergebnisse exportieren →</button></div>
+      </section>
+
+      <section id="btb-panel-export" class="card bpanel">
+        <div class="panel-head"><div><h2>Gleichgewichtsauswertung exportieren</h2><p>Speichere die aktuelle Grafik, eine kompakte Auswertung, die berechneten Daten oder die vollständige Sitzung.</p></div></div>
+        <div class="export-grid">
+          <div class="export-card"><h3>Diagramm</h3><p>Aktuelle Spektren-, Zusammensetzungs- oder pK<sub>a</sub>-Darstellung als PNG.</p><button class="btn btn-primary" id="btbExportPng">PNG speichern</button></div>
+          <div class="export-card"><h3>Auswertung</h3><p>Markdown mit Referenzen, Auswertungswellenlänge und Kennwerten.</p><button class="btn btn-primary" id="btbExportMd">Markdown speichern</button></div>
+          <div class="export-card"><h3>Berechnete Daten</h3><p>Spektrenübersicht, Zusammensetzung und pK<sub>a</sub>-Werte als CSV.</p><button class="btn btn-primary" id="btbExportCsv">CSV speichern</button></div>
+          <div class="export-card"><h3>Sitzung</h3><p>Vollständiger DatenLab-Stand einschließlich Rohspektren und Einstellungen.</p><button class="btn btn-primary" id="btbExportJson">JSON speichern</button></div>
+        </div>
+        <div class="toolbar"><button class="btn btn-ghost" data-bprev="result">← Ergebnis</button><span class="spacer"></span><button class="btn btn-secondary" onclick="window.print()">Druckansicht</button></div>
+      </section>
     </section>
   </main>
-  <footer>DatenLab v0.3.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.4.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.3.0';
+const VERSION='0.4.0';
 const SUBSTANCE_DATA=Object.freeze({
   'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034}
 });
@@ -448,8 +521,186 @@ Versuchstyp;Kinetik_Kristallviolett
 Messwellenlaenge_nm;590
 Messreihen;4`;
 
+const BTB_SAMPLE_CSV=`Wellenlaenge_nm;A_pH_4_0;A_pH_7_0;A_pH_7_7;A_pH_8_5;A_pH_10_0
+380;0,22472475;0,12571565;0,045828158;0,0094250125;0,0011284110
+382;0,23656772;0,13236508;0,048287073;0,0099743934;0,0012425918
+384;0,24854339;0,13909324;0,050781175;0,010539119;0,0013675959
+386;0,26061001;0,14587729;0,053302892;0,011118573;0,0015043903
+388;0,27272321;0,15269299;0,055844194;0,011712116;0,0016540220
+390;0,28483624;0,15951478;0,058396638;0,012319104;0,0018176228
+392;0,29690024;0,16631598;0,060951434;0,012938900;0,0019964158
+394;0,30886450;0,17306891;0,063499501;0,013570895;0,0021917203
+396;0,32067682;0,17974513;0,066031545;0,014214521;0,0024049586
+398;0,33228391;0,18631560;0,068538131;0,014869273;0,0026376616
+400;0,34363167;0,19275093;0,071009767;0,015534731;0,0028914752
+402;0,35466572;0,19902159;0,073436990;0,016210577;0,0031681667
+404;0,36533173;0,20509815;0,075810459;0,016896620;0,0034696309
+406;0,37557591;0,21095154;0,078121041;0,017592819;0,0037978967
+408;0,38534543;0,21655327;0,080359913;0,018299301;0,0041551334
+410;0,39458889;0,22187574;0,082518651;0,019016389;0,0045436567
+412;0,40325675;0,22689243;0,084589327;0,019744622;0,0049659353
+414;0,41130180;0,23157821;0,086564602;0,020484778;0,0054245961
+416;0,41867953;0,23590950;0,088437815;0,021237893;0,0059224307
+418;0,42534861;0,23986459;0,090203071;0,022005284;0,0064624001
+420;0,43127122;0,24342380;0,091855318;0,022788569;0,0070476402
+422;0,43641342;0,24656968;0,093390427;0,023589679;0,0076814660
+424;0,44074552;0,24928723;0,094805256;0,024410882;0,0083673760
+426;0,44424228;0,25156404;0,096097712;0,025254790;0,0091090555
+428;0,44688324;0,25339040;0,097266802;0,026124374;0,0099103797
+430;0,44865285;0,25475947;0,098312674;0,027022974;0,010775416
+432;0,44954068;0,25566730;0,099236650;0,027954306;0,011708423
+434;0,44954148;0,25611295;0,10004124;0,028922462;0,012713857
+436;0,44865525;0,25609849;0,10073018;0,029931918;0,013796364
+438;0,44688725;0,25562897;0,10130837;0,030987528;0,014960782
+440;0,44424793;0,25471245;0,10178193;0,032094521;0,016212140
+442;0,44075282;0,25335990;0,10215814;0,033258493;0,017555650
+444;0,43642242;0,25158511;0,10244540;0,034485397;0,018996706
+446;0,43128194;0,24940461;0,10265323;0,035781530;0,020540873
+448;0,42536111;0,24683750;0,10279213;0,037153512;0,022193885
+450;0,41869387;0,24390530;0,10287362;0,038608274;0,023961630
+452;0,41131803;0,24063174;0,10291007;0,040153030;0,025850141
+454;0,40327495;0,23704261;0,10291469;0,041795251;0,027865587
+456;0,39460913;0,23316547;0,10290140;0,043542642;0,030014252
+458;0,38536780;0,22902948;0,10288476;0,045403106;0,032302525
+460;0,37560050;0,22466511;0,10287985;0,047384716;0,034736881
+462;0,36535864;0,22010389;0,10290218;0,049495678;0,037323860
+464;0,35469505;0,21537819;0,10296758;0,051744291;0,040070047
+466;0,34366353;0,21052091;0,10309209;0,054138915;0,042982049
+468;0,33231842;0,20556523;0,10329187;0,056687925;0,046066471
+470;0,32071412;0,20054440;0,10358304;0,059399672;0,049329888
+472;0,30890470;0,19549142;0,10398163;0,062282438;0,052778819
+474;0,29694349;0,19043886;0,10450346;0,065344395;0,056419695
+476;0,28488269;0,18541860;0,10516399;0,068593558;0,060258830
+478;0,27277299;0,18046161;0,10597831;0,072037742;0,064302384
+480;0,26066329;0,17559778;0,10696095;0,075684513;0,068556333
+482;0,24860034;0,17085571;0,10812588;0,079541146;0,073026429
+484;0,23662850;0,16626255;0,10948636;0,083614577;0,077718166
+486;0,22478952;0,16184386;0,11105489;0,087911357;0,082636740
+488;0,21312234;0,15762350;0,11284313;0,092437610;0,087787009
+490;0,20166292;0,15362347;0,11486188;0,097198985;0,093173454
+492;0,19044411;0,14986390;0,11712093;0,10220061;0,098800139
+494;0,17949559;0,14636290;0,11962912;0,10744706;0,10467067
+496;0,16884382;0,14313660;0,12239420;0,11294231;0,11078814
+498;0,15851199;0,14019904;0,12542287;0,11868967;0,11715511
+500;0,14852006;0,13756224;0,12872070;0,12469179;0,12377356
+502;0,13888480;0,13523612;0,13229211;0,13095059;0,13064484
+504;0,12961989;0,13322862;0,13614039;0,13746723;0,13776963
+506;0,12073595;0,13154564;0,14026765;0,14424210;0,14514791
+508;0,11224074;0,13019116;0,14467482;0,15127473;0,15277891
+510;0,10413923;0,12916727;0,14936166;0,15856384;0,16066110
+512;0,096433811;0,12847427;0,15432676;0,16610723;0,16879210
+514;0,089124439;0,12811070;0,15956756;0,17390182;0,17716873
+516;0,082208812;0,12807348;0,16508032;0,18194360;0,18578689
+518;0,075682568;0,12835797;0,17086018;0,19022759;0,19464160
+520;0,069539476;0,12895807;0,17690117;0,19874789;0,20372695
+522;0,063771629;0,12986635;0,18319621;0,20749757;0,21303607
+524;0,058369644;0,13107410;0,18973716;0,21646876;0,22256112
+526;0,053322853;0,13257149;0,19651484;0,22565256;0,23229331
+528;0,048619494;0,13434760;0,20351906;0,23503912;0,24222282
+530;0,044246892;0,13639061;0,21073863;0,24461755;0,25233886
+532;0,040191639;0,13868782;0,21816145;0,25437600;0,26262962
+534;0,036439759;0,14122577;0,22577448;0,26430165;0,27308234
+536;0,032976865;0,14399036;0,23356384;0,27438070;0,28368323
+538;0,029788305;0,14696690;0,24151481;0,28459842;0,29441756
+540;0,026859301;0,15014020;0,24961188;0,29493915;0,30526964
+542;0,024175067;0,15349467;0,25783879;0,30538634;0,31622285
+544;0,021720922;0,15701437;0,26617862;0,31592260;0,32725970
+546;0,019482393;0,16068311;0,27461376;0,32652970;0,33836181
+548;0,017445296;0,16448450;0,28312604;0,33718864;0,34950999
+550;0,015595814;0,16840198;0,29169672;0,34787969;0,36068429
+552;0,013920560;0,17241896;0,30030659;0,35858244;0,37186403
+554;0,012406634;0,17651878;0,30893597;0,36927586;0,38302786
+556;0,011041661;0,18068483;0,31756485;0,37993836;0,39415383
+558;0,0098138230;0,18490058;0,32617286;0,39054783;0,40521946
+560;0,0087118900;0,18914959;0,33473939;0,40108178;0,41620180
+562;0,0077252300;0,19341562;0,34324365;0,41151731;0,42707749
+564;0,0068438197;0,19768259;0,35166470;0,42183129;0,43782288
+566;0,0060582465;0,20193468;0,35998154;0,43200036;0,44841409
+568;0,0053597042;0,20615636;0,36817319;0,44200104;0,45882707
+570;0,0047399844;0,21033237;0,37621873;0,45180985;0,46903774
+572;0,0041914627;0,21444781;0,38409738;0,46140333;0,47902205
+574;0,0037070816;0,21848816;0,39178861;0,47075818;0,48875605
+576;0,0032803304;0,22243929;0,39927212;0,47985134;0,49821606
+578;0,0029052226;0,22628752;0,40652802;0,48866005;0,50737867
+580;0,0025762714;0,23001959;0,41353682;0,49716199;0,51622091
+582;0,0022884636;0,23362278;0,42027954;0,50533533;0,52472030
+584;0,0020372330;0,23708486;0,42673777;0,51315884;0,53285498
+586;0,0018184335;0,24039412;0,43289373;0,52061199;0,54060376
+588;0,0016283113;0,24353947;0,43873037;0,52767499;0,54794626
+590;0,0014634777;0,24651036;0,44423138;0,53432893;0,55486297
+592;0,0013208830;0,24929689;0,44938133;0,54055584;0,56133532
+594;0,0011977901;0,25188977;0,45416564;0,54633875;0,56734582
+596;0,0010917495;0,25428038;0,45857073;0,55166180;0,57287808
+598;0,0010005753;0,25646079;0,46258401;0,55651027;0,57791691
+600;0,00092232222;0,25842373;0,46619394;0,56087070;0,58244838
+602;0,00085526404;0,26016268;0,46939011;0,56473089;0,58645991
+604;0,00079787316;0,26167183;0,47216325;0,56808001;0,58994029
+606;0,00074880143;0,26294610;0,47450528;0,57090860;0,59287977
+608;0,00070686247;0,26398116;0,47640934;0,57320865;0,59527008
+610;0,00067101511;0,26477345;0,47786983;0,57497363;0,59710445
+612;0,00064034827;0,26532017;0,47888242;0,57619850;0,59837770
+614;0,00061406695;0,26561926;0,47944404;0,57687976;0,59908623
+616;0,00059147951;0,26566946;0,47955297;0,57701544;0,59922801
+618;0,00057198600;0,26547024;0,47920875;0,57660514;0,59880265
+620;0,00055506770;0,26502187;0,47841224;0,57565000;0,59781135
+622;0,00054027751;0,26432532;0,47716561;0,57415270;0,59625693
+624;0,00052723143;0,26338235;0,47547229;0,57211748;0,59414378
+626;0,00051560085;0,26219540;0,47333702;0,56955006;0,59147788
+628;0,00050510564;0,26076765;0,47076572;0,56645768;0,58826674
+630;0,00049550808;0,25910296;0,46776559;0,56284902;0,58451938
+632;0,00048660735;0,25720586;0,46434496;0,55873415;0,58024628
+634;0,00047823470;0,25508153;0,46051333;0,55412453;0,57545936
+636;0,00047024925;0,25273576;0,45628128;0,54903293;0,57017186
+638;0,00046253418;0,25017494;0,45166043;0,54347337;0,56439836
+640;0,00045499342;0,24740600;0,44666339;0,53746104;0,55815463
+642;0,00044754881;0,24443640;0,44130373;0,53101227;0,55145764
+644;0,00044013753;0,24127411;0,43559585;0,52414442;0,54432543
+646;0,00043270993;0,23792751;0,42955498;0,51687582;0,53677702
+648;0,00042522757;0,23440544;0,42319709;0,50922570;0,52883239
+650;0,00041766158;0,23071707;0,41653879;0,50121406;0,52051231
+652;0,00040999123;0,22687193;0,40959731;0,49286164;0,51183833
+654;0,00040220265;0,22287983;0,40239039;0,48418979;0,50283261
+656;0,00039428776;0,21875083;0,39493622;0,47522040;0,49351789
+658;0,00038624332;0,21449521;0,38725334;0,46597580;0,48391735
+660;0,00037807017;0,21012338;0,37936061;0,45647866;0,47405456
+662;0,00036977247;0,20564590;0,37127709;0,44675193;0,46395332
+664;0,00036135717;0,20107340;0,36302196;0,43681871;0,45363765
+666;0,00035283343;0,19641654;0,35461450;0,42670218;0,44313160
+668;0,00034421222;0,19168599;0,34607396;0,41642550;0,43245925
+670;0,00033550592;0,18689236;0,33741952;0,40601176;0,42164454
+672;0,00032672798;0,18204618;0,32867019;0,39548384;0,41071127
+674;0,00031789267;0,17715787;0,31984478;0,38486437;0,39968292
+676;0,00030901479;0,17223769;0,31096181;0,37417564;0,38858263
+678;0,00030010948;0,16729570;0,30203945;0,36343951;0,37743313
+680;0,00029119206;0,16234174;0,29309549;0,35267738;0,36625662
+682;0,00028227783;0,15738540;0,28414723;0,34191008;0,35507475
+684;0,00027338195;0,15243600;0,27521149;0,33115784;0,34390851
+686;0,00026451936;0,14750254;0,26630451;0,32044021;0,33277822
+688;0,00025570461;0,14259368;0,25744195;0,30977603;0,32170343
+690;0,00024695184;0,13771775;0,24863883;0,29918337;0,31070292
+692;0,00023827467;0,13288267;0,23990948;0,28867948;0,29979460
+694;0,00022968615;0,12809603;0,23126756;0,27828078;0,28899551
+696;0,00022119871;0,12336495;0,22272597;0,26800281;0,27832181
+698;0,00021282411;0,11869618;0,21429687;0,25786020;0,26778868
+700;0,00020457343;0,11409603;0,20599165;0,24786667;0,25741035
+
+Spektren_Metadaten
+pH;HIn_Prozent;In_minus_Prozent;Konzentration_mol_L;Schichtdicke_cm
+4,0;99,92;0,08;0,000025000000;1,0000000
+7,0;55,73;44,27;0,000025000000;1,0000000
+7,7;20,08;79,92;0,000025000000;1,0000000
+8,5;3,83;96,17;0,000025000000;1,0000000
+10,0;0,13;99,87;0,000025000000;1,0000000
+
+Metadaten
+App_Version;0.9.2
+Exportzeit;2026-08-01T12:03:21.835Z
+Versuchstyp;Gleichgewicht_Bromthymolblau
+Spektren;5`;
+
 const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false,molarMassOverride:null,substanceNameOverride:'',dataUnit:'mol'};
 const kinState={sourceName:'',sourceText:'',metadata:{},headers:[],rawRows:[],workingRows:[],series:[],selectedSeries:'',kind:'decay',subtype:'',absorbanceHeader:'',parameterHeaders:[],analysis:null,settingsInitializedFor:null};
+const btbState={sourceName:'',sourceText:'',metadata:{},spectra:[],acidRef:'',baseRef:'',analysisWavelength:null,analysis:null};
 const $=sel=>document.querySelector(sel), $$=sel=>[...document.querySelectorAll(sel)];
 
 function parseLine(line,delimiter=';'){
@@ -576,8 +827,8 @@ function loadText(text,name='Messwerte.csv'){
     const parsed=parseSections(text);const kind=recognize(parsed);
     if(kind==='eichkurve'){importEichkurve(parsed,name,text);return;}
     if(kind==='kinetik'){importKinetic(parsed,name,text);return;}
-    const labels={btb:'Bromthymolblau-Spektren',unknown:'unbekannte CSV-Struktur'};
-    alert(`${labels[kind]} erkannt. v0.3.0 wertet Eichkurven und photometrische Kinetik aus; dieses Format ist für eine spätere Version vorgesehen.`);
+    if(kind==='btb'){importBtb(parsed,name,text);return;}
+    alert('Unbekannte CSV-Struktur. Bitte einen Export aus dem Virtuellen Photometer oder eine unterstützte Eichkurve öffnen.');
   }catch(err){alert(`Import nicht möglich: ${err.message}`);}
 }
 function openWorkspace(){ $('#start').style.display='none';$('#workspace').style.display='block';showStep('import');window.scrollTo({top:0}); }
@@ -880,9 +1131,9 @@ function renderKineticResult(){
   if(!kinState.analysis)calculateKineticAnalysis();const a=kinState.analysis,decay=kinState.kind==='decay';
   $('#kinResultNotice').textContent=decay?'Die mathematisch beste Linearisierung ist ein Hinweis, aber kein alleiniger Beweis für eine Reaktionsordnung. Mechanismus, Versuchsbedingungen, Residuen und Datenbereich müssen fachlich berücksichtigt werden.':'Die Größe 1/tS erlaubt einen relativen Vergleich gleichartig durchgeführter Uhrreaktionen. Änderungen mehrerer Ausgangskonzentrationen gleichzeitig dürfen nicht vorschnell einer einzelnen Einflussgröße zugeschrieben werden.';
   if(decay){const best=a.best,bx=best?a.fits[best]:null,br=bx?.fit,bres=br?kineticModelResult(best,br,bx.points):null;$('#kinResultHero').innerHTML=`<span class="badge ${best?'standard':'excluded'}">mathematischer Vergleich</span><p class="muted">Höchstes geeignetes R²</p><div class="big">${best?modelLabel(best):'nicht bestimmbar'}</div><div class="secondary-value">${br?`R² = ${fmtFixed(br.r2,5)}`:'zu wenige Daten'}</div><p class="rounding-note">Kein automatischer Beweis für die Reaktionsordnung.</p>`;
-    $('#kinSelectedResult').innerHTML=`<div class="result-list"><div class="result-row"><span>Messreihe</span><strong>${esc(kinState.selectedSeries)}</strong></div><div class="result-row"><span>Bedingungen</span><strong>${esc(kinConditionsText(kinState.selectedSeries))}</strong></div><div class="result-row"><span>Endwert A∞</span><strong>${fmtFixed(a.baseline,5)}</strong></div><div class="result-row"><span>Auswertungsbereich</span><strong>${fmt(a.start,3)}–${fmt(a.end,3)} s</strong></div><div class="result-row"><span>Linearisierung mit höchstem R²</span><strong>${best?modelLabel(best):'—'}</strong></div><div class="result-row"><span>Geschwindigkeitskonstante</span><strong>${bres?.k!=null?`${fmtSig(bres.k,3)} ${bres.unit}`:'—'}</strong></div><div class="result-row"><span>Halbwertszeit</span><strong>${bres?.half!=null?`${fmtSig(bres.half,3)} s`:'—'}</strong></div></div>`;
+    $('#kinSelectedResult').innerHTML=`<div class="result-list"><div class="result-row"><span>Messreihe</span><strong>${esc(kinState.selectedSeries)}</strong></div><div class="result-row condition-row"><span>Bedingungen</span><strong>${esc(kinConditionsText(kinState.selectedSeries))}</strong></div><div class="result-row"><span>Endwert A∞</span><strong>${fmtFixed(a.baseline,5)}</strong></div><div class="result-row"><span>Auswertungsbereich</span><strong>${fmt(a.start,3)}–${fmt(a.end,3)} s</strong></div><div class="result-row"><span>Linearisierung mit höchstem R²</span><strong>${best?modelLabel(best):'—'}</strong></div><div class="result-row"><span>Geschwindigkeitskonstante</span><strong>${bres?.k!=null?`${fmtSig(bres.k,3)} ${bres.unit}`:'—'}</strong></div><div class="result-row"><span>Halbwertszeit</span><strong>${bres?.half!=null?`${fmtSig(bres.half,3)} s`:'—'}</strong></div></div>`;
     const ov=allDecayOverview();$('#kinOverviewHead').innerHTML='<tr><th>Reihe</th><th>Bedingungen</th><th>höchstes R² bei</th><th class="num">R²</th><th class="num">kapp aus ln(A−A∞)</th></tr>';$('#kinOverviewBody').innerHTML=ov.map(o=>{const b=o.best?o.fits[o.best].fit:null;return `<tr><td>${esc(o.series)}</td><td>${esc(kinConditionsText(o.series))}</td><td>${o.best?modelLabel(o.best):'—'}</td><td class="num">${b?fmtFixed(b.r2,5):'—'}</td><td class="num">${o.k!=null?`${fmtSig(o.k,3)} s⁻¹`:'—'}</td></tr>`}).join('');
-  }else{const ov=allClockOverview(),sel=ov.find(o=>o.series===kinState.selectedSeries);$('#kinResultHero').innerHTML=`<span class="badge standard">Schwellenmethode</span><p class="muted">Interpolierte Schwellenzeit</p><div class="big">${sel?.detected!=null?`${fmtSig(sel.detected,4)} s`:'nicht erreicht'}</div><div class="secondary-value">${sel?.rate!=null?`1/t = ${fmtSig(sel.rate,3)} s⁻¹`:''}</div>`;$('#kinSelectedResult').innerHTML=`<div class="result-list"><div class="result-row"><span>Messreihe</span><strong>${esc(kinState.selectedSeries)}</strong></div><div class="result-row"><span>Bedingungen</span><strong>${esc(kinConditionsText(kinState.selectedSeries))}</strong></div><div class="result-row"><span>Schwellenwert A</span><strong>${fmtFixed(kinState.analysis.threshold,3)}</strong></div><div class="result-row"><span>berechnete Schwellenzeit</span><strong>${sel?.detected!=null?`${fmtSig(sel.detected,4)} s`:'—'}</strong></div><div class="result-row"><span>im Export gespeicherte Zeit</span><strong>${sel?.given!=null?`${fmtSig(sel.given,4)} s`:'—'}</strong></div></div>`;$('#kinOverviewHead').innerHTML=`<tr><th>Reihe</th><th>Bedingungen</th><th class="num">tS berechnet (s)</th><th class="num">tS Export (s)</th><th class="num">1/tS (s⁻¹)</th></tr>`;$('#kinOverviewBody').innerHTML=ov.map(o=>`<tr><td>${esc(o.series)}</td><td>${esc(kinConditionsText(o.series))}</td><td class="num">${fmt(o.detected,4)}</td><td class="num">${fmt(o.given,4)}</td><td class="num">${fmtSig(o.rate,3)}</td></tr>`).join('')}
+  }else{const ov=allClockOverview(),sel=ov.find(o=>o.series===kinState.selectedSeries);$('#kinResultHero').innerHTML=`<span class="badge standard">Schwellenmethode</span><p class="muted">Interpolierte Schwellenzeit</p><div class="big">${sel?.detected!=null?`${fmtSig(sel.detected,4)} s`:'nicht erreicht'}</div><div class="secondary-value">${sel?.rate!=null?`1/t = ${fmtSig(sel.rate,3)} s⁻¹`:''}</div>`;$('#kinSelectedResult').innerHTML=`<div class="result-list"><div class="result-row"><span>Messreihe</span><strong>${esc(kinState.selectedSeries)}</strong></div><div class="result-row condition-row"><span>Bedingungen</span><strong>${esc(kinConditionsText(kinState.selectedSeries))}</strong></div><div class="result-row"><span>Schwellenwert A</span><strong>${fmtFixed(kinState.analysis.threshold,3)}</strong></div><div class="result-row"><span>berechnete Schwellenzeit</span><strong>${sel?.detected!=null?`${fmtSig(sel.detected,4)} s`:'—'}</strong></div><div class="result-row"><span>im Export gespeicherte Zeit</span><strong>${sel?.given!=null?`${fmtSig(sel.given,4)} s`:'—'}</strong></div></div>`;$('#kinOverviewHead').innerHTML=`<tr><th>Reihe</th><th>Bedingungen</th><th class="num">tS berechnet (s)</th><th class="num">tS Export (s)</th><th class="num">1/tS (s⁻¹)</th></tr>`;$('#kinOverviewBody').innerHTML=ov.map(o=>`<tr><td>${esc(o.series)}</td><td>${esc(kinConditionsText(o.series))}</td><td class="num">${fmt(o.detected,4)}</td><td class="num">${fmt(o.given,4)}</td><td class="num">${fmtSig(o.rate,3)}</td></tr>`).join('')}
 }
 function drawKineticChart(){
   const canvas=$('#kinChart');if(!canvas||!kinState.analysis)return;const box=canvas.getBoundingClientRect();if(box.width<10)return;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(box.width*dpr);canvas.height=Math.round(box.height*dpr);const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const W=box.width,H=box.height,pad={l:78,r:30,t:34,b:66};ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
@@ -900,6 +1151,107 @@ function kineticMdText(){calculateKineticAnalysis();const decisions=kinState.wor
   body+=`\n## Dokumentierte Datenentscheidungen\n\n${decisions.length?decisions.map(r=>`- Reihe ${r.series}, t = ${fmt(r.time,4)} s: ${r.include?'korrigiert':'nicht verwendet'} – ${r.reason||'keine Begründung'}`).join('\n'):'Keine Messpunkte korrigiert oder ausgeschlossen.'}\n\n> Die fachliche Interpretation und Fehlerdiskussion wurden nicht automatisch erstellt.\n`;return body}
 function exportKineticPng(){drawKineticChart();const c=$('#kinChart');c.toBlob(blob=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=kinBaseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png')}
 function exportKineticJson(){calculateKineticAnalysis();const payload={schema:'MESSWERT_LAB_KINETIC_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:kinState.sourceName,metadata:kinState.metadata,originalText:kinState.sourceText,subtype:kinState.subtype},configuration:{selectedSeries:kinState.selectedSeries,kind:kinState.kind},rawRows:kinState.rawRows,workingRows:kinState.workingRows,analysis:kinState.analysis};download(JSON.stringify(payload,null,2),kinBaseName()+'.json','application/json;charset=utf-8')}
+
+
+const BTB_COLORS=['#156b86','#d66f28','#7a4fa3','#23865f','#b54b62','#7a6a23','#4d6ea8'];
+function pHFromHeader(header){const m=String(header||'').match(/pH_([0-9_]+)/i);return m?parseNumber(m[1].replace(/_/g,',')):null}
+function btbSpectrumLabel(s){return `pH ${fmt(s.pH,2)}`}
+function spectrumMax(s){if(!s?.points?.length)return null;return s.points.reduce((best,p)=>p.absorbance>best.absorbance?p:best,s.points[0])}
+function btbValueAt(s,lambda){if(!s?.points?.length)return null;let best=s.points[0];for(const p of s.points)if(Math.abs(p.wavelength-lambda)<Math.abs(best.wavelength-lambda))best=p;return best.absorbance}
+function importBtb(parsed,name,text){
+  const h=parsed.main.headers;if(!h.includes('Wellenlaenge_nm'))throw new Error('Die Wellenlängenspalte wurde nicht gefunden.');
+  const metaTable=parsed.sections.Spektren_Metadaten||{rows:[]};
+  const spectrumHeaders=h.filter(x=>x!=='Wellenlaenge_nm');
+  const spectra=spectrumHeaders.map((header,i)=>{
+    const ph=pHFromHeader(header);const meta=metaTable.rows.find(r=>{const v=parseNumber(r.pH);return v!=null&&ph!=null&&Math.abs(v-ph)<1e-8})||metaTable.rows[i]||{};
+    const points=parsed.main.rows.map(r=>({wavelength:parseNumber(r.Wellenlaenge_nm),absorbance:parseNumber(r[header])})).filter(p=>p.wavelength!=null&&p.absorbance!=null);
+    return {id:`s${i+1}`,header,pH:parseNumber(meta.pH)??ph,meta:{...meta},points,include:true,reason:'',color:BTB_COLORS[i%BTB_COLORS.length]};
+  }).filter(s=>s.pH!=null&&s.points.length);
+  if(spectra.length<3)throw new Error('Für die Gleichgewichtsauswertung werden mindestens drei Spektren mit pH-Werten benötigt.');
+  spectra.sort((a,b)=>a.pH-b.pH);
+  btbState.sourceName=name;btbState.sourceText=text;btbState.metadata={...parsed.metadata};btbState.spectra=spectra;btbState.acidRef=spectra[0].id;btbState.baseRef=spectra[spectra.length-1].id;btbState.analysisWavelength=btbAutoWavelength(spectra[0],spectra[spectra.length-1]);btbState.analysis=null;
+  openBtbWorkspace();renderBtbAll();
+}
+function openBtbWorkspace(){$('#start').style.display='none';$('#btbWorkspace').style.display='block';showBtbStep('import');window.scrollTo({top:0})}
+function showBtbStep(step){
+  $$('.bpanel').forEach(p=>p.classList.toggle('active',p.id===`btb-panel-${step}`));const order=['import','data','analysis','result','export'],idx=order.indexOf(step);
+  $$('.bstep').forEach((b,i)=>{b.classList.toggle('active',i===idx);b.classList.toggle('done',i<idx)});
+  if(['analysis','result','export'].includes(step)){calculateBtb();renderBtbAnalysis();renderBtbResult()}
+  if(step==='analysis')setTimeout(drawBtbChart,30);window.scrollTo({top:0,behavior:'smooth'});
+}
+function btbIncluded(){return btbState.spectra.filter(s=>s.include)}
+function btbAutoWavelength(acid,base){
+  if(!acid||!base)return null;let best=null;
+  acid.points.forEach(p=>{const d=Math.abs((btbValueAt(base,p.wavelength)??0)-p.absorbance);if(!best||d>best.diff)best={lambda:p.wavelength,diff:d}});return best?.lambda??acid.points[0]?.wavelength??null;
+}
+function btbIsosbestic(){
+  const spectra=btbIncluded();if(spectra.length<2)return null;const wavelengths=spectra[0].points.map(p=>p.wavelength);let best=null;
+  wavelengths.forEach(lambda=>{const vals=spectra.map(s=>btbValueAt(s,lambda)).filter(Number.isFinite);if(vals.length!==spectra.length)return;const spread=Math.max(...vals)-Math.min(...vals),avg=mean(vals);if(avg<0.02)return;if(!best||spread<best.spread)best={lambda,spread,avg}});return best;
+}
+function btbRefs(){return {acid:btbState.spectra.find(s=>s.id===btbState.acidRef),base:btbState.spectra.find(s=>s.id===btbState.baseRef)}}
+function calculateBtb(){
+  const {acid,base}=btbRefs();const lambda=parseNumber(btbState.analysisWavelength);if(!acid||!base||lambda==null){btbState.analysis=null;return null}
+  const aAcid=btbValueAt(acid,lambda),aBase=btbValueAt(base,lambda),den=aBase-aAcid;
+  const rows=btbState.spectra.map(s=>{const A=btbValueAt(s,lambda);let alpha=den===0?null:(A-aAcid)/den;const alphaRaw=alpha;if(alpha!=null)alpha=Math.max(0,Math.min(1,alpha));const pka=(alphaRaw>0.02&&alphaRaw<0.98)?s.pH-Math.log10(alphaRaw/(1-alphaRaw)):null;return {spectrum:s,pH:s.pH,A,alpha,alphaRaw,hIn:alpha==null?null:1-alpha,pka,metadataIn:parseNumber(s.meta.In_minus_Prozent),metadataH:parseNumber(s.meta.HIn_Prozent),usedForMean:s.include&&pka!=null&&s.id!==acid.id&&s.id!==base.id}});
+  const pkaVals=rows.filter(r=>r.usedForMean).map(r=>r.pka),pkaMean=mean(pkaVals),pkaSd=sampleSd(pkaVals),iso=btbIsosbestic();
+  btbState.analysis={acid,base,lambda,aAcid,aBase,deltaA:den,rows,pkaVals,pkaMean,pkaSd,isosbestic:iso};return btbState.analysis;
+}
+function renderBtbAll(){renderBtbImport();renderBtbData();initializeBtbControls();calculateBtb();renderBtbAnalysis();renderBtbResult()}
+function renderBtbImport(){
+  const all=btbState.spectra,wl=all[0]?.points.map(p=>p.wavelength)||[],conc=[...new Set(all.map(s=>parseNumber(s.meta.Konzentration_mol_L)).filter(Number.isFinite))],path=[...new Set(all.map(s=>parseNumber(s.meta.Schichtdicke_cm)).filter(Number.isFinite))];
+  $('#btbImportNotice').innerHTML='<div class="notice ok"><strong>Photometer-Gleichgewichtsserie erkannt.</strong> Spektren und Spektren-Metadaten wurden automatisch zusammengeführt.</div>';
+  const boxes=[['Spektren',all.length],['pH-Bereich',`${fmt(Math.min(...all.map(s=>s.pH)),2)}–${fmt(Math.max(...all.map(s=>s.pH)),2)}`],['Wellenlängen',wl.length?`${fmt(Math.min(...wl),0)}–${fmt(Math.max(...wl),0)} nm`:'—'],['Messpunkte',all.reduce((n,s)=>n+s.points.length,0)],['Konzentration',conc.length===1?`${fmtSig(conc[0],3)} mol/L`:'mehrere Werte'],['Schichtdicke',path.length===1?`${fmt(path[0],3)} cm`:'mehrere Werte']];
+  $('#btbImportSummary').innerHTML=boxes.map(([l,v])=>`<div class="summary-box"><span class="label">${esc(l)}</span><span class="value">${esc(v)}</span></div>`).join('');
+  $('#btbSpectrumSummary').innerHTML=all.map(s=>{const mx=spectrumMax(s);return `<article class="spectrum-card"><h3><span class="spectrum-swatch" style="background:${s.color}"></span>${btbSpectrumLabel(s)}</h3><p>${s.points.length} Messpunkte</p><p>λmax: <strong>${mx?`${fmt(mx.wavelength,0)} nm`:'—'}</strong></p><p>In⁻ laut Export: <strong>${fmt(parseNumber(s.meta.In_minus_Prozent),2)} %</strong></p></article>`}).join('');
+  const meta=Object.entries(btbState.metadata).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('');$('#btbMetadataDetails').innerHTML=`<p><strong>Datei:</strong> ${esc(btbState.sourceName)}</p><p><strong>Haupttabelle:</strong> Wellenlänge und ${all.length} Absorbanzspalten</p><p><strong>Zusatztabelle:</strong> Spektren_Metadaten</p><div class="table-wrap"><table style="min-width:520px"><tbody>${meta||'<tr><td>Keine Metadaten</td></tr>'}</tbody></table></div>`;
+}
+function renderBtbData(){
+  const body=$('#btbDataBody');body.innerHTML=btbState.spectra.map(s=>{const mx=spectrumMax(s),ref=s.id===btbState.acidRef||s.id===btbState.baseRef;return `<tr data-id="${s.id}" class="${ref?'btb-reference ':''}${s.include?'':'btb-excluded'}"><td class="center"><input class="check btb-include" type="checkbox" ${s.include?'checked':''}></td><td class="num">${fmt(s.pH,2)}${ref?' <span class="badge standard">Referenz</span>':''}</td><td class="num">${fmt(parseNumber(s.meta.HIn_Prozent),2)}</td><td class="num">${fmt(parseNumber(s.meta.In_minus_Prozent),2)}</td><td class="num">${fmtSig(parseNumber(s.meta.Konzentration_mol_L),3)}</td><td class="num">${fmt(parseNumber(s.meta.Schichtdicke_cm),3)}</td><td class="num">${s.points.length}</td><td class="num">${mx?fmt(mx.wavelength,0):'—'}</td><td><input class="cell-input btb-reason" type="text" value="${esc(s.reason)}" placeholder="${s.include?'optional':'Begründung erforderlich'}"></td></tr>`}).join('');
+  body.querySelectorAll('tr').forEach(tr=>{const s=btbState.spectra.find(x=>x.id===tr.dataset.id);tr.querySelector('.btb-include').addEventListener('change',e=>{s.include=e.target.checked;renderBtbData();calculateBtb();renderBtbAnalysis();renderBtbResult()});tr.querySelector('.btb-reason').addEventListener('input',e=>{s.reason=e.target.value;validateBtbData(false)})});validateBtbData(false);
+}
+function validateBtbData(showAlert=false){const inc=btbIncluded(),missing=btbState.spectra.filter(s=>!s.include&&!s.reason.trim()),{acid,base}=btbRefs(),problems=[];if(inc.length<3)problems.push('Mindestens drei Spektren müssen verwendet werden.');if(!acid||!base||acid.id===base.id)problems.push('Saure und basische Referenz müssen verschieden sein.');if(acid&&!acid.include)problems.push('Die saure Referenz ist derzeit ausgeschlossen.');if(base&&!base.include)problems.push('Die basische Referenz ist derzeit ausgeschlossen.');if(missing.length)problems.push(`${missing.length} Ausschluss/Ausschlüsse sind noch nicht begründet.`);$('#btbDataValidity').innerHTML=problems.length?`<div class="notice danger"><strong>Bitte noch prüfen:</strong> ${problems.map(esc).join(' ')}</div>`:'<div class="notice ok">Die Spektren sind für die Gleichgewichtsauswertung verwendbar.</div>';$('#btbToAnalysis').disabled=problems.length>0;if(showAlert&&problems.length)alert(problems.join('\n'));return problems.length===0}
+function initializeBtbControls(){
+  const opts=btbState.spectra.map(s=>`<option value="${s.id}">${btbSpectrumLabel(s)}</option>`).join('');$('#btbAcidRef').innerHTML=opts;$('#btbBaseRef').innerHTML=opts;$('#btbAcidRef').value=btbState.acidRef;$('#btbBaseRef').value=btbState.baseRef;
+  const wl=btbState.spectra[0]?.points.map(p=>p.wavelength)||[];$('#btbWavelength').innerHTML=wl.map(v=>`<option value="${v}">${fmt(v,0)} nm</option>`).join('');if(btbState.analysisWavelength==null){const {acid,base}=btbRefs();btbState.analysisWavelength=btbAutoWavelength(acid,base)}$('#btbWavelength').value=String(btbState.analysisWavelength);
+}
+function updateBtbReferences(){btbState.acidRef=$('#btbAcidRef').value;btbState.baseRef=$('#btbBaseRef').value;const {acid,base}=btbRefs();btbState.analysisWavelength=btbAutoWavelength(acid,base);$('#btbWavelength').value=String(btbState.analysisWavelength);calculateBtb();renderBtbData();renderBtbAnalysis();renderBtbResult()}
+function renderBtbAnalysis(){
+  const a=calculateBtb();if(!a)return;const auto=btbAutoWavelength(a.acid,a.base);$('#btbWavelengthHint').textContent=`Vorschlag: ${fmt(auto,0)} nm, dort ist der Absorbanzunterschied der Referenzen am größten.`;$('#btbTableLambda').textContent=`${fmt(a.lambda,0)} nm`;
+  const unstable=a.rows.filter(r=>r.spectrum.include&&r.pka==null&&r.spectrum.id!==a.acid.id&&r.spectrum.id!==a.base.id).length;$('#btbAnalysisNotice').innerHTML=Math.abs(a.deltaA)<0.05?'<div class="notice danger">Die Referenzspektren unterscheiden sich bei dieser Wellenlänge nur wenig. Wähle eine Wellenlänge mit größerem Absorbanzunterschied.</div>':`<div class="notice ok">Die Referenzen unterscheiden sich bei ${fmt(a.lambda,0)} nm um ΔA = ${fmtFixed(Math.abs(a.deltaA),4)}.${unstable?` ${unstable} Zwischenwert liegt zu nahe an 0 % oder 100 % und wird nicht in den pKₐ-Mittelwert aufgenommen.`:''}</div>`;
+  const iso=a.isosbestic;$('#btbMetrics').innerHTML=[['A saure Referenz',fmtFixed(a.aAcid,5)],['A basische Referenz',fmtFixed(a.aBase,5)],['Absorbanzunterschied |ΔA|',fmtFixed(Math.abs(a.deltaA),5)],['Isosbestischer Bereich',iso?`ca. ${fmt(iso.lambda,0)} nm`:'—'],['pKₐ-Mittelwert',fmtFixed(a.pkaMean,3)],['Std.-Abweichung s',a.pkaSd==null?'—':fmtFixed(a.pkaSd,3)]].map(([l,v])=>`<div class="metric"><span>${l}</span><strong>${v}</strong></div>`).join('');
+  $('#btbCompositionBody').innerHTML=a.rows.map(r=>{const ref=r.spectrum.id===a.acid.id||r.spectrum.id===a.base.id;return `<tr class="${ref?'btb-reference ':''}${r.spectrum.include?'':'btb-excluded'}"><td class="num">${fmt(r.pH,2)}</td><td class="num">${fmtFixed(r.A,5)}</td><td class="num">${fmt(r.hIn*100,2)}</td><td class="num">${fmt(r.alpha*100,2)}</td><td class="num">${fmt(r.metadataIn,2)}</td><td class="num">${r.pka==null?'—':fmtFixed(r.pka,3)}</td><td>${ref?'Referenz':r.usedForMean?'für Mittelwert verwendet':r.spectrum.include?'Randbereich – nicht gemittelt':'ausgeschlossen'}</td></tr>`}).join('');
+  const mid=a.rows.find(r=>r.usedForMean);$('#btbFormula').innerHTML=mid?`<strong>Beispiel ${btbSpectrumLabel(mid.spectrum)}:</strong> α(In⁻) = (${fmtFixed(mid.A,5)} − ${fmtFixed(a.aAcid,5)}) / (${fmtFixed(a.aBase,5)} − ${fmtFixed(a.aAcid,5)}) = ${fmtFixed(mid.alpha,4)}<br>pK<sub>a</sub> = ${fmt(mid.pH,2)} − log₁₀(${fmtFixed(mid.alpha,4)} / ${fmtFixed(1-mid.alpha,4)}) = ${fmtFixed(mid.pka,3)}`:'Kein geeigneter Zwischenwert für den Rechenweg vorhanden.';
+  const view=$('#btbChartView').value;$('#btbChartNote').textContent=view==='spectra'?`Gestrichelt: Auswertungswellenlänge ${fmt(a.lambda,0)} nm. Gepunktet: näherungsweise isosbestischer Bereich${iso?` bei ${fmt(iso.lambda,0)} nm`:''}.`:view==='composition'?'Die Anteile werden aus den Referenzabsorbanzwerten berechnet; die Linien dienen nur der Orientierung.':'Nur Werte zwischen 2 % und 98 % In⁻ werden für die pKₐ-Mittelung verwendet.';requestAnimationFrame(drawBtbChart)
+}
+function renderBtbResult(){
+  const a=calculateBtb();if(!a)return;const iso=a.isosbestic,range=a.pkaMean==null?null:[a.pkaMean-1,a.pkaMean+1];$('#btbResultHero').innerHTML=`<span class="badge standard">Henderson-Hasselbalch</span><p class="muted">pK<sub>a</sub> aus ${a.pkaVals.length} Zwischenwert${a.pkaVals.length===1?'':'en'}</p><div class="big">${fmtFixed(a.pkaMean,3)}</div><div class="secondary-value">s = ${a.pkaSd==null?'—':fmtFixed(a.pkaSd,3)}</div><p class="rounding-note">Umschlagsbereich näherungsweise pH ${range?`${fmt(range[0],2)}–${fmt(range[1],2)}`:'—'}.</p>`;
+  $('#btbSelectedResult').innerHTML=`<div class="result-list"><div class="result-row"><span>Saure Referenz</span><strong>${btbSpectrumLabel(a.acid)}</strong></div><div class="result-row"><span>Basische Referenz</span><strong>${btbSpectrumLabel(a.base)}</strong></div><div class="result-row"><span>Auswertungswellenlänge</span><strong>${fmt(a.lambda,0)} nm</strong></div><div class="result-row"><span>λmax saure Form</span><strong>${fmt(spectrumMax(a.acid)?.wavelength,0)} nm</strong></div><div class="result-row"><span>λmax basische Form</span><strong>${fmt(spectrumMax(a.base)?.wavelength,0)} nm</strong></div><div class="result-row"><span>Isosbestischer Bereich</span><strong>${iso?`ca. ${fmt(iso.lambda,0)} nm`:'—'}</strong></div><div class="result-row"><span>Verwendete pKₐ-Werte</span><strong>${a.pkaVals.length}</strong></div></div>`;
+  $('#btbResultBody').innerHTML=a.rows.map(r=>{const mx=spectrumMax(r.spectrum),ref=r.spectrum.id===a.acid.id||r.spectrum.id===a.base.id;return `<tr class="${ref?'btb-reference ':''}${r.spectrum.include?'':'btb-excluded'}"><td class="num">${fmt(r.pH,2)}</td><td class="num">${fmt(mx?.wavelength,0)}</td><td class="num">${fmtFixed(r.A,5)}</td><td class="num">${fmt(r.alpha*100,2)}</td><td class="num">${fmt(r.metadataIn,2)}</td><td class="num">${r.pka==null?'—':fmtFixed(r.pka,3)}</td><td>${ref?'Referenz':r.usedForMean?'gemittelt':r.spectrum.include?'Randbereich':'ausgeschlossen'}</td></tr>`}).join('');
+}
+function drawAxes(ctx,W,H,pad,xmin,xmax,ymin,ymax,xLabel,yLabel,xFmt=v=>fmt(v,3),yFmt=v=>fmt(v,3)){
+  const X=x=>pad.l+(x-xmin)/(xmax-xmin)*(W-pad.l-pad.r),Y=y=>H-pad.b-(y-ymin)/(ymax-ymin)*(H-pad.t-pad.b);ctx.font='12px system-ui';ctx.lineWidth=1;ctx.strokeStyle='#dce5ea';ctx.fillStyle='#5d6b75';
+  for(let i=0;i<=5;i++){const x=xmin+(xmax-xmin)*i/5,px=X(x);ctx.beginPath();ctx.moveTo(px,pad.t);ctx.lineTo(px,H-pad.b);ctx.stroke();ctx.textAlign='center';ctx.fillText(xFmt(x),px,H-pad.b+22)}
+  for(let i=0;i<=5;i++){const y=ymin+(ymax-ymin)*i/5,py=Y(y);ctx.beginPath();ctx.moveTo(pad.l,py);ctx.lineTo(W-pad.r,py);ctx.stroke();ctx.textAlign='right';ctx.fillText(yFmt(y),pad.l-10,py+4)}
+  ctx.strokeStyle='#263a45';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,H-pad.b);ctx.lineTo(W-pad.r,H-pad.b);ctx.stroke();ctx.fillStyle='#263a45';ctx.textAlign='center';ctx.fillText(xLabel,(pad.l+W-pad.r)/2,H-18);ctx.save();ctx.translate(19,(pad.t+H-pad.b)/2);ctx.rotate(-Math.PI/2);ctx.fillText(yLabel,0,0);ctx.restore();return {X,Y}
+}
+function drawBtbChart(){
+  const canvas=$('#btbChart'),a=btbState.analysis||calculateBtb();if(!canvas||!a)return;const box=canvas.getBoundingClientRect();if(box.width<10)return;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(box.width*dpr);canvas.height=Math.round(box.height*dpr);const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const W=box.width,H=box.height,pad={l:74,r:28,t:42,b:66};ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);const view=$('#btbChartView').value;
+  if(view==='spectra'){
+    const spectra=btbIncluded(),xs=spectra[0].points.map(p=>p.wavelength),ymax=Math.max(...spectra.flatMap(s=>s.points.map(p=>p.absorbance)))*1.08,{X,Y}=drawAxes(ctx,W,H,pad,Math.min(...xs),Math.max(...xs),0,ymax,'Wellenlänge (nm)','Absorbanz',v=>fmt(v,0),v=>fmt(v,2));
+    spectra.forEach((s,idx)=>{ctx.strokeStyle=s.color;ctx.lineWidth=2;ctx.beginPath();s.points.forEach((p,i)=>{const px=X(p.wavelength),py=Y(p.absorbance);i?ctx.lineTo(px,py):ctx.moveTo(px,py)});ctx.stroke();const lx=pad.l+8+(idx%3)*145,ly=18+Math.floor(idx/3)*18;ctx.fillStyle=s.color;ctx.fillRect(lx,ly-7,18,3);ctx.fillStyle='#334b58';ctx.textAlign='left';ctx.fillText(btbSpectrumLabel(s),lx+24,ly-3)});
+    ctx.save();ctx.setLineDash([7,5]);ctx.strokeStyle='#8b4b00';ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(X(a.lambda),pad.t);ctx.lineTo(X(a.lambda),H-pad.b);ctx.stroke();ctx.restore();if(a.isosbestic){ctx.save();ctx.setLineDash([2,4]);ctx.strokeStyle='#17653d';ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(X(a.isosbestic.lambda),pad.t);ctx.lineTo(X(a.isosbestic.lambda),H-pad.b);ctx.stroke();ctx.restore()}
+  }else if(view==='composition'){
+    const rows=a.rows.filter(r=>r.spectrum.include),xmin=Math.min(...rows.map(r=>r.pH))-.15,xmax=Math.max(...rows.map(r=>r.pH))+.15,{X,Y}=drawAxes(ctx,W,H,pad,xmin,xmax,0,100,'pH','Anteil (%)',v=>fmt(v,1),v=>fmt(v,0));
+    [['hIn','#d66f28','HIn'],['alpha','#156b86','In⁻']].forEach(([key,color,label],j)=>{ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.4;ctx.beginPath();rows.forEach((r,i)=>{const y=(key==='hIn'?r.hIn:r.alpha)*100,px=X(r.pH),py=Y(y);i?ctx.lineTo(px,py):ctx.moveTo(px,py)});ctx.stroke();rows.forEach(r=>{const y=(key==='hIn'?r.hIn:r.alpha)*100;ctx.beginPath();ctx.arc(X(r.pH),Y(y),4,0,Math.PI*2);ctx.fill()});ctx.fillRect(pad.l+12+j*115,18,18,3);ctx.fillStyle='#334b58';ctx.textAlign='left';ctx.fillText(label,pad.l+36+j*115,19)});
+  }else{
+    const rows=a.rows.filter(r=>r.usedForMean),xmin=Math.min(...a.rows.map(r=>r.pH))-.15,xmax=Math.max(...a.rows.map(r=>r.pH))+.15,vals=rows.map(r=>r.pka),meanP=a.pkaMean??7,ymin=vals.length?Math.min(...vals,meanP)-.08:meanP-.2,ymax=vals.length?Math.max(...vals,meanP)+.08:meanP+.2,{X,Y}=drawAxes(ctx,W,H,pad,xmin,xmax,ymin,ymax,'pH der Lösung','berechneter pKₐ',v=>fmt(v,1),v=>fmt(v,2));ctx.fillStyle='#156b86';rows.forEach(r=>{ctx.beginPath();ctx.arc(X(r.pH),Y(r.pka),5,0,Math.PI*2);ctx.fill()});if(a.pkaMean!=null){ctx.save();ctx.setLineDash([7,5]);ctx.strokeStyle='#d66f28';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X(xmin),Y(a.pkaMean));ctx.lineTo(X(xmax),Y(a.pkaMean));ctx.stroke();ctx.restore();ctx.fillStyle='#8b4b00';ctx.textAlign='left';ctx.fillText(`Mittelwert ${fmtFixed(a.pkaMean,3)}`,pad.l+10,pad.t+16)}
+  }
+}
+function btbBaseName(){return `MESSWERTLAB_BTB_GLEICHGEWICHT_${timestamp()}`}
+function btbCsvText(){const a=calculateBtb();const head=['pH','Wellenlaenge_Auswertung_nm','Absorbanz','HIn_berechnet_Prozent','In_minus_berechnet_Prozent','In_minus_Export_Prozent','pKa','Fuer_pKa_Mittelwert_verwendet','Spektrum_verwendet','Begruendung'];const rows=a.rows.map(r=>[r.pH,a.lambda,r.A,r.hIn*100,r.alpha*100,r.metadataIn,r.pka??'',r.usedForMean?'ja':'nein',r.spectrum.include?'ja':'nein',r.spectrum.reason].map(csvQuote).join(';'));return '\uFEFF'+[head.join(';'),...rows,'','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${btbState.sourceName}`,`Saure_Referenz_pH;${a.acid.pH}`,`Basische_Referenz_pH;${a.base.pH}`,`Auswertungswellenlaenge_nm;${a.lambda}`,`pKa_Mittelwert;${a.pkaMean??''}`,`pKa_Standardabweichung;${a.pkaSd??''}`].join('\n')}
+function btbMdText(){const a=calculateBtb(),iso=a.isosbestic,decisions=btbState.spectra.filter(s=>!s.include);return `# DatenLab-Auswertung: Bromthymolblau-Gleichgewicht\n\n- **Quelle:** ${btbState.sourceName}\n- **Saure Referenz:** ${btbSpectrumLabel(a.acid)}\n- **Basische Referenz:** ${btbSpectrumLabel(a.base)}\n- **Auswertungswellenlänge:** ${fmt(a.lambda,0)} nm\n- **Isosbestischer Bereich:** ${iso?`ca. ${fmt(iso.lambda,0)} nm`:'nicht bestimmbar'}\n- **pKₐ-Mittelwert:** ${fmtFixed(a.pkaMean,3)}\n- **Standardabweichung:** ${a.pkaSd==null?'—':fmtFixed(a.pkaSd,3)}\n\n## Zusammensetzung und pKₐ\n\n| pH | A | HIn berechnet (%) | In⁻ berechnet (%) | In⁻ Export (%) | pKₐ | Verwendung |\n|---:|---:|---:|---:|---:|---:|---|\n${a.rows.map(r=>`| ${fmt(r.pH,2)} | ${fmtFixed(r.A,5)} | ${fmt(r.hIn*100,2)} | ${fmt(r.alpha*100,2)} | ${fmt(r.metadataIn,2)} | ${r.pka==null?'—':fmtFixed(r.pka,3)} | ${r.usedForMean?'gemittelt':r.spectrum.id===a.acid.id||r.spectrum.id===a.base.id?'Referenz':r.spectrum.include?'Randbereich':'ausgeschlossen'} |`).join('\n')}\n\n## Dokumentierte Ausschlüsse\n\n${decisions.length?decisions.map(s=>`- ${btbSpectrumLabel(s)}: ${s.reason||'keine Begründung'}`).join('\n'):'Keine Spektren ausgeschlossen.'}\n\n> Die fachliche Interpretation des Spektrenverlaufs wurde nicht automatisch erstellt.\n`}
+function exportBtbPng(){drawBtbChart();const c=$('#btbChart');c.toBlob(blob=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=btbBaseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png')}
+function exportBtbJson(){const payload={schema:'MESSWERT_LAB_BTB_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:btbState.sourceName,metadata:btbState.metadata,originalText:btbState.sourceText},configuration:{acidRef:btbState.acidRef,baseRef:btbState.baseRef,analysisWavelength:btbState.analysisWavelength,chartView:$('#btbChartView').value},spectra:btbState.spectra,analysis:calculateBtb()};download(JSON.stringify(payload,null,2),btbBaseName()+'.json','application/json;charset=utf-8')}
 
 function manualRow(type='standard',probe='',c='',a='',hint=''){
   const tr=document.createElement('tr');tr.innerHTML=`<td><select class="mtype"><option value="blank" ${type==='blank'?'selected':''}>Blindprobe</option><option value="standard" ${type==='standard'?'selected':''}>Standard</option><option value="unknown" ${type==='unknown'?'selected':''}>Unbekannt</option></select></td><td><input class="cell-input mprobe" value="${esc(probe)}"></td><td><input class="cell-input mc" value="${esc(c)}"></td><td><input class="cell-input ma" value="${esc(a)}"></td><td><input class="cell-input mhint" value="${esc(hint)}"></td><td><button class="btn btn-danger mdel">×</button></td>`;tr.querySelector('.mdel').onclick=()=>tr.remove();$('#manualBody').appendChild(tr);
@@ -935,6 +1287,7 @@ $('#fileInput').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader
 const dz=$('#dropzone');['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('drag')}));dz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(!f)return;const r=new FileReader();r.onload=()=>loadText(r.result,f.name);r.readAsText(f,'utf-8')});
 $('#loadSample').onclick=()=>loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
 $('#loadKineticSample').onclick=()=>loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');
+$('#loadBtbSample').onclick=()=>loadText(BTB_SAMPLE_CSV,'PHOT_GLEICHGEWICHT_BTB_PH_SERIE_BEISPIEL.csv');
 $('#showManual').onclick=()=>{$('#manual').style.display='block';$('#dropzone').style.display='none';initManual();$('#manual').scrollIntoView({behavior:'smooth'})};$('#cancelManual').onclick=()=>$('#manual').style.display='none';$('#manualConcentrationUnit').addEventListener('change',updateManualUnitUi);$('#addManualRow').onclick=()=>manualRow();$('#useManual').onclick=useManual;
 $('#newDataset').onclick=resetApp;$('#resetWorking').onclick=()=>{state.workingRows=structuredClone(state.rawRows);renderAll()};
 $$('[data-next]').forEach(b=>b.onclick=()=>{if(b.dataset.next==='regression'&&!validateData(true))return;showStep(b.dataset.next)});$$('[data-prev]').forEach(b=>b.onclick=()=>showStep(b.dataset.prev));$$('.step').forEach(b=>b.onclick=()=>{if(['regression','unknown','export'].includes(b.dataset.step)&&!validateData(true))return;showStep(b.dataset.step)});
@@ -947,8 +1300,13 @@ $$('[data-knext]').forEach(b=>b.onclick=()=>{if(b.dataset.knext==='analysis'&&!v
 $('#kinSeriesSelectData').addEventListener('change',e=>selectKinSeries(e.target.value));$('#kinSeriesSelectAnalysis').addEventListener('change',e=>selectKinSeries(e.target.value));
 $('#kinBaselineMode').addEventListener('change',()=>{updateKineticBaselineUi();renderKineticAnalysis()});$('#kinBaselineValue').addEventListener('change',()=>{if($('#kinBaselineMode').value==='manual'&&parseNumber($('#kinBaselineValue').value)==null){alert('Bitte für A∞ einen gültigen Zahlenwert eingeben.');$('#kinBaselineValue').value='0';}renderKineticAnalysis()});$('#kinFitStart').addEventListener('change',renderKineticAnalysis);$('#kinFitEnd').addEventListener('change',renderKineticAnalysis);$('#kinChartView').addEventListener('change',renderKineticAnalysis);$('#kinThreshold').addEventListener('change',()=>{if(parseNumber($('#kinThreshold').value)==null){alert('Bitte einen gültigen Schwellenwert eingeben.');$('#kinThreshold').value=String(parseNumber(kinState.metadata.Schwellenwert_A)??0.2).replace('.',',');}renderKineticAnalysis();renderKineticResult()});$('#kinRefreshAnalysis').onclick=()=>{renderKineticAnalysis();renderKineticResult()};
 $('#kinExportPng').onclick=exportKineticPng;$('#kinExportMd').onclick=()=>download(kineticMdText(),kinBaseName()+'.md','text/markdown;charset=utf-8');$('#kinExportCsv').onclick=()=>download(kineticCsvText(),kinBaseName()+'.csv','text/csv;charset=utf-8');$('#kinExportJson').onclick=exportKineticJson;
-window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart();if($('#kin-panel-analysis').classList.contains('active'))drawKineticChart()});
-if(new URLSearchParams(location.search).get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
+
+$('#btbNewDataset').onclick=resetApp;$('#btbResetWorking').onclick=()=>{btbState.spectra.forEach(s=>{s.include=true;s.reason=''});renderBtbAll()};
+$$('[data-bnext]').forEach(b=>b.onclick=()=>{if(b.dataset.bnext==='analysis'&&!validateBtbData(true))return;showBtbStep(b.dataset.bnext)});$$('[data-bprev]').forEach(b=>b.onclick=()=>showBtbStep(b.dataset.bprev));$$('.bstep').forEach(b=>b.onclick=()=>{if(['analysis','result','export'].includes(b.dataset.bstep)&&!validateBtbData(true))return;showBtbStep(b.dataset.bstep)});
+$('#btbAcidRef').addEventListener('change',updateBtbReferences);$('#btbBaseRef').addEventListener('change',updateBtbReferences);$('#btbWavelength').addEventListener('change',e=>{btbState.analysisWavelength=parseNumber(e.target.value);renderBtbAnalysis();renderBtbResult()});$('#btbChartView').addEventListener('change',renderBtbAnalysis);$('#btbRefreshAnalysis').onclick=()=>{renderBtbAnalysis();renderBtbResult()};
+$('#btbExportPng').onclick=exportBtbPng;$('#btbExportMd').onclick=()=>download(btbMdText(),btbBaseName()+'.md','text/markdown;charset=utf-8');$('#btbExportCsv').onclick=()=>download(btbCsvText(),btbBaseName()+'.csv','text/csv;charset=utf-8');$('#btbExportJson').onclick=exportBtbJson;
+window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart();if($('#kin-panel-analysis').classList.contains('active'))drawKineticChart();if($('#btb-panel-analysis').classList.contains('active'))drawBtbChart()});
+const qs=new URLSearchParams(location.search);if(qs.get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');if(qs.get('kin')==='1')loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');if(qs.get('btb')==='1')loadText(BTB_SAMPLE_CSV,'PHOT_GLEICHGEWICHT_BTB_PH_SERIE_BEISPIEL.csv');
 </script>
 </body>
 </html>

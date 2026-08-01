@@ -63,7 +63,7 @@
     .metric-list{display:grid;gap:10px}.metric{border:1px solid var(--border);background:#f9fbfc;border-radius:12px;padding:13px}.metric span{display:block;color:var(--muted);font-size:.82rem}.metric strong{display:block;font-size:1.12rem;margin-top:2px;font-variant-numeric:tabular-nums}
     details{border:1px solid var(--border);border-radius:13px;padding:10px 13px;background:#fbfdfe;margin-top:13px}summary{cursor:pointer;font-weight:750;color:var(--primary-dark)}
     .formula{font-family:"Cambria Math",Cambria,serif;background:#eef3f5;border-radius:9px;padding:10px;margin:9px 0;overflow:auto}
-    .unknown-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:700}.field input,.field select,.field textarea{border:1px solid #bccbd4;border-radius:10px;padding:10px;background:#fff}.field small{color:var(--muted)}.panel-actions{display:flex;align-items:flex-end;justify-content:flex-end;gap:10px;flex-wrap:wrap}.compact-field{display:grid;gap:4px;min-width:185px}.compact-field label{font-size:.82rem;font-weight:750;color:var(--muted)}.compact-field input,.compact-field select{border:1px solid #bccbd4;border-radius:10px;padding:9px 10px;background:#fff}.compact-field small{font-size:.75rem;color:var(--muted);max-width:255px;line-height:1.25}.substance-editor{display:grid;grid-template-columns:minmax(220px,1fr) minmax(200px,.65fr);gap:12px 16px;align-items:start;background:#f7fbfc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:15px 0}.substance-editor .field{margin:0}.substance-editor .status{grid-column:1/-1;min-height:0;color:var(--muted);font-size:.88rem;border-top:1px solid #dbe5ea;padding-top:10px}.manual-meta{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,.7fr);gap:14px;margin:14px 0}
+    .unknown-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-weight:700}.field input,.field select,.field textarea{border:1px solid #bccbd4;border-radius:10px;padding:10px;background:#fff}.field small{color:var(--muted)}.panel-actions{display:flex;align-items:flex-end;justify-content:flex-end;gap:10px;flex-wrap:wrap}.compact-field{display:grid;gap:4px;min-width:185px}.compact-field label{font-size:.82rem;font-weight:750;color:var(--muted)}.compact-field input,.compact-field select{border:1px solid #bccbd4;border-radius:10px;padding:9px 10px;background:#fff}.compact-field small{font-size:.75rem;color:var(--muted);max-width:255px;line-height:1.25}.substance-editor{display:grid;grid-template-columns:minmax(220px,1fr) minmax(200px,.65fr);gap:12px 16px;align-items:start;background:#f7fbfc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:15px 0}.substance-editor .field{margin:0}.substance-editor .status{grid-column:1/-1;min-height:0;color:var(--muted);font-size:.88rem;border-top:1px solid #dbe5ea;padding-top:10px}.manual-meta{display:grid;grid-template-columns:minmax(220px,1fr) minmax(185px,.55fr) minmax(220px,.7fr);gap:14px;margin:14px 0}
     .result-hero{border-radius:16px;padding:19px;background:linear-gradient(135deg,#e5f4f7,#f7fbfc);border:1px solid #bcd8e1}.result-hero .big{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:820;color:var(--primary-dark);font-variant-numeric:tabular-nums}.result-hero .secondary-value{font-size:1.18rem;font-weight:780;color:#355563;margin-top:2px;font-variant-numeric:tabular-nums}.rounding-note{font-size:.78rem;color:var(--muted);margin:.35rem 0 0}
     .export-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.export-card{border:1px solid var(--border);border-radius:14px;padding:16px;background:#fbfdfe}.export-card h3{margin:0 0 6px}.export-card p{color:var(--muted);min-height:66px}
     .manual{display:none;margin-top:18px}.manual table{min-width:760px}.manual-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
@@ -78,7 +78,7 @@
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.2.0 · Eichkurve</span>
+    <span class="version">v0.2.1 · Eichkurve</span>
   </header>
 
   <main>
@@ -97,9 +97,10 @@
         <div class="notice">Mindestens zwei Standards mit unterschiedlichen Konzentrationen sind erforderlich. Eine Blindprobe und eine unbekannte Probe sind optional.</div>
         <div class="manual-meta">
           <div class="field"><label for="manualSubstance">Analysierter Stoff</label><input id="manualSubstance" type="text" placeholder="z. B. Kaliumpermanganat"><small>Der Stoffname erscheint im Diagramm und in den Exporten.</small></div>
-          <div class="field"><label for="manualMolarMass">Molare Masse (g/mol)</label><input id="manualMolarMass" type="text" inputmode="decimal" placeholder="z. B. 158,034"><small>Optional. Erforderlich für die zusätzliche Ausgabe in mg/L.</small></div>
+          <div class="field"><label for="manualConcentrationUnit">Eingabeeinheit der Konzentration</label><select id="manualConcentrationUnit"><option value="mol">mol/L</option><option value="mg">mg/L</option></select><small id="manualUnitHint">Die Konzentrationen werden in mol/L eingegeben.</small></div>
+          <div class="field"><label for="manualMolarMass">Molare Masse (g/mol)</label><input id="manualMolarMass" type="text" inputmode="decimal" placeholder="z. B. 158,034"><small id="manualMolarMassHint">Optional. Erforderlich für die zusätzliche Ausgabe in mg/L.</small></div>
         </div>
-        <div class="table-wrap"><table><thead><tr><th>Probentyp</th><th>Bezeichnung</th><th>Konzentration (mol/L)</th><th>Absorbanz</th><th>Hinweis</th><th></th></tr></thead><tbody id="manualBody"></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Probentyp</th><th>Bezeichnung</th><th id="manualConcentrationHeader">Konzentration (mol/L)</th><th>Absorbanz</th><th>Hinweis</th><th></th></tr></thead><tbody id="manualBody"></tbody></table></div>
         <div class="manual-actions"><button id="addManualRow" class="btn btn-secondary">＋ Zeile hinzufügen</button><button id="useManual" class="btn btn-primary">Messwerte übernehmen</button><button id="cancelManual" class="btn btn-ghost">Abbrechen</button></div>
       </div>
     </section>
@@ -129,7 +130,7 @@
       <section id="panel-data" class="card panel">
         <div class="panel-head"><div><h2>Daten prüfen</h2><p>Rohdaten bleiben erhalten. Ausschlüsse und Korrekturen gelten nur für diese Auswertung.</p></div><button class="btn btn-secondary" id="resetWorking">Arbeitsdaten zurücksetzen</button></div>
         <div class="notice warn">Laborhinweise sind keine automatische Fehlerentscheidung. Prüfe jeden Messwert fachlich und begründe einen Ausschluss oder eine Korrektur.</div>
-        <div class="table-wrap"><table id="dataTable"><thead><tr><th>Verwenden</th><th>Typ</th><th>Probe</th><th class="num">Konzentration<br>(mol/L)</th><th class="num">Absorbanz</th><th>Laborhinweis</th><th>Begründung bei Änderung</th></tr></thead><tbody></tbody></table></div>
+        <div class="table-wrap"><table id="dataTable"><thead><tr><th>Verwenden</th><th>Typ</th><th>Probe</th><th class="num" id="dataConcentrationHeader">Konzentration<br>(mol/L)</th><th class="num">Absorbanz</th><th>Laborhinweis</th><th>Begründung bei Änderung</th></tr></thead><tbody></tbody></table></div>
         <h3>Zusammenfassung der verwendeten Messwerte</h3>
         <div id="groupCards" class="group-cards"></div>
         <div id="dataValidity"></div>
@@ -173,12 +174,12 @@
       </section>
     </section>
   </main>
-  <footer>DatenLab v0.2.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.2.1 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.2.0';
+const VERSION='0.2.1';
 const SUBSTANCE_DATA=Object.freeze({
   'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034}
 });
@@ -205,7 +206,7 @@ Schichtdicke_cm;1
 Betriebsart;learning
 Versuchskennung;PH-KM-4590`;
 
-const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false,molarMassOverride:null,substanceNameOverride:''};
+const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false,molarMassOverride:null,substanceNameOverride:'',dataUnit:'mol'};
 const $=sel=>document.querySelector(sel), $$=sel=>[...document.querySelectorAll(sel)];
 
 function parseLine(line,delimiter=';'){
@@ -277,7 +278,7 @@ function substanceInfo(){
 }
 function setMolarMassOverride(value,{silent=false}={}){
   const raw=String(value??'').trim();
-  if(!raw){state.molarMassOverride=null;updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart();return true;}
+  if(!raw){if(state.manual&&state.dataUnit==='mg'){if(!silent)alert('Für eine manuell in mg/L eingegebene Eichreihe muss die molare Masse erhalten bleiben.');return false;}state.molarMassOverride=null;updateAxisUnitAvailability();renderImport();renderData();renderRegression();renderUnknown();drawChart();return true;}
   const n=parseNumber(raw);
   if(!(n>0)){if(!silent)alert('Bitte eine positive molare Masse in g/mol eingeben oder das Feld leer lassen.');return false;}
   state.molarMassOverride=n;updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart();return true;
@@ -289,6 +290,11 @@ function updateSubstanceEditor(){
   status.innerHTML=info?`<span><strong>M = ${fmt(info.molarMass,6)} g/mol</strong><br>Quelle: ${esc(info.source)}${info.formula?` · ${esc(info.formula)}`:''}</span>`:'<span>Keine molare Masse hinterlegt. Die Auswertung in mol/L funktioniert; mg/L bleibt deaktiviert.</span>';
 }
 function molToMgL(value){const info=substanceInfo();return value==null||!info?null:value*info.molarMass*1000}
+function dataUsesMg(){return state.dataUnit==='mg'&&!!substanceInfo()}
+function dataUnitLabel(){return dataUsesMg()?'mg/L':'mol/L'}
+function dataFactor(){const info=substanceInfo();return dataUsesMg()?info.molarMass*1000:1}
+function toDataConcentration(value){return value==null?null:value*dataFactor()}
+function fromDataConcentration(value){return value==null?null:value/dataFactor()}
 function axisUsesMg(){return $('#axisUnit')?.value==='mg'&&!!substanceInfo()}
 function axisFactor(){const info=substanceInfo();return axisUsesMg()?info.molarMass*1000:1}
 function axisUnitLabel(){return axisUsesMg()?'mg/L':'mol/L'}
@@ -319,15 +325,15 @@ function importEichkurve(parsed,name,text){
     hint:r.Laborhinweis||'',include:true,reason:'',workingConcentration:parseNumber(r.Konzentration_mol_L),workingAbsorbance:parseNumber(r.Absorbanz)
   })).filter(r=>r.absorbance!=null);
   if(!rows.length)throw new Error('Keine gültigen Absorbanzwerte gefunden.');
-  state.sourceName=name;state.sourceText=text;state.metadata={...parsed.metadata};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=false;state.molarMassOverride=null;state.substanceNameOverride='';
-  openWorkspace();renderAll();
+  state.sourceName=name;state.sourceText=text;state.metadata={...parsed.metadata};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=false;state.molarMassOverride=null;state.substanceNameOverride='';state.dataUnit='mol';
+  $('#axisUnit').value='mol';openWorkspace();renderAll();
 }
 function loadText(text,name='Messwerte.csv'){
   try{
     const parsed=parseSections(text);const kind=recognize(parsed);
     if(kind!=='eichkurve'){
       const labels={kinetik:'Photometer-Kinetik',btb:'Bromthymolblau-Spektren',unknown:'unbekannte CSV-Struktur'};
-      alert(`${labels[kind]} erkannt. v0.2.0 wertet zunächst Eichkurven aus. Die Datei wurde korrekt erkannt, ist aber für eine spätere Version vorgesehen.`);return;
+      alert(`${labels[kind]} erkannt. v0.2.1 wertet zunächst Eichkurven aus. Die Datei wurde korrekt erkannt, ist aber für eine spätere Version vorgesehen.`);return;
     }
     importEichkurve(parsed,name,text);
   }catch(err){alert(`Import nicht möglich: ${err.message}`);}
@@ -348,21 +354,22 @@ function renderImport(){
   updateAxisUnitAvailability();updateSubstanceEditor();
   const std=state.workingRows.filter(r=>r.type==='standard'), blank=state.workingRows.filter(r=>r.type==='blank'), unk=state.workingRows.filter(r=>r.type==='unknown');
   const concentrations=new Set(std.map(r=>r.concentration).filter(v=>v!=null));
-  $('#importNotice').innerHTML=`<div class="notice ok"><strong>Photometer-Eichkurve erkannt.</strong> Die Spalten wurden automatisch zugeordnet. Bitte kontrolliere die Angaben.</div>`;
-  const info=substanceInfo();const boxes=[['Stoff',effectiveSubstanceName()||'nicht angegeben'],['Molare Masse',info?`${fmt(info.molarMass,6)} g/mol`:'nicht angegeben'],['Messwellenlänge',state.metadata.Messwellenlaenge_nm?`${esc(state.metadata.Messwellenlaenge_nm)} nm`:'nicht angegeben'],['Standards',`${concentrations.size} Stufen · ${std.length} Messungen`],['Unbekannte Probe',unk.length?`${unk.length} Messung${unk.length===1?'':'en'}`:'nicht vorhanden']];
+  $('#importNotice').innerHTML=state.manual?`<div class="notice ok"><strong>Manuelle Eichreihe übernommen.</strong> Die Konzentrationen wurden in ${dataUnitLabel()} eingegeben und für die Berechnung intern einheitlich gespeichert.</div>`:`<div class="notice ok"><strong>Photometer-Eichkurve erkannt.</strong> Die Spalten wurden automatisch zugeordnet. Bitte kontrolliere die Angaben.</div>`;
+  const info=substanceInfo();const boxes=[['Stoff',effectiveSubstanceName()||'nicht angegeben'],['Molare Masse',info?`${fmt(info.molarMass,6)} g/mol`:'nicht angegeben'],...(state.manual?[['Eingabeeinheit',dataUnitLabel()]]:[]),['Messwellenlänge',state.metadata.Messwellenlaenge_nm?`${esc(state.metadata.Messwellenlaenge_nm)} nm`:'nicht angegeben'],['Standards',`${concentrations.size} Stufen · ${std.length} Messungen`],['Unbekannte Probe',unk.length?`${unk.length} Messung${unk.length===1?'':'en'}`:'nicht vorhanden']];
   $('#importSummary').innerHTML=boxes.map(([l,v])=>`<div class="summary-box"><span class="label">${esc(l)}</span><span class="value">${esc(v)}</span></div>`).join('');
   const metaEntries=Object.entries(state.metadata);
   $('#metadataDetails').innerHTML=`<p><strong>Datei:</strong> ${esc(state.sourceName)}</p><p><strong>Blindprobe:</strong> ${blank.length?`${blank.length} Messung(en)`:'nicht vorhanden'}</p>`+(metaEntries.length?`<table style="min-width:0"><tbody>${metaEntries.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</tbody></table>`:'<p>Keine zusätzlichen Metadaten vorhanden.</p>');
 }
 function rowChanged(r){return r.workingConcentration!==r.concentration||r.workingAbsorbance!==r.absorbance}
 function renderData(){
+  $('#dataConcentrationHeader').innerHTML=`Konzentration<br>(${dataUnitLabel()})`;
   const tbody=$('#dataTable tbody');tbody.innerHTML=state.workingRows.map(r=>{
-    const isUnknown=r.type==='unknown';
+    const isUnknown=r.type==='unknown',displayConcentration=toDataConcentration(r.workingConcentration);
     return `<tr data-id="${r.id}">
       <td class="center"><input class="check include" type="checkbox" ${r.include?'checked':''} aria-label="Messwert verwenden"></td>
       <td><span class="badge ${esc(r.type)}">${r.type==='blank'?'Blindprobe':r.type==='unknown'?'Unbekannt':'Standard'}</span>${rowChanged(r)?' <span class="badge changed">korrigiert</span>':''}${!r.include?' <span class="badge excluded">ausgeschlossen</span>':''}</td>
       <td>${esc(r.probe)}${r.measurement?`<div class="muted">Messung ${r.measurement}</div>`:''}</td>
-      <td><input class="cell-input concentration ${r.workingConcentration!==r.concentration?'changed':''}" type="text" value="${isUnknown?'unbekannt':esc(String(r.workingConcentration??'').replace('.',','))}" ${isUnknown?'disabled':''}></td>
+      <td><input class="cell-input concentration ${r.workingConcentration!==r.concentration?'changed':''}" type="text" value="${isUnknown?'unbekannt':esc(fmt(displayConcentration,dataUsesMg()?6:10))}" ${isUnknown?'disabled':''}></td>
       <td><input class="cell-input absorbance ${r.workingAbsorbance!==r.absorbance?'changed':''}" type="text" value="${esc(String(r.workingAbsorbance??'').replace('.',','))}"></td>
       <td>${esc(r.hint||'—')}</td>
       <td><input class="cell-input reason" type="text" value="${esc(r.reason)}" placeholder="${(!r.include||rowChanged(r))?'Begründung erforderlich':'optional'}"></td>
@@ -371,7 +378,7 @@ function renderData(){
   tbody.querySelectorAll('tr').forEach(tr=>{
     const r=state.workingRows.find(x=>x.id===tr.dataset.id);
     tr.querySelector('.include').addEventListener('change',e=>{r.include=e.target.checked;renderData();calculateAll();});
-    const c=tr.querySelector('.concentration');if(!c.disabled)c.addEventListener('change',e=>{const n=parseNumber(e.target.value);if(n==null){alert('Bitte eine gültige Konzentration eingeben.');e.target.value=String(r.workingConcentration).replace('.',',');return;}r.workingConcentration=n;renderData();calculateAll();});
+    const c=tr.querySelector('.concentration');if(!c.disabled)c.addEventListener('change',e=>{const n=parseNumber(e.target.value);if(n==null){alert('Bitte eine gültige Konzentration eingeben.');e.target.value=fmt(toDataConcentration(r.workingConcentration),dataUsesMg()?6:10);return;}r.workingConcentration=fromDataConcentration(n);renderData();calculateAll();});
     tr.querySelector('.absorbance').addEventListener('change',e=>{const n=parseNumber(e.target.value);if(n==null){alert('Bitte eine gültige Absorbanz eingeben.');e.target.value=String(r.workingAbsorbance).replace('.',',');return;}r.workingAbsorbance=n;renderData();calculateAll();});
     tr.querySelector('.reason').addEventListener('input',e=>{r.reason=e.target.value;validateData(false);});
   });
@@ -387,7 +394,7 @@ function calculateGroups(){
 function mean(a){return a.length?a.reduce((s,v)=>s+v,0)/a.length:null}
 function sampleSd(a){if(a.length<2)return null;const m=mean(a);return Math.sqrt(a.reduce((s,v)=>s+(v-m)**2,0)/(a.length-1));}
 function renderGroupCards(){
-  $('#groupCards').innerHTML=state.groups.map(g=>`<article class="group-card"><h3>${g.x===0?'Blindprobe':`c = ${fmt(g.x,10)} mol/L`}</h3><dl><dt>Messungen n</dt><dd>${g.n}</dd><dt>Mittelwert A</dt><dd>${fmtFixed(g.mean,4)}</dd><dt title="Standardabweichung">Std.-Abweichung s</dt><dd>${g.sd==null?'— (n < 2)':fmtFixed(g.sd,4)}</dd></dl></article>`).join('')||'<p>Keine verwendbaren Standardwerte vorhanden.</p>';
+  $('#groupCards').innerHTML=state.groups.map(g=>`<article class="group-card"><h3>${g.x===0?'Blindprobe':`c = ${fmt(toDataConcentration(g.x),dataUsesMg()?6:10)} ${dataUnitLabel()}`}</h3><dl><dt>Messungen n</dt><dd>${g.n}</dd><dt>Mittelwert A</dt><dd>${fmtFixed(g.mean,4)}</dd><dt title="Standardabweichung">Std.-Abweichung s</dt><dd>${g.sd==null?'— (n < 2)':fmtFixed(g.sd,4)}</dd></dl></article>`).join('')||'<p>Keine verwendbaren Standardwerte vorhanden.</p>';
 }
 function validateData(showAlert=false){
   calculateGroups();const reasonsMissing=state.workingRows.filter(r=>(!r.include||rowChanged(r))&&!r.reason.trim());
@@ -456,44 +463,63 @@ function drawChart(){
 }
 function csvQuote(v){const s=String(v??'').replace(/"/g,'""');return `"${s}"`;}
 function exportCsv(){
-  const head=['ID','Probentyp','Probe','Messung','Konzentration_original_mol_L','Absorbanz_original','Konzentration_verwendet_mol_L','Absorbanz_verwendet','In_Auswertung','Begruendung','Laborhinweis'];
-  const lines=[head.join(';'),...state.workingRows.map(r=>[r.id,r.type,r.probe,r.measurement,r.concentration??'',r.absorbance??'',r.workingConcentration??'',r.workingAbsorbance??'',r.include?'ja':'nein',r.reason,r.hint].map(v=>csvQuote(String(v).replace('.',','))).join(';')),'','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${state.sourceName}`,`Stoff;${effectiveSubstanceName()}`,`Molare_Masse_g_mol;${substanceInfo()?.molarMass||''}`,`Diagramm_Konzentrationseinheit;${axisUnitLabel()}`];
-  download('\uFEFF'+lines.join('\r\n'),baseName()+'_ARBEITSDATEN.csv','text/csv;charset=utf-8');
+  const head=['ID','Probentyp','Probe','Messung','Konzentration_original_Eingabeeinheit','Eingabeeinheit_original','Konzentration_original_mol_L','Konzentration_original_mg_L','Absorbanz_original','Konzentration_verwendet_mol_L','Konzentration_verwendet_mg_L','Absorbanz_verwendet','In_Auswertung','Begruendung','Laborhinweis'];
+  const dataLines=state.workingRows.map(r=>{
+    const inputValue=r.enteredConcentration??r.concentration??'';
+    const inputUnit=r.enteredUnit==='mg'?'mg/L':'mol/L';
+    return [r.id,r.type,r.probe,r.measurement,inputValue,inputUnit,r.concentration??'',molToMgL(r.concentration)??'',r.absorbance??'',r.workingConcentration??'',molToMgL(r.workingConcentration)??'',r.workingAbsorbance??'',r.include?'ja':'nein',r.reason,r.hint].map(v=>csvQuote(String(v).replace('.',','))).join(';');
+  });
+  const lines=[head.join(';'),...dataLines,'','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${state.sourceName}`,`Stoff;${effectiveSubstanceName()}`,`Molare_Masse_g_mol;${substanceInfo()?.molarMass||''}`,`Eingabeeinheit_Konzentration;${state.manual?dataUnitLabel():'mol/L'}`,`Diagramm_Konzentrationseinheit;${axisUnitLabel()}`];
+  download('\uFEFF'+lines.join('\n'),baseName()+'.csv','text/csv;charset=utf-8');
 }
 function mdText(){
   const r=state.regression,u=state.unknown,d=Math.max(parseNumber($('#dilution').value)||1,0),corr=u?.concentration==null?null:u.concentration*d,corrMg=molToMgL(corr),measuredMg=molToMgL(u?.concentration),stat=interpolationStatus(u?.concentration);
   const decisions=state.workingRows.filter(x=>!x.include||rowChanged(x));
   return `# DatenLab-Auswertung: Eichkurve\n\n- **Stoff:** ${effectiveSubstanceName()||'nicht angegeben'}\n- **Molare Masse:** ${substanceInfo()?`${fmt(substanceInfo().molarMass,6)} g/mol (${substanceInfo().source})`:'nicht angegeben'}
-- **Messwellenlänge:** ${state.metadata.Messwellenlaenge_nm||'—'} nm\n- **Quelle:** ${state.sourceName}\n- **Auswertung:** ${new Date().toLocaleString('de-AT')}\n\n## Eichgerade\n\n- Gleichung: A = ${r?fmt(r.slope,8):'—'} · c ${r&&r.intercept>=0?'+':'−'} ${r?fmt(Math.abs(r.intercept),8):'—'}\n- R²: ${r?fmtFixed(r.r2,5):'—'}\n- RMSE: ${r?fmtFixed(r.rmse,5):'—'}\n\n## Unbekannte Probe\n\n- Mittlere Absorbanz: ${u?fmtFixed(u.mean,5):'—'}\n- Konzentration der Messlösung: ${u?fmtSig(u.concentration,3):'—'} mol/L${measuredMg!=null?` = ${fmtSig(measuredMg,3)} mg/L`:''}\n- Verdünnungsfaktor: ${fmt(d,4)}\n- Konzentration der ursprünglichen Probe: **${fmtSig(corr,3)} mol/L**${corrMg!=null?` = **${fmtSig(corrMg,3)} mg/L**`:''}
+- **Messwellenlänge:** ${state.metadata.Messwellenlaenge_nm||'—'} nm\n- **Quelle:** ${state.sourceName}\n- **Eingabeeinheit der Konzentration:** ${state.manual?dataUnitLabel():'mol/L'}\n- **Auswertung:** ${new Date().toLocaleString('de-AT')}\n\n## Eichgerade\n\n- Gleichung: A = ${r?fmt(r.slope,8):'—'} · c ${r&&r.intercept>=0?'+':'−'} ${r?fmt(Math.abs(r.intercept),8):'—'}\n- R²: ${r?fmtFixed(r.r2,5):'—'}\n- RMSE: ${r?fmtFixed(r.rmse,5):'—'}\n\n## Unbekannte Probe\n\n- Mittlere Absorbanz: ${u?fmtFixed(u.mean,5):'—'}\n- Konzentration der Messlösung: ${u?fmtSig(u.concentration,3):'—'} mol/L${measuredMg!=null?` = ${fmtSig(measuredMg,3)} mg/L`:''}\n- Verdünnungsfaktor: ${fmt(d,4)}\n- Konzentration der ursprünglichen Probe: **${fmtSig(corr,3)} mol/L**${corrMg!=null?` = **${fmtSig(corrMg,3)} mg/L**`:''}
 - Rundung des Endergebnisses: 3 signifikante Stellen
-- Diagramm-x-Achse: ${axisUnitLabel()}\n- Bewertung: **${stat.title}** – ${stat.text}\n\n## Verwendete Mittelwerte\n\n| Konzentration (mol/L) | n | Mittelwert A | Standardabweichung |\n|---:|---:|---:|---:|\n${state.groups.map(g=>`| ${fmt(g.x,10)} | ${g.n} | ${fmtFixed(g.mean,5)} | ${g.sd==null?'—':fmtFixed(g.sd,5)} |`).join('\n')}\n\n## Dokumentierte Datenentscheidungen\n\n${decisions.length?decisions.map(x=>`- ${x.probe}, Messung ${x.measurement}: ${x.include?'korrigiert':'nicht verwendet'} – ${x.reason||'keine Begründung'}`).join('\n'):'Keine Messwerte korrigiert oder ausgeschlossen.'}\n\n> Die fachliche Interpretation und Fehlerdiskussion wurden nicht automatisch erstellt.\n`;
+- Diagramm-x-Achse: ${axisUnitLabel()}\n- Bewertung: **${stat.title}** – ${stat.text}\n\n## Verwendete Mittelwerte\n\n| Konzentration (${dataUnitLabel()}) | n | Mittelwert A | Standardabweichung |\n|---:|---:|---:|---:|\n${state.groups.map(g=>`| ${fmt(toDataConcentration(g.x),dataUsesMg()?6:10)} | ${g.n} | ${fmtFixed(g.mean,5)} | ${g.sd==null?'—':fmtFixed(g.sd,5)} |`).join('\n')}\n\n## Dokumentierte Datenentscheidungen\n\n${decisions.length?decisions.map(x=>`- ${x.probe}, Messung ${x.measurement}: ${x.include?'korrigiert':'nicht verwendet'} – ${x.reason||'keine Begründung'}`).join('\n'):'Keine Messwerte korrigiert oder ausgeschlossen.'}\n\n> Die fachliche Interpretation und Fehlerdiskussion wurden nicht automatisch erstellt.\n`;
 }
 function exportMd(){download(mdText(),baseName()+'.md','text/markdown;charset=utf-8')}
 function exportJson(){
-  calculateAll();const payload={schema:'MESSWERT_LAB_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:state.sourceName,metadata:state.metadata,originalText:state.sourceText,substanceName:effectiveSubstanceName(),molarMassSource:substanceInfo()?.source||null},rawRows:state.rawRows,workingRows:state.workingRows,results:{groups:state.groups,regression:state.regression,unknown:state.unknown,dilutionFactor:parseNumber($('#dilution').value)||1,axisUnit:axisUnitLabel(),molarMass_g_mol:substanceInfo()?.molarMass||null}};
+  calculateAll();const payload={schema:'MESSWERT_LAB_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:state.sourceName,metadata:state.metadata,originalText:state.sourceText,substanceName:effectiveSubstanceName(),molarMassSource:substanceInfo()?.source||null},rawRows:state.rawRows,workingRows:state.workingRows,results:{groups:state.groups,regression:state.regression,unknown:state.unknown,dilutionFactor:parseNumber($('#dilution').value)||1,axisUnit:axisUnitLabel(),dataEntryUnit:state.manual?dataUnitLabel():'mol/L',molarMass_g_mol:substanceInfo()?.molarMass||null}};
   download(JSON.stringify(payload,null,2),baseName()+'.json','application/json;charset=utf-8');
 }
 function exportPng(){drawChart();const c=$('#chart');c.toBlob(blob=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=baseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png');}
 function manualRow(type='standard',probe='',c='',a='',hint=''){
   const tr=document.createElement('tr');tr.innerHTML=`<td><select class="mtype"><option value="blank" ${type==='blank'?'selected':''}>Blindprobe</option><option value="standard" ${type==='standard'?'selected':''}>Standard</option><option value="unknown" ${type==='unknown'?'selected':''}>Unbekannt</option></select></td><td><input class="cell-input mprobe" value="${esc(probe)}"></td><td><input class="cell-input mc" value="${esc(c)}"></td><td><input class="cell-input ma" value="${esc(a)}"></td><td><input class="cell-input mhint" value="${esc(hint)}"></td><td><button class="btn btn-danger mdel">×</button></td>`;tr.querySelector('.mdel').onclick=()=>tr.remove();$('#manualBody').appendChild(tr);
 }
+function updateManualUnitUi(){
+  const usesMg=$('#manualConcentrationUnit').value==='mg';
+  $('#manualConcentrationHeader').textContent=`Konzentration (${usesMg?'mg/L':'mol/L'})`;
+  $('#manualUnitHint').textContent=usesMg?'Die Konzentrationen werden als Massenkonzentration in mg/L eingegeben.':'Die Konzentrationen werden als Stoffmengenkonzentration in mol/L eingegeben.';
+  $('#manualMolarMassHint').textContent=usesMg?'Pflichtangabe: Sie wird zur Umrechnung in mol/L benötigt.':'Optional. Erforderlich für die zusätzliche Ausgabe in mg/L.';
+  $('#manualMolarMass').required=usesMg;
+}
 function initManual(){
-  $('#manualBody').innerHTML='';$('#manualSubstance').value='';$('#manualMolarMass').value='';manualRow('blank','Blindprobe','0','0','');for(let i=1;i<=5;i++)manualRow('standard',`Standard ${i}`,'','', '');manualRow('unknown','Unbekannte Probe','','','');
+  $('#manualBody').innerHTML='';$('#manualSubstance').value='';$('#manualMolarMass').value='';$('#manualConcentrationUnit').value='mol';updateManualUnitUi();manualRow('blank','Blindprobe','0','0','');for(let i=1;i<=5;i++)manualRow('standard',`Standard ${i}`,'','', '');manualRow('unknown','Unbekannte Probe','','','');
 }
 function useManual(){
-  const rows=[...$('#manualBody').rows].map((tr,i)=>({id:`r${i+1}`,original:{},type:tr.querySelector('.mtype').value,probe:tr.querySelector('.mprobe').value||`Messwert ${i+1}`,concentration:parseNumber(tr.querySelector('.mc').value),absorbance:parseNumber(tr.querySelector('.ma').value),measurement:1,hint:tr.querySelector('.mhint').value,include:true,reason:'',workingConcentration:parseNumber(tr.querySelector('.mc').value),workingAbsorbance:parseNumber(tr.querySelector('.ma').value)})).filter(r=>r.absorbance!=null);
-  if(rows.filter(r=>r.type==='standard'&&r.concentration!=null).length<2){alert('Bitte mindestens zwei Standards mit Konzentration und Absorbanz eingeben.');return;}
+  const inputUnit=$('#manualConcentrationUnit').value==='mg'?'mg':'mol';
   const manualMassRaw=$('#manualMolarMass').value.trim(),manualMass=parseNumber(manualMassRaw);
+  if(inputUnit==='mg'&&!(manualMass>0)){alert('Bei Konzentrationsangaben in mg/L muss eine positive molare Masse in g/mol angegeben werden.');$('#manualMolarMass').focus();return;}
   if(manualMassRaw&&!(manualMass>0)){alert('Bitte eine positive molare Masse in g/mol eingeben oder das Feld leer lassen.');$('#manualMolarMass').focus();return;}
+  const conversionFactor=inputUnit==='mg'?manualMass*1000:1;
+  const rows=[...$('#manualBody').rows].map((tr,i)=>{
+    const entered=parseNumber(tr.querySelector('.mc').value),concentration=entered==null?null:entered/conversionFactor;
+    return {id:`r${i+1}`,original:{Eingabe_Konzentration:entered,Eingabeeinheit_Konzentration:inputUnit==='mg'?'mg/L':'mol/L'},type:tr.querySelector('.mtype').value,probe:tr.querySelector('.mprobe').value||`Messwert ${i+1}`,concentration,absorbance:parseNumber(tr.querySelector('.ma').value),measurement:1,hint:tr.querySelector('.mhint').value,include:true,reason:'',workingConcentration:concentration,workingAbsorbance:parseNumber(tr.querySelector('.ma').value),enteredConcentration:entered,enteredUnit:inputUnit};
+  }).filter(r=>r.absorbance!=null);
+  if(rows.filter(r=>r.type==='standard'&&r.concentration!=null).length<2){alert('Bitte mindestens zwei Standards mit Konzentration und Absorbanz eingeben.');return;}
   const substance=$('#manualSubstance').value.trim()||'Eigene Messreihe';
-  state.sourceName='Manuelle Eingabe';state.sourceText='';state.metadata={Versuchstyp:'Eichkurve',Stoff:substance};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=true;state.substanceNameOverride='';state.molarMassOverride=manualMass>0?manualMass:null;openWorkspace();renderAll();
+  state.sourceName='Manuelle Eingabe';state.sourceText='';state.metadata={Versuchstyp:'Eichkurve',Stoff:substance,Eingabeeinheit_Konzentration:inputUnit==='mg'?'mg/L':'mol/L'};state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=true;state.substanceNameOverride='';state.molarMassOverride=manualMass>0?manualMass:null;state.dataUnit=inputUnit;
+  $('#axisUnit').value=inputUnit;openWorkspace();renderAll();
 }
 
 $('#chooseFile').onclick=()=>{$('#dropzone').style.display='block';$('#fileInput').click()};$('#browseFile').onclick=()=>$('#fileInput').click();
 $('#fileInput').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>loadText(reader.result,f.name);reader.onerror=()=>alert('Datei konnte nicht gelesen werden.');reader.readAsText(f,'utf-8')};
 const dz=$('#dropzone');['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('drag')}));dz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(!f)return;const r=new FileReader();r.onload=()=>loadText(r.result,f.name);r.readAsText(f,'utf-8')});
 $('#loadSample').onclick=()=>loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
-$('#showManual').onclick=()=>{$('#manual').style.display='block';$('#dropzone').style.display='none';initManual();$('#manual').scrollIntoView({behavior:'smooth'})};$('#cancelManual').onclick=()=>$('#manual').style.display='none';$('#addManualRow').onclick=()=>manualRow();$('#useManual').onclick=useManual;
+$('#showManual').onclick=()=>{$('#manual').style.display='block';$('#dropzone').style.display='none';initManual();$('#manual').scrollIntoView({behavior:'smooth'})};$('#cancelManual').onclick=()=>$('#manual').style.display='none';$('#manualConcentrationUnit').addEventListener('change',updateManualUnitUi);$('#addManualRow').onclick=()=>manualRow();$('#useManual').onclick=useManual;
 $('#newDataset').onclick=resetApp;$('#resetWorking').onclick=()=>{state.workingRows=structuredClone(state.rawRows);renderAll()};
 $$('[data-next]').forEach(b=>b.onclick=()=>{if(b.dataset.next==='regression'&&!validateData(true))return;showStep(b.dataset.next)});$$('[data-prev]').forEach(b=>b.onclick=()=>showStep(b.dataset.prev));$$('.step').forEach(b=>b.onclick=()=>{if(['regression','unknown','export'].includes(b.dataset.step)&&!validateData(true))return;showStep(b.dataset.step)});
 $('#refreshRegression').onclick=()=>{calculateAll();drawChart()};$('#axisUnit').addEventListener('change',()=>{renderRegression();drawChart()});$('#dilution').addEventListener('input',()=>{renderUnknown();drawChart()});

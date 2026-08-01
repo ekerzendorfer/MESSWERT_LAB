@@ -1,6 +1,6 @@
 # MESSWERT_LAB – DatenLab
 
-**Version:** v0.2.0  
+**Version:** v0.2.1  
 **Titel der App:** DatenLab – Messwerte auswerten
 
 ## Start
@@ -16,7 +16,7 @@ Die App ist als eigenständige Single-HTML-Anwendung ausgeführt. Für die Nutzu
 - `examples/` – reale CSV-Testexporte aus dem Virtuellen Photometer
 - `development/` – Entwicklungs- und Testdateien; für den Betrieb der App nicht erforderlich
 
-## Schwerpunkt von v0.2.0
+## Schwerpunkt von v0.2.1
 
 - Import von Photometer-Eichkurven
 - Prüfung und nachvollziehbarer Ausschluss einzelner Messwerte
@@ -29,8 +29,11 @@ Die App ist als eigenständige Single-HTML-Anwendung ausgeführt. Für die Nutzu
 
 Andere Photometer-Exporttypen werden erkannt, aber in dieser Version noch nicht ausgewertet.
 
-## Neu in v0.2.0
+## Neu in v0.2.1
 
+- Bei manueller Dateneingabe kann die Konzentration wahlweise in mol/L oder mg/L erfasst werden.
+- Bei mg/L-Eingabe ist eine positive molare Masse verpflichtend.
+- Die eingegebene Einheit bleibt beim Prüfen und Bearbeiten der Daten sichtbar; intern wird einheitlich in mol/L gerechnet.
 - Die molare Masse kann nach jedem Import kontrolliert, ergänzt oder überschrieben werden.
 - Bei manueller Dateneingabe stehen Felder für Stoffname und molare Masse bereit.
 - Die Herkunft der verwendeten molaren Masse wird angezeigt: Metadaten, interne Stofftabelle oder manuelle Eingabe.

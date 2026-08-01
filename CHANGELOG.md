@@ -1,5 +1,18 @@
 # Änderungsprotokoll
 
+## v0.2.1 – 2026-08-01
+
+Komforterweiterung der manuellen Eichkurveneingabe.
+
+### Neu
+
+- Konzentrationen können bei manueller Dateneingabe wahlweise in mol/L oder mg/L erfasst werden
+- bei mg/L-Eingabe ist die molare Masse verpflichtend
+- Tabellenüberschrift, Prüfschritt und Zusammenfassung verwenden weiterhin die gewählte Eingabeeinheit
+- intern werden alle Konzentrationen einheitlich in mol/L gespeichert und berechnet
+- das Diagramm übernimmt bei manueller mg/L-Eingabe zunächst ebenfalls mg/L
+- CSV-, Markdown- und Sitzungs-JSON-Exporte dokumentieren die Eingabeeinheit
+
 ## v0.2.0 – 2026-08-01
 
 Erweiterung der Eichkurvenauswertung um komfortabel bearbeitbare Stoffdaten.

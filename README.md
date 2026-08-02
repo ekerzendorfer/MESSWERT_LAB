@@ -1,4 +1,4 @@
-# MESSWERT_LAB – DatenLab v0.5.0
+# MESSWERT_LAB – DatenLab v0.5.1
 
 Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 
@@ -13,7 +13,15 @@ Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 - Bromthymolblau-Spektren und pKa-Auswertung
 - Titrationen nach der Schnittstelle `MESSWERT_LAB_CSV 1.0`
 
-## Neu in v0.5.0: Titration
+## Neu in v0.5.1: Überlagerte Titrationsdiagramme
+
+- Optionskästchen „Titrationskurve überlagern“ bei erster und zweiter Ableitung
+- pH-Kurve auf der linken y-Achse
+- Ableitungswerte mit eigener Einheit auf der rechten y-Achse
+- eindeutige Legende und achsenbezogene Farbzuordnung
+- Überlagerungszustand im Sitzungs-JSON
+
+## Titration seit v0.5.0
 
 - strikte Prüfung der Schnittstelle und Pflichtmetadaten
 - unveränderte Übernahme der Volumen-/pH-Rohdaten

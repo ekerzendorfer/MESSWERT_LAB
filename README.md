@@ -1,4 +1,4 @@
-# MESSWERT_LAB – DatenLab v0.5.1
+# MESSWERT_LAB – DatenLab v0.5.2
 
 Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 
@@ -12,6 +12,11 @@ Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 - photometrische Kinetik
 - Bromthymolblau-Spektren und pKa-Auswertung
 - Titrationen nach der Schnittstelle `MESSWERT_LAB_CSV 1.0`
+
+## Fehlerkorrektur in v0.5.2
+
+- CSV-Import des Titrationstools wiederhergestellt
+- vollständiger Aufbau aller Titrationsansichten unmittelbar nach dem Import
 
 ## Neu in v0.5.1: Überlagerte Titrationsdiagramme
 

@@ -77,30 +77,34 @@
     .key-control{background:#e7f4f7;border:2px solid #6aa8ba!important;border-radius:13px;padding:10px;box-shadow:0 0 0 3px rgba(21,107,134,.08)}.key-control label{color:var(--primary-dark)}.key-control select{border-color:#6aa8ba!important;font-weight:750;background:#fff}
     .btb-workspace{display:none}.btb-stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 18px;position:sticky;top:8px;z-index:20;background:rgba(244,247,251,.94);backdrop-filter:blur(10px);padding:9px;border-radius:16px;border:1px solid rgba(190,205,215,.75)}.bstep{border:0;background:transparent;border-radius:11px;padding:9px 8px;color:var(--muted);font-size:.9rem;font-weight:700}.bstep.active{background:var(--primary);color:#fff}.bstep.done{color:var(--primary-dark);background:#e8f3f6}.bpanel{display:none;padding:24px}.bpanel.active{display:block}
     .spectrum-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;background:#f7fbfc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:14px 0}.spectrum-controls .field{margin:0;min-width:0}.spectrum-controls select,.spectrum-controls input{width:100%;min-width:0}.spectrum-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0}.spectrum-card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fbfdfe}.spectrum-card.active{border-color:#6aa8ba;background:#eef8fa}.spectrum-card h3{margin:0 0 7px}.spectrum-card p{margin:3px 0;color:var(--muted);font-size:.88rem}.spectrum-swatch{display:inline-block;width:14px;height:4px;border-radius:99px;margin-right:7px;vertical-align:middle}.btb-result-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:18px;align-items:start}.btb-chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.btb-chip{border:1px solid var(--border);background:#f7fbfc;border-radius:999px;padding:5px 10px;font-size:.84rem}.btb-table{min-width:980px}.btb-reference{background:#fff6e8!important}.btb-excluded{opacity:.55}.btb-chart-note{font-size:.84rem;color:var(--muted);margin-top:8px}
-    @media(max-width:700px){.result-row{grid-template-columns:1fr}.result-row strong{text-align:left}.btb-result-grid{grid-template-columns:1fr}}
+
+    .titr-workspace{display:none}.titr-stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 18px;position:sticky;top:8px;z-index:20;background:rgba(244,247,251,.94);backdrop-filter:blur(10px);padding:9px;border-radius:16px;border:1px solid rgba(190,205,215,.75)}.tstep{border:0;background:transparent;border-radius:11px;padding:9px 8px;color:var(--muted);font-size:.9rem;font-weight:700}.tstep.active{background:var(--primary);color:#fff}.tstep.done{color:var(--primary-dark);background:#e8f3f6}.tpanel{display:none;padding:24px}.tpanel.active{display:block}
+    .titr-controls{display:grid;grid-template-columns:minmax(250px,.8fr) minmax(0,1.2fr);gap:14px;align-items:end;margin:14px 0}.titr-chart-note{color:var(--muted);font-size:.87rem;margin:8px 4px 0}.eq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}.eq-card{border:1px solid var(--border);border-radius:15px;background:#fbfdfe;padding:16px}.eq-card h3{margin:0 0 10px}.eq-card dl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 12px;margin:0}.eq-card dt{color:var(--muted)}.eq-card dd{margin:0;font-weight:760;text-align:right;font-variant-numeric:tabular-nums}.eq-card.primary{border-color:#81b5c3;background:#eef8fa}.titr-highlight td{background:#f0f8fa}.titr-table{min-width:680px}.titr-result-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.7fr);gap:18px;align-items:start}.standard-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:#e7f4f7;color:var(--primary-dark);font-size:.78rem;font-weight:760}.warning-list{margin:.4rem 0 0;padding-left:1.2rem}.warning-list li{margin:.25rem 0}
+    @media(max-width:700px){.titr-controls{grid-template-columns:1fr}.result-row{grid-template-columns:1fr}.result-row strong{text-align:left}.btb-result-grid{grid-template-columns:1fr}}
     .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid,.kin-result-grid{grid-template-columns:1fr}.substance-editor{grid-template-columns:1fr 1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
-    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper,.kin-stepper,.btb-stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span,.kstep span,.bstep span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.model-grid{grid-template-columns:1fr}.version{font-size:.8rem}}
-    @media print{body{background:#fff}.topbar,.stepper,.kin-stepper,.btb-stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export,#kin-panel-import,#kin-panel-data,#kin-panel-export,#btb-panel-import,#btb-panel-data,#btb-panel-export{display:none!important}.workspace,.kin-workspace,.btb-workspace{display:block!important}.panel,.kpanel,.bpanel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
+    @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid,.kin-result-grid,.titr-result-grid{grid-template-columns:1fr}.substance-editor{grid-template-columns:1fr 1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
+    @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper,.kin-stepper,.btb-stepper,.titr-stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span,.kstep span,.bstep span,.tstep span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.model-grid{grid-template-columns:1fr}.version{font-size:.8rem}}
+    @media print{body{background:#fff}.topbar,.stepper,.kin-stepper,.btb-stepper,.titr-stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export,#kin-panel-import,#kin-panel-data,#kin-panel-export,#btb-panel-import,#btb-panel-data,#btb-panel-export,#titr-panel-import,#titr-panel-data,#titr-panel-export{display:none!important}.workspace,.kin-workspace,.btb-workspace,.titr-workspace{display:block!important}.panel,.kpanel,.bpanel,.tpanel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
   </style>
 </head>
 <body>
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.4.0 · Eichkurve, Kinetik &amp; Gleichgewicht</span>
+    <span class="version">v0.5.0 · Photometrie &amp; Titration</span>
   </header>
 
   <main>
     <section id="start" class="card hero">
       <h2>Messdaten auswerten – geführt und nachvollziehbar</h2>
-      <p>Öffne einen Eichkurven-, Kinetik- oder Gleichgewichts-Export aus dem Virtuellen Photometer, gib eine eigene Eichreihe ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
+      <p>Öffne einen Export aus dem Virtuellen Photometer oder dem Titrationslabor, gib eine eigene Eichreihe ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
       <div class="launch-grid">
-        <button class="launch" id="chooseFile"><span class="icon">📂</span><strong>Photometer-CSV öffnen</strong><small>Metadaten und Spalten werden automatisch erkannt.</small></button>
+        <button class="launch" id="chooseFile"><span class="icon">📂</span><strong>Messdaten-CSV öffnen</strong><small>Photometer- und Titrationsexporte werden automatisch erkannt.</small></button>
         <button class="launch" id="showManual"><span class="icon">⌨️</span><strong>Eichkurve selbst eingeben</strong><small>Für reale Messungen oder andere Eichreihen.</small></button>
         <button class="launch" id="loadSample"><span class="icon">🧪</span><strong>Eichkurven-Beispiel</strong><small>Kaliumpermanganat mit mehreren Wiederholungen.</small></button>
         <button class="launch" id="loadKineticSample"><span class="icon">📈</span><strong>Kinetik-Beispiel</strong><small>Kristallviolett: vier Zeitreihen bei verschiedenen Bedingungen.</small></button>
         <button class="launch" id="loadBtbSample"><span class="icon">🌈</span><strong>Gleichgewichts-Beispiel</strong><small>Bromthymolblau: Spektren und pK<sub>a</sub>-Bestimmung.</small></button>
+        <button class="launch" id="loadTitrationSample"><span class="icon">⚗️</span><strong>Titrations-Beispiel</strong><small>Oxalsäure mit zwei Äquivalenzpunkten und Ableitungen.</small></button>
       </div>
       <input id="fileInput" type="file" accept=".csv,text/csv" class="sr-only">
       <div id="dropzone" class="dropzone">CSV-Datei hier ablegen oder <button class="btn btn-secondary" id="browseFile" type="button">Datei auswählen</button></div>
@@ -331,13 +335,79 @@
         <div class="toolbar"><button class="btn btn-ghost" data-bprev="result">← Ergebnis</button><span class="spacer"></span><button class="btn btn-secondary" onclick="window.print()">Druckansicht</button></div>
       </section>
     </section>
+
+    <section id="titrWorkspace" class="titr-workspace">
+      <nav class="titr-stepper" aria-label="Arbeitsschritte der Titrationsauswertung">
+        <button class="tstep active" data-tstep="import">1 <span>Import</span></button>
+        <button class="tstep" data-tstep="data">2 <span>Rohdaten</span></button>
+        <button class="tstep" data-tstep="analysis">3 <span>Ableitungen</span></button>
+        <button class="tstep" data-tstep="result">4 <span>Ergebnis</span></button>
+        <button class="tstep" data-tstep="export">5 <span>Export</span></button>
+      </nav>
+
+      <section id="titr-panel-import" class="card tpanel active">
+        <div class="panel-head"><div><h2>Titrationsexport erkannt</h2><p>Die Schnittstelle und alle Pflichtangaben werden vor der Auswertung geprüft.</p></div><button class="btn btn-ghost" id="titrNewDataset">Neue Datei</button></div>
+        <div id="titrImportNotice"></div>
+        <div class="summary-grid" id="titrImportSummary"></div>
+        <div id="titrImportWarnings"></div>
+        <details><summary>Metadaten und Schnittstellenangaben anzeigen</summary><div id="titrMetadataDetails"></div></details>
+        <div class="toolbar"><span class="standard-chip">TITR_AEP_V1 · keine Glättung</span><span class="spacer"></span><button class="btn btn-primary" data-tnext="data">Rohdaten prüfen →</button></div>
+      </section>
+
+      <section id="titr-panel-data" class="card tpanel">
+        <div class="panel-head"><div><h2>Unveränderte Rohdaten</h2><p>Reihenfolge und Zahlenwerte werden für die Ableitungen exakt so verwendet, wie sie exportiert wurden.</p></div></div>
+        <div class="notice">DatenLab sortiert, glättet oder interpoliert die Messreihe vor der Ableitungsberechnung nicht. Hervorgehobene Zeilen liegen in der Nähe eines erkannten Äquivalenzpunkts.</div>
+        <div class="table-wrap"><table class="titr-table"><thead><tr><th class="num">Nr.</th><th class="num">Volumen Maßlösung (mL)</th><th class="num">pH</th><th class="num">ΔV zum vorherigen Punkt (mL)</th></tr></thead><tbody id="titrDataBody"></tbody></table></div>
+        <div id="titrDataValidity"></div>
+        <div class="toolbar"><button class="btn btn-ghost" data-tprev="import">← Import</button><span class="spacer"></span><button class="btn btn-primary" data-tnext="analysis">Ableitungen berechnen →</button></div>
+      </section>
+
+      <section id="titr-panel-analysis" class="card tpanel">
+        <div class="panel-head"><div><h2>Äquivalenzpunkt aus den Messdaten bestimmen</h2><p>Erste und zweite Ableitung werden an den korrekten Volumenmittelpunkten berechnet.</p></div><button class="btn btn-secondary" id="titrRefreshAnalysis">Neu berechnen</button></div>
+        <div class="titr-controls">
+          <div class="field key-control"><label for="titrChartView">Diagramm auswählen</label><select id="titrChartView"><option value="raw">Titrationskurve: pH gegen V</option><option value="d1">1. Ableitung: ΔpH/ΔV</option><option value="d2">2. Ableitung: Δ²pH/ΔV²</option></select><small>Die Diagramme zeigen unterschiedliche Zugänge zum Äquivalenzpunkt.</small></div>
+          <div id="titrMethodNotice" class="notice" style="margin:0"></div>
+        </div>
+        <div class="chart-grid">
+          <div class="chart-card"><div class="chart-box"><canvas id="titrChart" aria-label="Titrationsauswertung"></canvas></div><p class="titr-chart-note" id="titrChartNote"></p></div>
+          <aside><div class="metric-list" id="titrMetrics"></div><details><summary>Berechnungsverfahren</summary><div class="formula">D¹ = ΔpH / ΔV am Volumenmittelpunkt<br>D² = ΔD¹ / ΔV am nächsten Volumenmittelpunkt</div><p>Ein Äquivalenzpunkt wird nur akzeptiert, wenn ein markantes Extremum der ersten Ableitung mit einem passenden interpolierten Nulldurchgang der zweiten Ableitung verknüpft werden kann.</p></details></aside>
+        </div>
+        <h3>Erkannte Äquivalenzpunkte</h3>
+        <div class="table-wrap"><table class="titr-table"><thead><tr><th>ÄP</th><th class="num">V aus D²-Nulldurchgang (mL)</th><th class="num">Extremum D¹ bei V (mL)</th><th class="num">D¹ am Extremum (pH/mL)</th><th class="num">Abstand (mL)</th></tr></thead><tbody id="titrCandidateBody"></tbody></table></div>
+        <div class="toolbar"><button class="btn btn-ghost" data-tprev="data">← Rohdaten</button><span class="spacer"></span><button class="btn btn-primary" data-tnext="result">Ergebnisse berechnen →</button></div>
+      </section>
+
+      <section id="titr-panel-result" class="card tpanel">
+        <div class="panel-head"><div><h2>Ergebnisse der Titrationsauswertung</h2><p>Äquivalenzvolumina, Konzentrationen und – soweit spezifiziert – Halbäquivalenzpunkte werden getrennt dargestellt.</p></div></div>
+        <div class="titr-result-grid"><div id="titrResultMain"></div><aside class="result-hero" id="titrResultHero"></aside></div>
+        <h3 style="margin-top:24px">Äquivalenzpunkte und Konzentration</h3>
+        <div class="eq-grid" id="titrEqCards"></div>
+        <section id="titrHalfSection"><h3>Halbäquivalenzpunkt</h3><div class="table-wrap"><table class="titr-table"><thead><tr><th>Stufe</th><th class="num">V<sub>HÄP</sub> (mL)</th><th class="num">interpolierter pH</th><th class="num">pK<sub>s</sub> laut Metadaten</th><th class="num">Differenz</th></tr></thead><tbody id="titrHalfBody"></tbody></table></div></section>
+        <div id="titrHalfNotice"></div>
+        <div id="titrIndicatorNotice"></div>
+        <div class="notice warn">Die Äquivalenzpunkte stammen ausschließlich aus den Rohdaten. Referenzkonzentrationen aus einer Simulation werden nur zum nachträglichen Vergleich angezeigt und niemals als Ersatz für einen nicht gefundenen Äquivalenzpunkt verwendet.</div>
+        <div class="toolbar"><button class="btn btn-ghost" data-tprev="analysis">← Ableitungen</button><span class="spacer"></span><button class="btn btn-primary" data-tnext="export">Ergebnisse exportieren →</button></div>
+      </section>
+
+      <section id="titr-panel-export" class="card tpanel">
+        <div class="panel-head"><div><h2>Titrationsauswertung exportieren</h2><p>Speichere das gewählte Diagramm, die Ergebnisübersicht, die abgeleiteten Daten oder die vollständige Sitzung.</p></div></div>
+        <div class="export-grid">
+          <div class="export-card"><h3>Diagramm</h3><p>Aktuelle Titrationskurve, erste oder zweite Ableitung als PNG.</p><button class="btn btn-primary" id="titrExportPng">PNG speichern</button></div>
+          <div class="export-card"><h3>Auswertung</h3><p>Markdown mit Äquivalenzpunkten, Konzentrationen und Halbäquivalenzpunkten.</p><button class="btn btn-primary" id="titrExportMd">Markdown speichern</button></div>
+          <div class="export-card"><h3>Berechnete Daten</h3><p>Rohdaten, erste und zweite Ableitung sowie erkannte Äquivalenzpunkte als CSV.</p><button class="btn btn-primary" id="titrExportCsv">CSV speichern</button></div>
+          <div class="export-card"><h3>Sitzung</h3><p>Vollständiger DatenLab-Stand mit Quelle, Metadaten und Auswertung.</p><button class="btn btn-primary" id="titrExportJson">JSON speichern</button></div>
+        </div>
+        <div class="toolbar"><button class="btn btn-ghost" data-tprev="result">← Ergebnis</button><span class="spacer"></span><button class="btn btn-secondary" onclick="window.print()">Druckansicht</button></div>
+      </section>
+    </section>
+
   </main>
-  <footer>DatenLab v0.4.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.5.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.4.0';
+const VERSION='0.5.0';
 const SUBSTANCE_DATA=Object.freeze({
   'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034}
 });
@@ -698,9 +768,11 @@ Exportzeit;2026-08-01T12:03:21.835Z
 Versuchstyp;Gleichgewicht_Bromthymolblau
 Spektren;5`;
 
+const TITRATION_SAMPLE_CSV="Volumen_Massloesung_mL;pH\n0,0000000000;1,2838073625\n0,2000000000;1,2923725245\n0,4000000000;1,3009396658\n0,6000000000;1,3095104977\n0,8000000000;1,3180867344\n1,0000000000;1,3266700954\n1,2000000000;1,3352623077\n1,4000000000;1,3438651074\n1,6000000000;1,3524802423\n1,8000000000;1,3611094736\n2,0000000000;1,3697545784\n2,2000000000;1,3784173517\n2,4000000000;1,3870996088\n2,6000000000;1,3958031874\n2,8000000000;1,4045299504\n3,0000000000;1,4132817877\n3,2000000000;1,4220606196\n3,4000000000;1,4308683987\n3,6000000000;1,4397071131\n3,8000000000;1,4485787888\n4,0000000000;1,4574854933\n4,2000000000;1,4664293382\n4,4000000000;1,4754124825\n4,6000000000;1,4844371363\n4,8000000000;1,4935055641\n5,0000000000;1,5026200886\n5,2000000000;1,5117830950\n5,4000000000;1,5209970346\n5,6000000000;1,5302644296\n5,8000000000;1,5395878780\n6,0000000000;1,5489700581\n6,2000000000;1,5584137340\n6,4000000000;1,5679217612\n6,6000000000;1,5774970929\n6,8000000000;1,5871427856\n7,0000000000;1,5968620069\n7,2000000000;1,6066580419\n7,4000000000;1,6165343014\n7,6000000000;1,6264943306\n7,8000000000;1,6365418173\n8,0000000000;1,6466806021\n8,2000000000;1,6569146888\n8,4000000000;1,6672482550\n8,6000000000;1,6776856651\n8,8000000000;1,6882314823\n9,0000000000;1,6988904837\n9,2000000000;1,7096676747\n9,4000000000;1,7205683061\n9,6000000000;1,7315978921\n9,8000000000;1,7427622296\n10,0000000000;1,7540674197\n10,2000000000;1,7655198909\n10,4000000000;1,7771264245\n10,6000000000;1,7888941827\n10,8000000000;1,8008307385\n11,0000000000;1,8129441098\n11,2000000000;1,8252427954\n11,4000000000;1,8377358160\n11,6000000000;1,8504327589\n11,8000000000;1,8633438265\n12,0000000000;1,8764798917\n12,2000000000;1,8898525575\n12,4000000000;1,9034742247\n12,6000000000;1,9173581656\n12,8000000000;1,9315186077\n13,0000000000;1,9459708259\n13,2000000000;1,9607312458\n13,4000000000;1,9758175597\n13,6000000000;1,9912488561\n13,8000000000;2,0070457656\n14,0000000000;2,0232306242\n14,2000000000;2,0398276580\n14,4000000000;2,0568631905\n14,6000000000;2,0743658766\n14,8000000000;2,0923669667\n15,0000000000;2,1109006041\n15,2000000000;2,1300041601\n15,4000000000;2,1497186108\n15,6000000000;2,1700889594\n15,8000000000;2,1911647069\n16,0000000000;2,2130003733\n16,2000000000;2,2356560673\n16,4000000000;2,2591980996\n16,6000000000;2,2836996241\n16,8000000000;2,3092412814\n17,0000000000;2,3359117955\n17,2000000000;2,3638084443\n17,4000000000;2,3930372762\n17,6000000000;2,4237128703\n17,8000000000;2,4559573378\n18,0000000000;2,4898981137\n18,2000000000;2,5256639088\n18,4000000000;2,5633779812\n18,6000000000;2,6031477240\n18,8000000000;2,6450495791\n19,0000000000;2,6891087512\n19,2000000000;2,7352744800\n19,4000000000;2,7833940432\n19,6000000000;2,8331919766\n19,8000000000;2,8842637837\n20,0000000000;2,9360929368\n20,2000000000;2,9880938978\n20,4000000000;3,0396734286\n20,6000000000;3,0902936159\n20,8000000000;3,1395192476\n21,0000000000;3,1870400408\n21,2000000000;3,2326688058\n21,4000000000;3,2763235549\n21,6000000000;3,3180028495\n21,8000000000;3,3577613092\n22,0000000000;3,3956889379\n22,2000000000;3,4318953919\n22,4000000000;3,4664988790\n22,6000000000;3,4996188059\n22,8000000000;3,5313712054\n23,0000000000;3,5618661088\n23,2000000000;3,5912062170\n23,4000000000;3,6194864082\n23,6000000000;3,6467937595\n23,8000000000;3,6732078691\n24,0000000000;3,6988013403\n24,2000000000;3,7236403379\n24,4000000000;3,7477851637\n24,6000000000;3,7712908191\n24,8000000000;3,7942075360\n25,0000000000;3,8165812682\n25,2000000000;3,8384541400\n25,4000000000;3,8598648515\n25,6000000000;3,8808490426\n25,8000000000;3,9014396197\n26,0000000000;3,9216670467\n26,2000000000;3,9415596059\n26,4000000000;3,9611436298\n26,6000000000;3,9804437094\n26,8000000000;3,9994828798\n27,0000000000;4,0182827869\n27,2000000000;4,0368638376\n27,4000000000;4,0552453351\n27,6000000000;4,0734456009\n27,8000000000;4,0914820864\n28,0000000000;4,1093714745\n28,2000000000;4,1271297721\n28,4000000000;4,1447723969\n28,6000000000;4,1623142563\n28,8000000000;4,1797698224\n29,0000000000;4,1971532016\n29,2000000000;4,2144782018\n29,4000000000;4,2317583952\n29,6000000000;4,2490071805\n29,8000000000;4,2662378422\n30,0000000000;4,2834636102\n30,2000000000;4,3006977180\n30,4000000000;4,3179534623\n30,6000000000;4,3352442628\n30,8000000000;4,3525837243\n31,0000000000;4,3699857003\n31,2000000000;4,3874643608\n31,4000000000;4,4050342634\n31,6000000000;4,4227104294\n31,8000000000;4,4405084256\n32,0000000000;4,4584444543\n32,2000000000;4,4765354500\n32,4000000000;4,4947991879\n32,6000000000;4,5132544033\n32,8000000000;4,5319209256\n33,0000000000;4,5508198287\n33,2000000000;4,5699736011\n33,4000000000;4,5894063403\n33,6000000000;4,6091439740\n33,8000000000;4,6292145162\n34,0000000000;4,6496483624\n34,2000000000;4,6704786337\n34,4000000000;4,6917415808\n34,6000000000;4,7134770584\n34,8000000000;4,7357290892\n35,0000000000;4,7585465366\n35,2000000000;4,7819839139\n35,4000000000;4,8061023643\n35,6000000000;4,8309708580\n35,8000000000;4,8566676665\n36,0000000000;4,8832821964\n36,2000000000;4,9109172920\n36,4000000000;4,9396921608\n36,6000000000;4,9697461347\n36,8000000000;5,0012435716\n37,0000000000;5,0343803404\n37,2000000000;5,0693925453\n37,4000000000;5,1065684887\n37,6000000000;5,1462654298\n37,8000000000;5,1889336534\n38,0000000000;5,2351520397\n38,2000000000;5,2856824392\n38,4000000000;5,3415562069\n38,6000000000;5,4042188218\n38,8000000000;5,4757867408\n39,0000000000;5,5595405542\n39,2000000000;5,6609754389\n39,4000000000;5,7903919293\n39,6000000000;5,9709131738\n39,8000000000;6,2763133710\n40,0000000000;8,4017646367\n40,2000000000;10,5214584503\n40,4000000000;10,8210293103\n40,6000000000;10,9956814166\n40,8000000000;11,1191879825\n41,0000000000;11,2146711762\n41,2000000000;11,2924305284\n41,4000000000;11,3579601838\n41,6000000000;11,4145396694\n41,8000000000;11,4642843462\n42,0000000000;11,5086385631\n42,2000000000;11,5486325092\n42,4000000000;11,5850268316\n42,6000000000;11,6183991683\n42,8000000000;11,6491985204\n43,0000000000;11,6777808213\n43,2000000000;11,7044330024\n43,4000000000;11,7293897501\n43,6000000000;11,7528454665\n43,8000000000;11,7749629911\n44,0000000000;11,7958800837\n44,2000000000;11,8157143227\n44,4000000000;11,8345668643\n44,6000000000;11,8525253643\n44,8000000000;11,8696662781\n45,0000000000;11,8860566908\n45,2000000000;11,9017557879\n45,4000000000;11,9168160487\n45,6000000000;11,9312842223\n45,8000000000;11,9452021324\n46,0000000000;11,9586073452\n46,2000000000;11,9715337286\n46,4000000000;11,9840119215\n46,6000000000;11,9960697317\n46,8000000000;12,0077324742\n47,0000000000;12,0190232600\n47,2000000000;12,0299632449\n47,4000000000;12,0405718436\n47,6000000000;12,0508669157\n47,8000000000;12,0608649273\n48,0000000000;12,0705810919\n\nMetadaten\nSchnittstelle;MESSWERT_LAB_CSV\nSchnittstellen_Version;1.0\nAuswertungsstandard;TITR_AEP_V1\nApp;TITRATIONSTOOL\nApp_Version;15.6.0\nVersuchstyp;Titration\nTitrationsart;Schwache_Saeure_starke_Base\nAuswertungsrichtung;1\nAnalyt_ID;oxalic\nAnalyt_Name;Oxalsäure\nAnalyt_Formel;H₂C₂O₄\nAnalyt_Rolle;Saeure\nAnalyt_Staerke;schwach\nAnalyt_Klasse;zweiprotonige schwache Säure\nAnalyt_Molare_Masse_g_mol;90,034000\nStoffdaten_Quelle;Stammdaten\nProtonenstufen;2\nc_Probe_mol_L;0,10000000\nV_Probe_mL;20,00000000\nMassloesung_ID;naoh\nMassloesung_Name;Natronlauge\nMassloesung_Formel;NaOH\nc_Massloesung_mol_L;0,10000000\npKs1;1,25000000\npKs2;4,28000000\npKs_Bedeutung;Analyt_Saeure\nIndikator_ID;btb\nIndikator_Name;Bromthymolblau\nIndikator_Umschlagsbereiche_pH;Umschlag pH 6,0–7,6 · gelb → blau\nSchrittweite_Soll_mL;0,20000000\nMessreihenfolge;Volumen_aufsteigend\nAbleitungen_Exportiert;Nein\nArbeitsbereich;Freies_Labor\nAufgabe_ID;\nDatenart;Simulation\nExportzeit_ISO8601;2026-08-02T13:37:07.466Z";
 const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false,molarMassOverride:null,substanceNameOverride:'',dataUnit:'mol'};
 const kinState={sourceName:'',sourceText:'',metadata:{},headers:[],rawRows:[],workingRows:[],series:[],selectedSeries:'',kind:'decay',subtype:'',absorbanceHeader:'',parameterHeaders:[],analysis:null,settingsInitializedFor:null};
 const btbState={sourceName:'',sourceText:'',metadata:{},spectra:[],acidRef:'',baseRef:'',analysisWavelength:null,analysis:null};
+const titrState={sourceName:'',sourceText:'',metadata:{},rawRows:[],analysis:null,warnings:[]};
 const $=sel=>document.querySelector(sel), $$=sel=>[...document.querySelectorAll(sel)];
 
 function parseLine(line,delimiter=';'){
@@ -810,6 +882,7 @@ function recognize(parsed){
   if(type==='Eichkurve'||['Probentyp','Konzentration_mol_L','Absorbanz'].every(x=>h.includes(x)))return 'eichkurve';
   if(type.startsWith('Kinetik_'))return 'kinetik';
   if(type==='Gleichgewicht_Bromthymolblau')return 'btb';
+  if((parsed.metadata.Schnittstelle==='MESSWERT_LAB_CSV'&&type==='Titration')||(['Volumen_Massloesung_mL','pH'].every(x=>h.includes(x))&&type==='Titration'))return 'titration';
   return 'unknown';
 }
 function importEichkurve(parsed,name,text){
@@ -828,7 +901,8 @@ function loadText(text,name='Messwerte.csv'){
     if(kind==='eichkurve'){importEichkurve(parsed,name,text);return;}
     if(kind==='kinetik'){importKinetic(parsed,name,text);return;}
     if(kind==='btb'){importBtb(parsed,name,text);return;}
-    alert('Unbekannte CSV-Struktur. Bitte einen Export aus dem Virtuellen Photometer oder eine unterstützte Eichkurve öffnen.');
+    if(kind==='titration'){importTitration(parsed,name,text);return;}
+    alert('Unbekannte CSV-Struktur. Bitte einen unterstützten Export aus dem Virtuellen Photometer oder dem Titrationslabor öffnen.');
   }catch(err){alert(`Import nicht möglich: ${err.message}`);}
 }
 function openWorkspace(){ $('#start').style.display='none';$('#workspace').style.display='block';showStep('import');window.scrollTo({top:0}); }
@@ -1253,6 +1327,109 @@ function btbMdText(){const a=calculateBtb(),iso=a.isosbestic,decisions=btbState.
 function exportBtbPng(){drawBtbChart();const c=$('#btbChart');c.toBlob(blob=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=btbBaseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png')}
 function exportBtbJson(){const payload={schema:'MESSWERT_LAB_BTB_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:btbState.sourceName,metadata:btbState.metadata,originalText:btbState.sourceText},configuration:{acidRef:btbState.acidRef,baseRef:btbState.baseRef,analysisWavelength:btbState.analysisWavelength,chartView:$('#btbChartView').value},spectra:btbState.spectra,analysis:calculateBtb()};download(JSON.stringify(payload,null,2),btbBaseName()+'.json','application/json;charset=utf-8')}
 
+
+// --- Titrationsmodul ------------------------------------------------------
+const TITR_REQUIRED_META=['Schnittstelle','Schnittstellen_Version','Auswertungsstandard','App','App_Version','Versuchstyp','Titrationsart','Auswertungsrichtung','Analyt_ID','Analyt_Name','Analyt_Formel','Analyt_Rolle','Analyt_Staerke','Analyt_Klasse','Analyt_Molare_Masse_g_mol','Stoffdaten_Quelle','Protonenstufen','c_Probe_mol_L','V_Probe_mL','Massloesung_ID','Massloesung_Name','Massloesung_Formel','c_Massloesung_mol_L','Schrittweite_Soll_mL','Messreihenfolge','Ableitungen_Exportiert','Datenart','Exportzeit_ISO8601'];
+const TITR_TYPES=new Set(['Starke_Saeure_starke_Base','Schwache_Saeure_starke_Base','Starke_Base_starke_Saeure','Schwache_Base_starke_Saeure']);
+function titrTypeLabel(v){return ({Starke_Saeure_starke_Base:'starke Säure mit starker Base',Schwache_Saeure_starke_Base:'schwache Säure mit starker Base',Starke_Base_starke_Saeure:'starke Base mit starker Säure',Schwache_Base_starke_Saeure:'schwache Base mit starker Säure'})[v]||String(v||'').replace(/_/g,' ')}
+function validateTitrationImport(parsed){
+  const missing=TITR_REQUIRED_META.filter(k=>String(parsed.metadata[k]??'').trim()==='');
+  if(missing.length)throw new Error(`Pflichtmetadaten fehlen: ${missing.join(', ')}.`);
+  if(parsed.metadata.Schnittstelle!=='MESSWERT_LAB_CSV')throw new Error(`Unbekannte Schnittstelle: ${parsed.metadata.Schnittstelle}.`);
+  if(parsed.metadata.Schnittstellen_Version!=='1.0')throw new Error(`Schnittstellen-Version ${parsed.metadata.Schnittstellen_Version} wird noch nicht unterstützt.`);
+  if(parsed.metadata.Auswertungsstandard!=='TITR_AEP_V1')throw new Error(`Unbekannter Auswertungsstandard: ${parsed.metadata.Auswertungsstandard}.`);
+  if(parsed.metadata.App!=='TITRATIONSTOOL'||parsed.metadata.Versuchstyp!=='Titration')throw new Error('Die Datei ist kein verbindlicher TITRATIONSTOOL-Export.');
+  if(!TITR_TYPES.has(parsed.metadata.Titrationsart))throw new Error(`Unbekannte Titrationsart: ${parsed.metadata.Titrationsart}.`);
+  const direction=parseNumber(parsed.metadata.Auswertungsrichtung),levels=parseNumber(parsed.metadata.Protonenstufen);
+  if(![1,-1].includes(direction))throw new Error('Auswertungsrichtung muss 1 oder -1 sein.');
+  if(![1,2].includes(levels))throw new Error('Protonenstufen muss 1 oder 2 sein.');
+  if(parsed.metadata.Messreihenfolge!=='Volumen_aufsteigend')throw new Error('Die Messreihenfolge ist nicht als Volumen_aufsteigend gekennzeichnet.');
+  if(String(parsed.metadata.Ableitungen_Exportiert).toLowerCase()!=='nein')throw new Error('Der Export muss unveränderte Rohdaten ohne exportierte Ableitungen enthalten.');
+  ['Analyt_Molare_Masse_g_mol','c_Probe_mol_L','V_Probe_mL','c_Massloesung_mol_L','Schrittweite_Soll_mL'].forEach(k=>{if(!(parseNumber(parsed.metadata[k])>0))throw new Error(`Metadatenfeld ${k} muss eine positive Zahl enthalten.`)});
+  if(!parsed.main.headers.includes('Volumen_Massloesung_mL')||!parsed.main.headers.includes('pH'))throw new Error('Die Rohdatenspalten Volumen_Massloesung_mL und pH wurden nicht gefunden.');
+}
+function importTitration(parsed,name,text){
+  validateTitrationImport(parsed);
+  const raw=parsed.main.rows.map((r,i)=>({index:i+1,x:parseNumber(r.Volumen_Massloesung_mL),y:parseNumber(r.pH),original:{...r}}));
+  if(raw.length<6)throw new Error('Für eine Titrationsauswertung werden mindestens sechs Rohdatenpunkte benötigt.');
+  const invalid=raw.find(r=>r.x==null||r.y==null);if(invalid)throw new Error(`Ungültiger Zahlenwert in Datenzeile ${invalid.index}.`);
+  for(let i=1;i<raw.length;i++)if(!(raw[i].x>raw[i-1].x))throw new Error(`Volumenwerte sind bei Datenzeile ${i+1} nicht streng steigend.`);
+  const warnings=[];
+  if(Math.abs(raw[0].x)>1e-12)warnings.push(`Der erste Messpunkt liegt bei ${fmt(raw[0].x,6)} mL und nicht bei 0 mL.`);
+  const steps=raw.slice(1).map((p,i)=>p.x-raw[i].x),med=median(steps),target=parseNumber(parsed.metadata.Schrittweite_Soll_mL);
+  if(target!=null&&med!=null&&Math.abs(med-target)>Math.max(1e-9,target*1e-6))warnings.push(`Die mediane reale Schrittweite (${fmt(med,6)} mL) weicht von der Soll-Schrittweite (${fmt(target,6)} mL) ab.`);
+  titrState.sourceName=name;titrState.sourceText=text;titrState.metadata={...parsed.metadata};titrState.rawRows=raw;titrState.analysis=null;titrState.warnings=warnings;
+  calculateTitration();openTitrWorkspace();renderTitrAll();
+}
+function openTitrWorkspace(){$('#start').style.display='none';$('#workspace').style.display='none';$('#kinWorkspace').style.display='none';$('#btbWorkspace').style.display='none';$('#titrWorkspace').style.display='block';showTitrStep('import');window.scrollTo({top:0})}
+function showTitrStep(step){
+  $$('.tpanel').forEach(p=>p.classList.toggle('active',p.id===`titr-panel-${step}`));const order=['import','data','analysis','result','export'],idx=order.indexOf(step);
+  $$('.tstep').forEach((b,i)=>{b.classList.toggle('active',i===idx);b.classList.toggle('done',i<idx)});
+  if(['analysis','result','export'].includes(step)){calculateTitration();renderTitrAnalysis();renderTitrResult()}
+  if(step==='analysis')setTimeout(drawTitrChart,30);window.scrollTo({top:0,behavior:'smooth'});
+}
+function titrMaxCount(){return titrState.metadata.Titrationsart==='Schwache_Saeure_starke_Base'&&parseNumber(titrState.metadata.Protonenstufen)===2?2:1}
+function analyzeTitration(raw,maxCount,direction){
+  const d1=[];
+  for(let i=0;i<raw.length-1;i++){const a=raw[i],b=raw[i+1],dv=b.x-a.x;if(dv>0)d1.push({x:(a.x+b.x)/2,y:(b.y-a.y)/dv})}
+  const d2=[];
+  for(let i=0;i<d1.length-1;i++){const a=d1[i],b=d1[i+1],dv=b.x-a.x;if(dv>0)d2.push({x:(a.x+b.x)/2,y:(b.y-a.y)/dv})}
+  return {d1,d2,equivalencePoints:detectEquivalencePoints(d1,d2,raw,maxCount,direction)};
+}
+function detectEquivalencePoints(d1,d2,raw,maxCount,direction){
+  if(d1.length<5||d2.length<4)return [];
+  const signal=d1.map(p=>({x:p.x,y:direction*p.y,actualY:p.y}));
+  const steps=raw.slice(1).map((p,i)=>p.x-raw[i].x).filter(v=>v>0);
+  const medianStep=median(steps)||0.2,lastVolume=raw.at(-1)?.x||1,globalMax=Math.max(...signal.map(p=>p.y)),localMaxima=[];
+  const prominenceRadius=Math.max(5,Math.round((lastVolume*0.06)/medianStep));
+  const relativeHeightThreshold=maxCount>1?0.015:0.08,relativeProminenceThreshold=maxCount>1?0.003:0.015;
+  for(let i=1;i<signal.length-1;i++){
+    const p=signal[i];
+    if(!(p.y>=signal[i-1].y&&p.y>=signal[i+1].y&&(p.y>signal[i-1].y||p.y>signal[i+1].y)))continue;
+    const leftStart=Math.max(0,i-prominenceRadius),rightEnd=Math.min(signal.length-1,i+prominenceRadius);
+    const leftMin=Math.min(...signal.slice(leftStart,i+1).map(q=>q.y)),rightMin=Math.min(...signal.slice(i,rightEnd+1).map(q=>q.y)),prominence=p.y-Math.max(leftMin,rightMin);
+    if(p.y<Math.max(0.05,globalMax*relativeHeightThreshold))continue;
+    if(prominence<Math.max(0.02,globalMax*relativeProminenceThreshold))continue;
+    localMaxima.push({index:i,x:p.x,y:p.actualY,prominence});
+  }
+  const crossings=[];
+  for(let i=0;i<d2.length-1;i++){const a=d2[i],b=d2[i+1],ay=direction*a.y,by=direction*b.y;if(ay>=0&&by<=0&&ay!==by){const x=a.x+(0-ay)*(b.x-a.x)/(by-ay);crossings.push({x,left:a,right:b})}}
+  const associationRadius=Math.max(4*medianStep,lastVolume*0.035),matched=[];
+  for(const peak of localMaxima){const crossing=crossings.map(c=>({...c,distance:Math.abs(c.x-peak.x)})).filter(c=>c.distance<=associationRadius).sort((a,b)=>a.distance-b.distance)[0];if(crossing)matched.push({x:crossing.x,peakX:peak.x,peakY:peak.y,prominence:peak.prominence})}
+  matched.sort((a,b)=>b.prominence-a.prominence);const selected=[],minSeparation=Math.max(5*medianStep,lastVolume*0.08);
+  for(const candidate of matched){if(selected.every(existing=>Math.abs(existing.x-candidate.x)>=minSeparation))selected.push(candidate);if(selected.length>=maxCount)break}
+  return selected.sort((a,b)=>a.x-b.x);
+}
+function interpolateTitrY(x){const raw=titrState.rawRows;if(!raw.length||x<raw[0].x||x>raw.at(-1).x)return null;for(let i=0;i<raw.length-1;i++){const a=raw[i],b=raw[i+1];if(x>=a.x&&x<=b.x)return a.y+(x-a.x)*(b.y-a.y)/(b.x-a.x)}return x===raw.at(-1).x?raw.at(-1).y:null}
+function parseIndicatorRanges(text){const s=String(text||''),out=[];const re=/([0-9]+(?:[,.][0-9]+)?)\s*[–—-]\s*([0-9]+(?:[,.][0-9]+)?)/g;let m;while((m=re.exec(s))){const a=parseNumber(m[1]),b=parseNumber(m[2]);if(a!=null&&b!=null)out.push([Math.min(a,b),Math.max(a,b)])}return out}
+function calculateTitration(){
+  if(!titrState.rawRows.length)return null;const direction=parseNumber(titrState.metadata.Auswertungsrichtung),maxCount=titrMaxCount(),base=analyzeTitration(titrState.rawRows,maxCount,direction);
+  const steps=titrState.rawRows.slice(1).map((p,i)=>p.x-titrState.rawRows[i].x),medianStep=median(steps),cT=parseNumber(titrState.metadata.c_Massloesung_mol_L),vProbe=parseNumber(titrState.metadata.V_Probe_mL),M=parseNumber(titrState.metadata.Analyt_Molare_Masse_g_mol),levels=parseNumber(titrState.metadata.Protonenstufen);
+  const eq=base.equivalencePoints.map((p,i)=>{const z=levels===2&&i===1?2:1,c=cT*p.x/(z*vProbe),pH=interpolateTitrY(p.x);return {...p,index:i+1,z,c,mass:c*M,pH,peakDistance:Math.abs(p.peakX-p.x)}});
+  const half=[];
+  if(String(titrState.metadata.Analyt_Staerke).toLowerCase()==='schwach'&&levels===1&&eq.length){
+    const x=eq[0].x/2,pks=parseNumber(titrState.metadata.pKs1),pH=interpolateTitrY(x);half.push({stage:1,x,pH,pks,difference:pH!=null&&pks!=null?pH-pks:null});
+  }
+  const ranges=parseIndicatorRanges(titrState.metadata.Indikator_Umschlagsbereiche_pH),expected=maxCount,warnings=[...titrState.warnings];
+  if(eq.length===0)warnings.push('Kein geeigneter Äquivalenzpunkt wurde gefunden.');else if(eq.length<expected)warnings.push(`Erwartet wurden ${expected} Äquivalenzpunkte, erkannt wurden ${eq.length}.`);
+  if(medianStep>0.5)warnings.push(`Die mediane Schrittweite von ${fmt(medianStep,3)} mL ist für eine genaue Ableitung relativ grob. Diese Komfortwarnung ist nicht Teil von TITR_AEP_V1.`);
+  titrState.analysis={...base,eq,half,medianStep,minStep:Math.min(...steps),maxStep:Math.max(...steps),expected,ranges,warnings};return titrState.analysis;
+}
+function titrMetaTable(){return `<table style="min-width:0"><tbody>${Object.entries(titrState.metadata).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}</tbody></table>`}
+function renderTitrImport(){const a=titrState.analysis||calculateTitration(),m=titrState.metadata;$('#titrImportNotice').innerHTML='<div class="notice ok"><strong>Verbindlicher Titrationsexport erkannt.</strong> Schnittstelle 1.0 und Auswertungsstandard TITR_AEP_V1 sind kompatibel.</div>';const boxes=[['Analyt',`${esc(m.Analyt_Name)}${m.Analyt_Formel?` · ${esc(m.Analyt_Formel)}`:''}`],['Titrationsart',esc(titrTypeLabel(m.Titrationsart))],['Maßlösung',`${esc(m.Massloesung_Name)} · ${fmtSig(parseNumber(m.c_Massloesung_mol_L),4)} mol/L`],['Rohdatenpunkte',titrState.rawRows.length],['Volumenbereich',`${fmt(titrState.rawRows[0].x,3)}–${fmt(titrState.rawRows.at(-1).x,3)} mL`],['Mediane Schrittweite',`${fmt(a.medianStep,3)} mL`],['Mögliche ÄP',titrMaxCount()],['Quelle',`${esc(m.App)} v${esc(m.App_Version)}`]];$('#titrImportSummary').innerHTML=boxes.map(([l,v])=>`<div class="summary-box"><span class="label">${l}</span><span class="value">${v}</span></div>`).join('');$('#titrImportWarnings').innerHTML=a.warnings.length?`<div class="notice warn"><strong>Hinweise:</strong><ul class="warning-list">${a.warnings.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:'';$('#titrMetadataDetails').innerHTML=`<p><strong>Datei:</strong> ${esc(titrState.sourceName)}</p>${titrMetaTable()}`}
+function renderTitrData(){const a=titrState.analysis||calculateTitration(),radius=Math.max((a.medianStep||0.2)*3,0.6);$('#titrDataBody').innerHTML=titrState.rawRows.map((r,i)=>{const near=a.eq.some(e=>Math.abs(e.x-r.x)<=radius),dv=i? r.x-titrState.rawRows[i-1].x:null;return `<tr class="${near?'titr-highlight':''}"><td class="num">${i+1}</td><td class="num">${fmtFixed(r.x,10)}</td><td class="num">${fmtFixed(r.y,10)}</td><td class="num">${dv==null?'—':fmtFixed(dv,10)}</td></tr>`}).join('');$('#titrDataValidity').innerHTML=`<div class="notice ok">${titrState.rawRows.length} gültige Punkte · Volumen streng steigend · Schrittweite ${fmt(a.minStep,4)} bis ${fmt(a.maxStep,4)} mL.</div>`}
+function renderTitrAnalysis(){const a=titrState.analysis||calculateTitration(),view=$('#titrChartView').value,m=titrState.metadata;const notes={raw:'Die senkrechten Linien markieren die aus der zweiten Ableitung bestimmten Äquivalenzvolumina.',d1:'Markierungen zeigen die zugeordneten lokalen Extrema der ersten Ableitung.',d2:'Die Äquivalenzvolumina entstehen durch lineare Interpolation passender Nulldurchgänge.'};$('#titrMethodNotice').innerHTML=view==='raw'?'<strong>Titrationskurve:</strong> Der steile pH-Sprung liefert eine erste Orientierung.':view==='d1'?'<strong>1. Ableitung:</strong> Ein Äquivalenzpunkt liegt nahe einem markanten Extremum.':'<strong>2. Ableitung:</strong> Der interpolierte Nulldurchgang liefert das Äquivalenzvolumen.';$('#titrChartNote').textContent=notes[view];$('#titrMetrics').innerHTML=[['Auswertungsrichtung',parseNumber(m.Auswertungsrichtung)===1?'pH steigt':'pH fällt'],['Rohdatenpunkte',titrState.rawRows.length],['Punkte D¹',a.d1.length],['Punkte D²',a.d2.length],['Mediane Schrittweite',`${fmt(a.medianStep,3)} mL`],['Erkannte ÄP',`${a.eq.length} von ${a.expected}`]].map(([l,v])=>`<div class="metric"><span>${l}</span><strong>${v}</strong></div>`).join('');$('#titrCandidateBody').innerHTML=a.eq.length?a.eq.map(e=>`<tr><td>ÄP ${e.index}</td><td class="num">${fmtFixed(e.x,3)}</td><td class="num">${fmtFixed(e.peakX,3)}</td><td class="num">${fmt(e.peakY,6)}</td><td class="num">${fmtFixed(e.peakDistance,3)}</td></tr>`).join(''):'<tr><td colspan="5">Kein geeigneter Kandidat gefunden.</td></tr>';requestAnimationFrame(drawTitrChart)}
+function renderTitrResult(){const a=titrState.analysis||calculateTitration(),m=titrState.metadata,ref=parseNumber(m.c_Probe_mol_L);$('#titrResultHero').innerHTML=`<span class="badge ${a.eq.length===a.expected?'standard':'changed'}">TITR_AEP_V1</span><p class="muted">Erkannte Äquivalenzpunkte</p><div class="big">${a.eq.length} von ${a.expected}</div><div class="secondary-value">${a.eq.map(e=>`${fmtFixed(e.x,3)} mL`).join(' · ')||'nicht bestimmbar'}</div><p class="rounding-note">Äquivalenzvolumina auf 0,001 mL angezeigt.</p>`;$('#titrResultMain').innerHTML=`<div class="result-list"><div class="result-row"><span>Analyt</span><strong>${esc(m.Analyt_Name)} (${esc(m.Analyt_Formel)})</strong></div><div class="result-row"><span>Probe</span><strong>${fmt(parseNumber(m.V_Probe_mL),4)} mL</strong></div><div class="result-row"><span>Maßlösung</span><strong>${esc(m.Massloesung_Name)} · ${fmtSig(parseNumber(m.c_Massloesung_mol_L),4)} mol/L</strong></div><div class="result-row"><span>Indikator</span><strong>${esc(m.Indikator_Name||'nicht angegeben')}</strong></div><div class="result-row"><span>Auswertungsstandard</span><strong>${esc(m.Auswertungsstandard)}</strong></div></div>`;$('#titrEqCards').innerHTML=a.eq.length?a.eq.map((e,i)=>{const dev=ref>0?(e.c-ref)/ref*100:null;return `<article class="eq-card ${i===a.eq.length-1?'primary':''}"><h3>Äquivalenzpunkt ${e.index}</h3><dl><dt>Äquivalenzvolumen</dt><dd>${fmtFixed(e.x,3)} mL</dd><dt>interpolierter pH</dt><dd>${fmtFixed(e.pH,3)}</dd><dt>Stöchiometrischer Faktor z</dt><dd>${e.z}</dd><dt>c(Analyt)</dt><dd>${fmtSig(e.c,4)} mol/L</dd><dt>Massenkonzentration</dt><dd>${fmtSig(e.mass,4)} g/L</dd>${ref>0?`<dt>Abweichung zur Simulation</dt><dd>${dev>=0?'+':''}${fmt(dev,3)} %</dd>`:''}</dl></article>`}).join(''):'<div class="notice danger">Ohne erkannten Äquivalenzpunkt wird keine Konzentration berechnet.</div>';
+  const weak=String(m.Analyt_Staerke).toLowerCase()==='schwach',levels=parseNumber(m.Protonenstufen);$('#titrHalfSection').style.display=weak&&a.half.length?'block':'none';$('#titrHalfBody').innerHTML=a.half.map(h=>`<tr><td>HÄP ${h.stage}</td><td class="num">${fmtFixed(h.x,3)}</td><td class="num">${fmtFixed(h.pH,3)}</td><td class="num">${h.pks==null?'—':fmtFixed(h.pks,3)}</td><td class="num">${h.difference==null?'—':`${h.difference>=0?'+':''}${fmtFixed(h.difference,3)}`}</td></tr>`).join('');$('#titrHalfNotice').innerHTML=weak&&levels>1?'<div class="notice">Für mehrprotonige Analyten definiert die Schnittstelle 1.0 noch keine automatische Halbäquivalenzpunkt-/pK<sub>s</sub>-Auswertung. DatenLab ergänzt hier bewusst keine nicht spezifizierte Näherung.</div>':'';
+  const ranges=a.ranges,indicator=m.Indikator_Name;if(!indicator){$('#titrIndicatorNotice').innerHTML='';return}const statuses=a.eq.map(e=>({e,inside:ranges.some(([lo,hi])=>e.pH>=lo&&e.pH<=hi)}));$('#titrIndicatorNotice').innerHTML=ranges.length?`<div class="notice ${statuses.some(s=>s.inside)?'ok':'warn'}"><strong>Indikatorvergleich:</strong> ${esc(indicator)} · ${esc(m.Indikator_Umschlagsbereiche_pH)}<br>${statuses.map(s=>`ÄP ${s.e.index}: pH ${fmtFixed(s.e.pH,3)} – ${s.inside?'liegt im Umschlagsbereich':'liegt außerhalb des Umschlagsbereichs'}`).join('<br>')}</div>`:`<div class="notice">Indikator: ${esc(indicator)}. Ein maschinenlesbarer Umschlagsbereich wurde nicht gefunden.</div>`}
+function drawTitrChart(){const canvas=$('#titrChart'),a=titrState.analysis||calculateTitration();if(!canvas||!a)return;const box=canvas.getBoundingClientRect();if(box.width<10)return;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(box.width*dpr);canvas.height=Math.round(box.height*dpr);const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const W=box.width,H=box.height,pad={l:78,r:28,t:42,b:66};ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);const view=$('#titrChartView').value,points=view==='raw'?titrState.rawRows:view==='d1'?a.d1:a.d2;if(!points.length)return;let xmin=Math.min(...points.map(p=>p.x)),xmax=Math.max(...points.map(p=>p.x)),ymin=Math.min(...points.map(p=>p.y)),ymax=Math.max(...points.map(p=>p.y));const yr=(ymax-ymin)||1,xr=(xmax-xmin)||1;xmin-=xr*.02;xmax+=xr*.02;ymin-=yr*.1;ymax+=yr*.1;if(view==='raw'){ymin=Math.min(0,ymin);ymax=Math.max(14,ymax)}else if(view==='d2'){const abs=Math.max(Math.abs(ymin),Math.abs(ymax));ymin=-abs*1.08;ymax=abs*1.08}const labels=view==='raw'?['Volumen der Maßlösung (mL)','pH']:view==='d1'?['Volumenmittelpunkt (mL)','ΔpH/ΔV (pH/mL)']:['Volumenmittelpunkt (mL)','Δ²pH/ΔV² (pH/mL²)'];const {X,Y}=drawAxes(ctx,W,H,pad,xmin,xmax,ymin,ymax,labels[0],labels[1],v=>fmt(v,2),v=>fmt(v,view==='raw'?2:3));if(view==='d2'){ctx.strokeStyle='#8797a0';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(X(xmin),Y(0));ctx.lineTo(X(xmax),Y(0));ctx.stroke();ctx.setLineDash([])}ctx.strokeStyle='#156b86';ctx.lineWidth=2.2;ctx.beginPath();points.forEach((p,i)=>{i?ctx.lineTo(X(p.x),Y(p.y)):ctx.moveTo(X(p.x),Y(p.y))});ctx.stroke();if(points.length<500){ctx.fillStyle='#156b86';points.forEach(p=>{ctx.beginPath();ctx.arc(X(p.x),Y(p.y),view==='raw'?2.2:2.6,0,Math.PI*2);ctx.fill()})}a.eq.forEach((e,i)=>{const color=i===0?'#d66f28':'#7a4fa3';ctx.strokeStyle=color;ctx.lineWidth=1.8;ctx.setLineDash([7,5]);ctx.beginPath();ctx.moveTo(X(e.x),pad.t);ctx.lineTo(X(e.x),H-pad.b);ctx.stroke();ctx.setLineDash([]);let px=e.x,py=view==='raw'?interpolateTitrY(e.x):view==='d1'?e.peakY:0;if(view==='d1')px=e.peakX;ctx.fillStyle=color;ctx.beginPath();ctx.arc(X(px),Y(py),5.5,0,Math.PI*2);ctx.fill();ctx.textAlign='left';ctx.font='bold 12px system-ui';ctx.fillText(`ÄP ${i+1}`,Math.min(X(e.x)+6,W-pad.r-35),pad.t+16+i*17)});ctx.fillStyle='#21333e';ctx.textAlign='left';ctx.font='bold 13px system-ui';ctx.fillText(`${titrState.metadata.Analyt_Name} / ${titrState.metadata.Massloesung_Name}`,pad.l,pad.t-14)}
+function renderTitrAll(){calculateTitration();renderTitrImport();renderTitrData();renderTitrAnalysis();renderTitrResult()}
+function titrBaseName(){const a=String(titrState.metadata.Analyt_ID||'ANALYT').replace(/[^a-z0-9]+/gi,'_').toUpperCase();return `MESSWERTLAB_TITRATION_${a}_${timestamp()}`}
+function titrCsvText(){const a=titrState.analysis||calculateTitration();const max=Math.max(titrState.rawRows.length,a.d1.length,a.d2.length),lines=['Volumen_Rohdaten_mL;pH;Volumen_D1_mL;D1_pH_pro_mL;Volumen_D2_mL;D2_pH_pro_mL2'];for(let i=0;i<max;i++){const r=titrState.rawRows[i],d1=a.d1[i],d2=a.d2[i];lines.push([r?.x??'',r?.y??'',d1?.x??'',d1?.y??'',d2?.x??'',d2?.y??''].map(v=>String(v).replace('.',',')).join(';'))}lines.push('','Aequivalenzpunkte','Nummer;Volumen_mL;Peak_D1_Volumen_mL;Peak_D1_Wert;pH_interpoliert;c_Analyt_mol_L;Massenkonzentration_g_L');a.eq.forEach(e=>lines.push([e.index,e.x,e.peakX,e.peakY,e.pH,e.c,e.mass].map(v=>String(v).replace('.',',')).join(';')));lines.push('','Metadaten',`DatenLab_Version;${VERSION}`,`Exportzeit;${new Date().toISOString()}`,`Quelle;${titrState.sourceName}`,`Auswertungsstandard;${titrState.metadata.Auswertungsstandard}`);return '\uFEFF'+lines.join('\r\n')}
+function titrMdText(){const a=titrState.analysis||calculateTitration(),m=titrState.metadata;return `# DatenLab-Auswertung: Titration\n\n- **Quelle:** ${titrState.sourceName}\n- **Analyt:** ${m.Analyt_Name} (${m.Analyt_Formel})\n- **Titrationsart:** ${titrTypeLabel(m.Titrationsart)}\n- **Maßlösung:** ${m.Massloesung_Name}, ${fmtSig(parseNumber(m.c_Massloesung_mol_L),4)} mol/L\n- **Probenvolumen:** ${fmt(parseNumber(m.V_Probe_mL),4)} mL\n- **Auswertungsstandard:** ${m.Auswertungsstandard}\n- **Rohdatenpunkte:** ${titrState.rawRows.length}\n- **Mediane Schrittweite:** ${fmt(a.medianStep,4)} mL\n\n## Äquivalenzpunkte und Konzentration\n\n| ÄP | V(ÄP) / mL | pH interpoliert | Peak D¹ / mL | c(Analyt) / mol L⁻¹ | β / g L⁻¹ |\n|---:|---:|---:|---:|---:|---:|\n${a.eq.map(e=>`| ${e.index} | ${fmtFixed(e.x,3)} | ${fmtFixed(e.pH,3)} | ${fmtFixed(e.peakX,3)} | ${fmtSig(e.c,4)} | ${fmtSig(e.mass,4)} |`).join('\n')||'| – | nicht bestimmbar | – | – | – | – |'}\n\n## Halbäquivalenzpunkte\n\n${a.half.length?'| Stufe | V(HÄP) / mL | pH | pKs Metadaten | Differenz |\n|---:|---:|---:|---:|---:|\n'+a.half.map(h=>`| ${h.stage} | ${fmtFixed(h.x,3)} | ${fmtFixed(h.pH,3)} | ${h.pks==null?'—':fmtFixed(h.pks,3)} | ${h.difference==null?'—':fmtFixed(h.difference,3)} |`).join('\n'):parseNumber(m.Protonenstufen)>1?'Für mehrprotonige Analyten ist die Halbäquivalenzpunkt-/pKs-Auswertung in Schnittstelle 1.0 noch nicht definiert.':'Für diesen Analyten wurden keine Halbäquivalenzpunkte ausgewertet.'}\n\n## Hinweise\n\n${a.warnings.length?a.warnings.map(w=>`- ${w}`).join('\n'):'- Keine Import- oder Auswertungswarnungen.'}\n\n> Die fachliche Interpretation und Fehlerdiskussion wurden nicht automatisch erstellt.\n`}
+function exportTitrPng(){drawTitrChart();const c=$('#titrChart');c.toBlob(blob=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=titrBaseName()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)},'image/png')}
+function exportTitrJson(){const payload={schema:'MESSWERT_LAB_TITRATION_SESSION',schemaVersion:'1.0',appVersion:VERSION,createdAt:new Date().toISOString(),source:{name:titrState.sourceName,metadata:titrState.metadata,originalText:titrState.sourceText},rawData:titrState.rawRows,configuration:{chartView:$('#titrChartView').value},analysis:titrState.analysis};download(JSON.stringify(payload,null,2),titrBaseName()+'.json','application/json;charset=utf-8')}
+
 function manualRow(type='standard',probe='',c='',a='',hint=''){
   const tr=document.createElement('tr');tr.innerHTML=`<td><select class="mtype"><option value="blank" ${type==='blank'?'selected':''}>Blindprobe</option><option value="standard" ${type==='standard'?'selected':''}>Standard</option><option value="unknown" ${type==='unknown'?'selected':''}>Unbekannt</option></select></td><td><input class="cell-input mprobe" value="${esc(probe)}"></td><td><input class="cell-input mc" value="${esc(c)}"></td><td><input class="cell-input ma" value="${esc(a)}"></td><td><input class="cell-input mhint" value="${esc(hint)}"></td><td><button class="btn btn-danger mdel">×</button></td>`;tr.querySelector('.mdel').onclick=()=>tr.remove();$('#manualBody').appendChild(tr);
 }
@@ -1288,6 +1465,7 @@ const dz=$('#dropzone');['dragenter','dragover'].forEach(ev=>dz.addEventListener
 $('#loadSample').onclick=()=>loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
 $('#loadKineticSample').onclick=()=>loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');
 $('#loadBtbSample').onclick=()=>loadText(BTB_SAMPLE_CSV,'PHOT_GLEICHGEWICHT_BTB_PH_SERIE_BEISPIEL.csv');
+$('#loadTitrationSample').onclick=()=>loadText(TITRATION_SAMPLE_CSV,'TITR_OXALIC_NaOH_BEISPIEL.csv');
 $('#showManual').onclick=()=>{$('#manual').style.display='block';$('#dropzone').style.display='none';initManual();$('#manual').scrollIntoView({behavior:'smooth'})};$('#cancelManual').onclick=()=>$('#manual').style.display='none';$('#manualConcentrationUnit').addEventListener('change',updateManualUnitUi);$('#addManualRow').onclick=()=>manualRow();$('#useManual').onclick=useManual;
 $('#newDataset').onclick=resetApp;$('#resetWorking').onclick=()=>{state.workingRows=structuredClone(state.rawRows);renderAll()};
 $$('[data-next]').forEach(b=>b.onclick=()=>{if(b.dataset.next==='regression'&&!validateData(true))return;showStep(b.dataset.next)});$$('[data-prev]').forEach(b=>b.onclick=()=>showStep(b.dataset.prev));$$('.step').forEach(b=>b.onclick=()=>{if(['regression','unknown','export'].includes(b.dataset.step)&&!validateData(true))return;showStep(b.dataset.step)});
@@ -1305,8 +1483,14 @@ $('#btbNewDataset').onclick=resetApp;$('#btbResetWorking').onclick=()=>{btbState
 $$('[data-bnext]').forEach(b=>b.onclick=()=>{if(b.dataset.bnext==='analysis'&&!validateBtbData(true))return;showBtbStep(b.dataset.bnext)});$$('[data-bprev]').forEach(b=>b.onclick=()=>showBtbStep(b.dataset.bprev));$$('.bstep').forEach(b=>b.onclick=()=>{if(['analysis','result','export'].includes(b.dataset.bstep)&&!validateBtbData(true))return;showBtbStep(b.dataset.bstep)});
 $('#btbAcidRef').addEventListener('change',updateBtbReferences);$('#btbBaseRef').addEventListener('change',updateBtbReferences);$('#btbWavelength').addEventListener('change',e=>{btbState.analysisWavelength=parseNumber(e.target.value);renderBtbAnalysis();renderBtbResult()});$('#btbChartView').addEventListener('change',renderBtbAnalysis);$('#btbRefreshAnalysis').onclick=()=>{renderBtbAnalysis();renderBtbResult()};
 $('#btbExportPng').onclick=exportBtbPng;$('#btbExportMd').onclick=()=>download(btbMdText(),btbBaseName()+'.md','text/markdown;charset=utf-8');$('#btbExportCsv').onclick=()=>download(btbCsvText(),btbBaseName()+'.csv','text/csv;charset=utf-8');$('#btbExportJson').onclick=exportBtbJson;
-window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart();if($('#kin-panel-analysis').classList.contains('active'))drawKineticChart();if($('#btb-panel-analysis').classList.contains('active'))drawBtbChart()});
-const qs=new URLSearchParams(location.search);if(qs.get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');if(qs.get('kin')==='1')loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');if(qs.get('btb')==='1')loadText(BTB_SAMPLE_CSV,'PHOT_GLEICHGEWICHT_BTB_PH_SERIE_BEISPIEL.csv');
+
+$('#titrNewDataset').onclick=resetApp;
+$$('[data-tnext]').forEach(b=>b.onclick=()=>showTitrStep(b.dataset.tnext));$$('[data-tprev]').forEach(b=>b.onclick=()=>showTitrStep(b.dataset.tprev));$$('.tstep').forEach(b=>b.onclick=()=>showTitrStep(b.dataset.tstep));
+$('#titrChartView').addEventListener('change',renderTitrAnalysis);$('#titrRefreshAnalysis').onclick=()=>{calculateTitration();renderTitrAnalysis();renderTitrResult()};
+$('#titrExportPng').onclick=exportTitrPng;$('#titrExportMd').onclick=()=>download(titrMdText(),titrBaseName()+'.md','text/markdown;charset=utf-8');$('#titrExportCsv').onclick=()=>download(titrCsvText(),titrBaseName()+'.csv','text/csv;charset=utf-8');$('#titrExportJson').onclick=exportTitrJson;
+
+window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart();if($('#kin-panel-analysis').classList.contains('active'))drawKineticChart();if($('#btb-panel-analysis').classList.contains('active'))drawBtbChart();if($('#titr-panel-analysis').classList.contains('active'))drawTitrChart()});
+const qs=new URLSearchParams(location.search);if(qs.get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');if(qs.get('kin')==='1')loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');if(qs.get('btb')==='1')loadText(BTB_SAMPLE_CSV,'PHOT_GLEICHGEWICHT_BTB_PH_SERIE_BEISPIEL.csv');if(qs.get('titr')==='1')loadText(TITRATION_SAMPLE_CSV,'TITR_OXALIC_NaOH_BEISPIEL.csv');
 </script>
 </body>
 </html>

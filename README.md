@@ -1,4 +1,4 @@
-# MESSWERT_LAB – DatenLab v0.5.2
+# MESSWERT_LAB – DatenLab v0.6.0
 
 Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 
@@ -47,3 +47,31 @@ Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 - `tests/` – Referenzprüfung für die Titrationsauswertung
 
 Alle Berechnungen erfolgen lokal im Browser.
+
+
+## v0.6.0 – Hub-Integration für die Cu-Photometrie
+
+Das DatenLab kann nun direkt aus dem CHEMIE_ANALYTIK_HUB mit einem `UVVIS_CALIBRATION`-RESULT gestartet werden.
+
+Hub-Modus:
+- Standards und unbekannte Absorbanz werden direkt übernommen
+- Datenprüfung und lineare Regression bleiben sichtbar
+- die Regression ist ein offenes mathematisches Werkzeug, keine unsichtbare Blackbox
+- die bisher automatisch ausgegebene Konzentration der unbekannten Probe wird im Hub-Modus verborgen
+- die quantitative Auswertung erfolgt stattdessen schrittweise durch die SchülerInnen:
+  1. Eignung der Eichgeraden beurteilen
+  2. Konzentration der Messlösung aus A = m·c + b bestimmen
+  3. Verdünnung auf die ursprüngliche Stocklösung zurückrechnen
+  4. Stoffmenge Cu²⁺ in 100,0 mL bestimmen
+  5. Masse CuSO₄·5H₂O gemäß VCÖ-01-Fallmodell berechnen
+- jeder Schritt wird unmittelbar geprüft, ohne den Lösungswert vorzugeben
+- erst nach vollständiger korrekter Rechenkette wird die Rückgabe an den Hub freigeschaltet
+
+Rückgabe:
+- `analysis_type: PHOTOMETRIC_QUANT_EVALUATION`
+- verwendete Eichdaten und unbekannte Messwerte
+- Regressionskennwerte
+- studentische Rechenkette
+- finale Cu-Stoffmenge und Massenbilanz als CuSO₄·5H₂O
+
+Der normale Standalone-Betrieb für Photometrie, Kinetik, BTB und Titrationsdaten bleibt unverändert.

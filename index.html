@@ -85,16 +85,38 @@
     @media(max-width:920px){.launch-grid,.export-grid{grid-template-columns:1fr 1fr}.chart-grid,.unknown-grid,.kin-result-grid,.titr-result-grid{grid-template-columns:1fr}.substance-editor{grid-template-columns:1fr 1fr}.chart-box{height:400px}.panel-actions{justify-content:flex-start}}
     @media(max-width:650px){.app-shell{padding:12px}.topbar{align-items:center}.subtitle{display:none}.launch-grid,.export-grid,.summary-grid,.manual-meta,.substance-editor{grid-template-columns:1fr}.stepper,.kin-stepper,.btb-stepper,.titr-stepper{grid-template-columns:repeat(5,45px);justify-content:space-between}.step span,.kstep span,.bstep span,.tstep span{display:none}.panel{padding:16px}.panel-head{display:block}.chart-box{height:330px}.hero{padding:22px}.model-grid{grid-template-columns:1fr}.version{font-size:.8rem}}
     @media print{body{background:#fff}.topbar,.stepper,.kin-stepper,.btb-stepper,.titr-stepper,.toolbar,.btn,footer,#panel-import,#panel-data,#panel-export,#kin-panel-import,#kin-panel-data,#kin-panel-export,#btb-panel-import,#btb-panel-data,#btb-panel-export,#titr-panel-import,#titr-panel-data,#titr-panel-export{display:none!important}.workspace,.kin-workspace,.btb-workspace,.titr-workspace{display:block!important}.panel,.kpanel,.bpanel,.tpanel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.card{box-shadow:none}.chart-grid{grid-template-columns:1fr}.chart-box{height:420px}}
-  </style>
+  
+.hub-bridge-banner{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 17px;margin-bottom:16px;border-color:#b9d7da;background:#edf8f8}
+.hub-bridge-banner>div:first-child{display:grid;gap:2px}.hub-bridge-banner strong{color:#135f68}.hub-bridge-banner span{color:var(--muted);font-size:.88rem}.hub-bridge-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hub-quant-guide{margin-top:18px;border-top:1px solid var(--border);padding-top:18px}.hub-guide-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.hub-kicker{margin:0 0 4px;color:var(--primary-dark);font-size:.76rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.hub-guide-head h3{margin:0 0 6px}.hub-guide-head p{margin:.2rem 0;color:var(--muted)}
+.hub-known-prep{min-width:230px;border-radius:12px;background:#eef5f7;padding:11px 13px;font-size:.82rem;color:#45606c;line-height:1.45}
+.hub-quant-steps{display:grid;gap:10px;margin-top:16px}.hub-calc-step{display:grid;grid-template-columns:32px 1fr;gap:11px;padding:13px;border:1px solid var(--border);border-radius:13px;background:#fff}.hub-calc-step.locked{display:none}.hub-calc-step.complete{border-color:#a8d4ba;background:#f4fbf7}.hub-step-no{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#e6f1f5;color:var(--primary-dark);font-weight:900}.hub-calc-step.complete .hub-step-no{background:#dff2e7;color:var(--ok)}.hub-calc-step p{margin:.3rem 0 .55rem;color:var(--muted);font-size:.88rem}.hub-calc-step input,.hub-calc-step select{max-width:420px}.hub-step-status{margin-top:6px;font-size:.83rem}.hub-step-status.ok{color:var(--ok);font-weight:750}.hub-step-status.error{color:var(--danger);font-weight:700}
+body.hub-photometry #start{display:none!important}body.hub-photometry #newDataset{display:none}body.hub-photometry #panel-export,body.hub-photometry .step[data-step="export"]{display:none!important}
+body.hub-photometry #unknownResult,body.hub-photometry #dilutionField,body.hub-photometry #unknownCalculationDetails{display:none!important}
+body.hub-photometry #panel-unknown .unknown-grid{grid-template-columns:1fr}
+body.hub-photometry #panel-unknown .toolbar [data-next="export"]{display:none}
+@media(max-width:760px){.hub-bridge-banner,.hub-guide-head{flex-direction:column;align-items:stretch}.hub-known-prep{min-width:0}.hub-bridge-actions{display:grid;grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.5.2 · Photometrie &amp; Titration</span>
+    <span class="version">v0.6.0 · Photometrie &amp; Titration</span>
   </header>
 
   <main>
+    <section id="hubBridgeBanner" class="card hub-bridge-banner" hidden>
+      <div>
+        <strong>Auftrag aus dem Analytik-Hub</strong>
+        <span id="hubBridgeMessage">Photometrische Messdaten auswerten.</span>
+      </div>
+      <div class="hub-bridge-actions">
+        <button id="hubSubmitBtn" class="btn btn-primary" type="button" disabled>Ergebnis an Hub übergeben</button>
+        <button id="hubReturnBtn" class="btn btn-ghost" type="button">Ohne Ergebnis zurück</button>
+      </div>
+    </section>
+
     <section id="start" class="card hero">
       <h2>Messdaten auswerten – geführt und nachvollziehbar</h2>
       <p>Öffne einen Export aus dem Virtuellen Photometer oder dem Titrationslabor, gib eine eigene Eichreihe ein oder teste die App mit Beispieldaten. DatenLab speichert nichts auf einem Server.</p>
@@ -169,11 +191,75 @@
         <div class="unknown-grid">
           <div>
             <div id="unknownMeasurements"></div>
-            <div class="field"><label for="dilution">Verdünnungsfaktor</label><input id="dilution" type="number" min="0.000001" step="any" value="1"><small>1 = unverdünnte Probe; 10 = Probe wurde vor der Messung zehnfach verdünnt.</small></div>
-            <details><summary>Rechenweg anzeigen</summary><div id="unknownCalculation"></div></details>
+            <div id="dilutionField" class="field"><label for="dilution">Verdünnungsfaktor</label><input id="dilution" type="number" min="0.000001" step="any" value="1"><small>1 = unverdünnte Probe; 10 = Probe wurde vor der Messung zehnfach verdünnt.</small></div>
+            <details id="unknownCalculationDetails"><summary>Rechenweg anzeigen</summary><div id="unknownCalculation"></div></details>
           </div>
           <aside class="result-hero" id="unknownResult"></aside>
         </div>
+
+        <section id="hubQuantGuide" class="hub-quant-guide" hidden>
+          <div class="hub-guide-head">
+            <div>
+              <p class="hub-kicker">VCÖ-01 · geführte Auswertung</p>
+              <h3>Von der Eichgeraden zur Kupfermenge</h3>
+              <p>Die Regression ist ein sichtbares mathematisches Werkzeug. Die quantitative Schlussfolgerung führst du selbst schrittweise aus.</p>
+            </div>
+            <div id="hubKnownPrep" class="hub-known-prep"></div>
+          </div>
+          <div id="hubQuantSteps" class="hub-quant-steps">
+            <article class="hub-calc-step" data-hub-step="quality">
+              <span class="hub-step-no">1</span>
+              <div>
+                <label for="hubRegressionJudgement"><strong>Eichgerade beurteilen</strong></label>
+                <p>Betrachte Diagramm, R² und Residuen. Ist die lineare Eichung für diese Auswertung geeignet?</p>
+                <select id="hubRegressionJudgement">
+                  <option value="">Bitte beurteilen …</option>
+                  <option value="suitable">Ja, die lineare Eichung ist geeignet.</option>
+                  <option value="unsuitable">Nein, die Eichung ist nicht ausreichend.</option>
+                </select>
+                <div id="hubStatus_quality" class="hub-step-status"></div>
+              </div>
+            </article>
+            <article class="hub-calc-step locked" data-hub-step="cmeas">
+              <span class="hub-step-no">2</span>
+              <div>
+                <label for="hubCMeas"><strong>Konzentration der Messlösung c<sub>Mess</sub> / mol·L⁻¹</strong></label>
+                <p>Verwende A = m·c + b und die mittlere Absorbanz der unbekannten Probe. Stelle nach c um.</p>
+                <input id="hubCMeas" type="text" inputmode="decimal" disabled placeholder="z. B. 0,0100">
+                <div id="hubStatus_cmeas" class="hub-step-status"></div>
+              </div>
+            </article>
+            <article class="hub-calc-step locked" data-hub-step="cstock">
+              <span class="hub-step-no">3</span>
+              <div>
+                <label for="hubCStock"><strong>Konzentration der ursprünglichen Stocklösung / mol·L⁻¹</strong></label>
+                <p>Die 10,00-mL-Teilprobe wurde für die Messung auf 25,00 mL aufgefüllt. Berücksichtige den Verdünnungsfaktor.</p>
+                <input id="hubCStock" type="text" inputmode="decimal" disabled>
+                <div id="hubStatus_cstock" class="hub-step-status"></div>
+              </div>
+            </article>
+            <article class="hub-calc-step locked" data-hub-step="amount">
+              <span class="hub-step-no">4</span>
+              <div>
+                <label for="hubAmount"><strong>Stoffmenge Cu²⁺ in der gesamten Stocklösung / mmol</strong></label>
+                <p>Der Filterrückstand wurde quantitativ auf 100,0 mL gelöst. Verwende n = c·V. Praktisch gilt: mol·L⁻¹ × mL = mmol.</p>
+                <input id="hubAmount" type="text" inputmode="decimal" disabled>
+                <div id="hubStatus_amount" class="hub-step-status"></div>
+              </div>
+            </article>
+            <article class="hub-calc-step locked" data-hub-step="mass">
+              <span class="hub-step-no">5</span>
+              <div>
+                <label for="hubMass"><strong>Masse CuSO₄·5H₂O gemäß VCÖ-01-Fallmodell / g</strong></label>
+                <p>Cu²⁺ und SO₄²⁻ wurden qualitativ bestätigt. Im Fallmodell wird die feste Komponente als CuSO₄·5H₂O bilanziert. Verwende m = n·M mit M = 249,68 g·mol⁻¹.</p>
+                <input id="hubMass" type="text" inputmode="decimal" disabled>
+                <div id="hubStatus_mass" class="hub-step-status"></div>
+              </div>
+            </article>
+          </div>
+          <div id="hubQuantComplete" class="notice ok" hidden><strong>Quantitative Auswertung abgeschlossen.</strong> Die von dir berechneten Werte können jetzt an den Analytik-Hub zurückgegeben werden.</div>
+        </section>
+
         <div class="toolbar"><button class="btn btn-ghost" data-prev="regression">← Eichkurve</button><span class="spacer"></span><button class="btn btn-primary" data-next="export">Ergebnisse exportieren →</button></div>
       </section>
 
@@ -402,14 +488,16 @@
     </section>
 
   </main>
-  <footer>DatenLab v0.5.2 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.6.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.5.2';
+const VERSION='0.6.0';
 const SUBSTANCE_DATA=Object.freeze({
-  'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034}
+  'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034},
+  'tetraamminkupfer ii komplex':{formula:'[Cu(NH₃)₄]²⁺',molarMass:127.68},
+  'kupfer ii sulfat pentahydrat':{formula:'CuSO₄·5H₂O',molarMass:249.68}
 });
 const SAMPLE_CSV=`Aufgaben_ID;Aufgabenkennung;Versuchskennung;Stoff;Probentyp;Probe;Konzentration_mol_L;Wellenlaenge_nm;Schichtdicke_cm;Messung;Absorbanz;Laborhinweis;Zeitstempel
 "";"";"PH-KM-4590";"Kaliumpermanganat";"blank";"Blindprobe";"0,0000000";"525";"1,0000000";"1";"0,0000000";"normale Messstreuung";"2026-08-01T11:58:09.671Z"
@@ -770,6 +858,7 @@ Spektren;5`;
 
 const TITRATION_SAMPLE_CSV="Volumen_Massloesung_mL;pH\n0,0000000000;1,2838073625\n0,2000000000;1,2923725245\n0,4000000000;1,3009396658\n0,6000000000;1,3095104977\n0,8000000000;1,3180867344\n1,0000000000;1,3266700954\n1,2000000000;1,3352623077\n1,4000000000;1,3438651074\n1,6000000000;1,3524802423\n1,8000000000;1,3611094736\n2,0000000000;1,3697545784\n2,2000000000;1,3784173517\n2,4000000000;1,3870996088\n2,6000000000;1,3958031874\n2,8000000000;1,4045299504\n3,0000000000;1,4132817877\n3,2000000000;1,4220606196\n3,4000000000;1,4308683987\n3,6000000000;1,4397071131\n3,8000000000;1,4485787888\n4,0000000000;1,4574854933\n4,2000000000;1,4664293382\n4,4000000000;1,4754124825\n4,6000000000;1,4844371363\n4,8000000000;1,4935055641\n5,0000000000;1,5026200886\n5,2000000000;1,5117830950\n5,4000000000;1,5209970346\n5,6000000000;1,5302644296\n5,8000000000;1,5395878780\n6,0000000000;1,5489700581\n6,2000000000;1,5584137340\n6,4000000000;1,5679217612\n6,6000000000;1,5774970929\n6,8000000000;1,5871427856\n7,0000000000;1,5968620069\n7,2000000000;1,6066580419\n7,4000000000;1,6165343014\n7,6000000000;1,6264943306\n7,8000000000;1,6365418173\n8,0000000000;1,6466806021\n8,2000000000;1,6569146888\n8,4000000000;1,6672482550\n8,6000000000;1,6776856651\n8,8000000000;1,6882314823\n9,0000000000;1,6988904837\n9,2000000000;1,7096676747\n9,4000000000;1,7205683061\n9,6000000000;1,7315978921\n9,8000000000;1,7427622296\n10,0000000000;1,7540674197\n10,2000000000;1,7655198909\n10,4000000000;1,7771264245\n10,6000000000;1,7888941827\n10,8000000000;1,8008307385\n11,0000000000;1,8129441098\n11,2000000000;1,8252427954\n11,4000000000;1,8377358160\n11,6000000000;1,8504327589\n11,8000000000;1,8633438265\n12,0000000000;1,8764798917\n12,2000000000;1,8898525575\n12,4000000000;1,9034742247\n12,6000000000;1,9173581656\n12,8000000000;1,9315186077\n13,0000000000;1,9459708259\n13,2000000000;1,9607312458\n13,4000000000;1,9758175597\n13,6000000000;1,9912488561\n13,8000000000;2,0070457656\n14,0000000000;2,0232306242\n14,2000000000;2,0398276580\n14,4000000000;2,0568631905\n14,6000000000;2,0743658766\n14,8000000000;2,0923669667\n15,0000000000;2,1109006041\n15,2000000000;2,1300041601\n15,4000000000;2,1497186108\n15,6000000000;2,1700889594\n15,8000000000;2,1911647069\n16,0000000000;2,2130003733\n16,2000000000;2,2356560673\n16,4000000000;2,2591980996\n16,6000000000;2,2836996241\n16,8000000000;2,3092412814\n17,0000000000;2,3359117955\n17,2000000000;2,3638084443\n17,4000000000;2,3930372762\n17,6000000000;2,4237128703\n17,8000000000;2,4559573378\n18,0000000000;2,4898981137\n18,2000000000;2,5256639088\n18,4000000000;2,5633779812\n18,6000000000;2,6031477240\n18,8000000000;2,6450495791\n19,0000000000;2,6891087512\n19,2000000000;2,7352744800\n19,4000000000;2,7833940432\n19,6000000000;2,8331919766\n19,8000000000;2,8842637837\n20,0000000000;2,9360929368\n20,2000000000;2,9880938978\n20,4000000000;3,0396734286\n20,6000000000;3,0902936159\n20,8000000000;3,1395192476\n21,0000000000;3,1870400408\n21,2000000000;3,2326688058\n21,4000000000;3,2763235549\n21,6000000000;3,3180028495\n21,8000000000;3,3577613092\n22,0000000000;3,3956889379\n22,2000000000;3,4318953919\n22,4000000000;3,4664988790\n22,6000000000;3,4996188059\n22,8000000000;3,5313712054\n23,0000000000;3,5618661088\n23,2000000000;3,5912062170\n23,4000000000;3,6194864082\n23,6000000000;3,6467937595\n23,8000000000;3,6732078691\n24,0000000000;3,6988013403\n24,2000000000;3,7236403379\n24,4000000000;3,7477851637\n24,6000000000;3,7712908191\n24,8000000000;3,7942075360\n25,0000000000;3,8165812682\n25,2000000000;3,8384541400\n25,4000000000;3,8598648515\n25,6000000000;3,8808490426\n25,8000000000;3,9014396197\n26,0000000000;3,9216670467\n26,2000000000;3,9415596059\n26,4000000000;3,9611436298\n26,6000000000;3,9804437094\n26,8000000000;3,9994828798\n27,0000000000;4,0182827869\n27,2000000000;4,0368638376\n27,4000000000;4,0552453351\n27,6000000000;4,0734456009\n27,8000000000;4,0914820864\n28,0000000000;4,1093714745\n28,2000000000;4,1271297721\n28,4000000000;4,1447723969\n28,6000000000;4,1623142563\n28,8000000000;4,1797698224\n29,0000000000;4,1971532016\n29,2000000000;4,2144782018\n29,4000000000;4,2317583952\n29,6000000000;4,2490071805\n29,8000000000;4,2662378422\n30,0000000000;4,2834636102\n30,2000000000;4,3006977180\n30,4000000000;4,3179534623\n30,6000000000;4,3352442628\n30,8000000000;4,3525837243\n31,0000000000;4,3699857003\n31,2000000000;4,3874643608\n31,4000000000;4,4050342634\n31,6000000000;4,4227104294\n31,8000000000;4,4405084256\n32,0000000000;4,4584444543\n32,2000000000;4,4765354500\n32,4000000000;4,4947991879\n32,6000000000;4,5132544033\n32,8000000000;4,5319209256\n33,0000000000;4,5508198287\n33,2000000000;4,5699736011\n33,4000000000;4,5894063403\n33,6000000000;4,6091439740\n33,8000000000;4,6292145162\n34,0000000000;4,6496483624\n34,2000000000;4,6704786337\n34,4000000000;4,6917415808\n34,6000000000;4,7134770584\n34,8000000000;4,7357290892\n35,0000000000;4,7585465366\n35,2000000000;4,7819839139\n35,4000000000;4,8061023643\n35,6000000000;4,8309708580\n35,8000000000;4,8566676665\n36,0000000000;4,8832821964\n36,2000000000;4,9109172920\n36,4000000000;4,9396921608\n36,6000000000;4,9697461347\n36,8000000000;5,0012435716\n37,0000000000;5,0343803404\n37,2000000000;5,0693925453\n37,4000000000;5,1065684887\n37,6000000000;5,1462654298\n37,8000000000;5,1889336534\n38,0000000000;5,2351520397\n38,2000000000;5,2856824392\n38,4000000000;5,3415562069\n38,6000000000;5,4042188218\n38,8000000000;5,4757867408\n39,0000000000;5,5595405542\n39,2000000000;5,6609754389\n39,4000000000;5,7903919293\n39,6000000000;5,9709131738\n39,8000000000;6,2763133710\n40,0000000000;8,4017646367\n40,2000000000;10,5214584503\n40,4000000000;10,8210293103\n40,6000000000;10,9956814166\n40,8000000000;11,1191879825\n41,0000000000;11,2146711762\n41,2000000000;11,2924305284\n41,4000000000;11,3579601838\n41,6000000000;11,4145396694\n41,8000000000;11,4642843462\n42,0000000000;11,5086385631\n42,2000000000;11,5486325092\n42,4000000000;11,5850268316\n42,6000000000;11,6183991683\n42,8000000000;11,6491985204\n43,0000000000;11,6777808213\n43,2000000000;11,7044330024\n43,4000000000;11,7293897501\n43,6000000000;11,7528454665\n43,8000000000;11,7749629911\n44,0000000000;11,7958800837\n44,2000000000;11,8157143227\n44,4000000000;11,8345668643\n44,6000000000;11,8525253643\n44,8000000000;11,8696662781\n45,0000000000;11,8860566908\n45,2000000000;11,9017557879\n45,4000000000;11,9168160487\n45,6000000000;11,9312842223\n45,8000000000;11,9452021324\n46,0000000000;11,9586073452\n46,2000000000;11,9715337286\n46,4000000000;11,9840119215\n46,6000000000;11,9960697317\n46,8000000000;12,0077324742\n47,0000000000;12,0190232600\n47,2000000000;12,0299632449\n47,4000000000;12,0405718436\n47,6000000000;12,0508669157\n47,8000000000;12,0608649273\n48,0000000000;12,0705810919\n\nMetadaten\nSchnittstelle;MESSWERT_LAB_CSV\nSchnittstellen_Version;1.0\nAuswertungsstandard;TITR_AEP_V1\nApp;TITRATIONSTOOL\nApp_Version;15.6.0\nVersuchstyp;Titration\nTitrationsart;Schwache_Saeure_starke_Base\nAuswertungsrichtung;1\nAnalyt_ID;oxalic\nAnalyt_Name;Oxalsäure\nAnalyt_Formel;H₂C₂O₄\nAnalyt_Rolle;Saeure\nAnalyt_Staerke;schwach\nAnalyt_Klasse;zweiprotonige schwache Säure\nAnalyt_Molare_Masse_g_mol;90,034000\nStoffdaten_Quelle;Stammdaten\nProtonenstufen;2\nc_Probe_mol_L;0,10000000\nV_Probe_mL;20,00000000\nMassloesung_ID;naoh\nMassloesung_Name;Natronlauge\nMassloesung_Formel;NaOH\nc_Massloesung_mol_L;0,10000000\npKs1;1,25000000\npKs2;4,28000000\npKs_Bedeutung;Analyt_Saeure\nIndikator_ID;btb\nIndikator_Name;Bromthymolblau\nIndikator_Umschlagsbereiche_pH;Umschlag pH 6,0–7,6 · gelb → blau\nSchrittweite_Soll_mL;0,20000000\nMessreihenfolge;Volumen_aufsteigend\nAbleitungen_Exportiert;Nein\nArbeitsbereich;Freies_Labor\nAufgabe_ID;\nDatenart;Simulation\nExportzeit_ISO8601;2026-08-02T13:37:07.466Z";
 const state={sourceName:'',sourceText:'',metadata:{},rawRows:[],workingRows:[],groups:[],regression:null,unknown:null,manual:false,molarMassOverride:null,substanceNameOverride:'',dataUnit:'mol'};
+let hubMode=new URLSearchParams(location.search).get('bridge')==='1',hubRun=null,hubInput=null,hubCalcComplete=false,hubGuideInitialized=false;
 const kinState={sourceName:'',sourceText:'',metadata:{},headers:[],rawRows:[],workingRows:[],series:[],selectedSeries:'',kind:'decay',subtype:'',absorbanceHeader:'',parameterHeaders:[],analysis:null,settingsInitializedFor:null};
 const btbState={sourceName:'',sourceText:'',metadata:{},spectra:[],acidRef:'',baseRef:'',analysisWavelength:null,analysis:null};
 const titrState={sourceName:'',sourceText:'',metadata:{},rawRows:[],analysis:null,warnings:[]};
@@ -912,7 +1001,7 @@ function showStep(step){
   const order=['import','data','regression','unknown','export'];const idx=order.indexOf(step);
   $$('.step').forEach((b,i)=>{b.classList.toggle('active',i===idx);b.classList.toggle('done',i<idx);});
   if(step==='regression'){calculateAll();setTimeout(drawChart,30)}
-  if(step==='unknown'){calculateAll();renderUnknown();setTimeout(drawChart,30)}
+  if(step==='unknown'){calculateAll();renderUnknown();if(hubMode)initHubQuantGuide();setTimeout(drawChart,30)}
   if(step==='export')calculateAll();
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -1523,6 +1612,194 @@ function useManual(){
   $('#axisUnit').value=inputUnit;openWorkspace();renderAll();
 }
 
+async function loadAnalytikBridgeScript(){
+  if(window.AnalytikBridge)return window.AnalytikBridge;
+  await new Promise((resolve,reject)=>{
+    const script=document.createElement('script');
+    script.src=new URL('../CHEMIE_ANALYTIK_HUB/bridge/chemie-analytik-bridge.js',window.location.href).toString();
+    script.onload=resolve;script.onerror=()=>reject(new Error('CHEMIE_ANALYTIK_BRIDGE konnte nicht geladen werden.'));
+    document.head.appendChild(script);
+  });
+  if(!window.AnalytikBridge)throw new Error('Bridge-API fehlt.');
+  return window.AnalytikBridge;
+}
+
+function hubRowsFromInput(input){
+  const rows=[];
+  (input.standard_measurements||[]).forEach((m,i)=>{
+    const c=parseNumber(m.concentration_mol_l),a=parseNumber(m.absorbance);
+    if(c!=null&&a!=null)rows.push({id:`hub_s${i+1}`,original:{source:'Hub',concentration_mol_l:c,absorbance:a},type:'standard',probe:`Standard ${i+1}`,concentration:c,absorbance:a,measurement:1,hint:'',include:true,reason:'',workingConcentration:c,workingAbsorbance:a});
+  });
+  (input.unknown_measurements||[]).forEach((m,i)=>{
+    const a=parseNumber(m.absorbance);
+    if(a!=null)rows.push({id:`hub_u${i+1}`,original:{source:'Hub',absorbance:a},type:'unknown',probe:'Unbekannte Messlösung',concentration:null,absorbance:a,measurement:i+1,hint:'',include:true,reason:'',workingConcentration:null,workingAbsorbance:a});
+  });
+  return rows;
+}
+
+async function initHubBridge(){
+  try{
+    const runId=new URLSearchParams(location.search).get('run');
+    if(!runId)throw new Error('run-Parameter fehlt.');
+    await loadAnalytikBridgeScript();
+    const run=window.AnalytikBridge.getRun(runId);
+    if(!run)throw new Error('Analyse-Run wurde nicht gefunden.');
+    if(run.app_id!=='MESSWERT_LAB')throw new Error('Der Run ist nicht für MESSWERT_LAB bestimmt.');
+    if(!run.input||run.input.mode!=='hub_photometry_evaluation')throw new Error('Unbekannter Hub-Auftrag.');
+    hubRun=run;hubInput=run.input;hubCalcComplete=false;hubGuideInitialized=false;
+    const rows=hubRowsFromInput(hubInput);
+    if(rows.filter(r=>r.type==='standard').length<2||!rows.some(r=>r.type==='unknown'))throw new Error('Standards oder unbekannte Messung fehlen.');
+
+    document.body.classList.add('hub-photometry');
+    $('#hubBridgeBanner').hidden=false;
+    $('#hubBridgeMessage').textContent='Eichdaten und unbekannte Cu-Messlösung wurden direkt aus dem SpektralLab übernommen.';
+    $('.topbar .subtitle').textContent='VCÖ-01 · Photometrische Messwerte nachvollziehbar auswerten';
+    state.sourceName='Analytik-Hub · SpektralLab';
+    state.sourceText='';
+    state.metadata={
+      Versuchstyp:'Eichkurve',
+      Stoff:'Tetraamminkupfer(II)-Komplex',
+      Messwellenlaenge_nm:String(hubInput.wavelength_nm||''),
+      Quelle:'CHEMIE_ANALYTIK_HUB',
+      Ausgangs_RESULT:hubRun.source_result_id||''
+    };
+    state.rawRows=structuredClone(rows);state.workingRows=structuredClone(rows);state.manual=false;
+    state.molarMassOverride=null;state.substanceNameOverride='';state.dataUnit='mol';
+    $('#axisUnit').value='mol';
+    $('#dilution').value=String(Number(hubInput.dilution_factor||1));
+    openWorkspace();renderAll();
+  }catch(err){
+    $('#hubBridgeBanner').hidden=false;
+    $('#hubBridgeMessage').textContent='Hub-Verbindung fehlgeschlagen: '+err.message;
+    $('#hubSubmitBtn').disabled=true;
+  }
+}
+
+function hubExpectedValues(){
+  calculateAll();
+  const cMeas=state.unknown&&Number(state.unknown.concentration);
+  const dilution=Number(hubInput?.dilution_factor||1);
+  const stockVolume=Number(hubInput?.stock_volume_ml||100);
+  const molarMass=Number(hubInput?.balance_molar_mass_g_mol||249.68);
+  const cStock=cMeas*dilution;
+  const amountMmol=cStock*stockVolume;
+  const massG=amountMmol/1000*molarMass;
+  return {cMeas,cStock,amountMmol,massG,dilution,stockVolume,molarMass};
+}
+
+function hubTolerance(expected,relative=0.025,absolute=0){
+  return Math.max(Math.abs(expected)*relative,absolute);
+}
+
+function setHubStepEnabled(name,enabled){
+  const card=document.querySelector(`[data-hub-step="${name}"]`);
+  const field=card?.querySelector('input,select');
+  if(!card||!field)return;
+  card.classList.toggle('locked',!enabled);
+  field.disabled=!enabled;
+}
+
+function hubMark(name,ok,message){
+  const card=document.querySelector(`[data-hub-step="${name}"]`);
+  const status=$(`#hubStatus_${name}`);
+  if(card)card.classList.toggle('complete',ok);
+  if(status){status.className='hub-step-status '+(ok?'ok':'error');status.textContent=message;}
+}
+
+function initHubQuantGuide(){
+  if(!hubMode||!hubInput)return;
+  $('#hubQuantGuide').hidden=false;
+  if(hubGuideInitialized)return;
+  hubGuideInitialized=true;
+  const expected=hubExpectedValues();
+  const u=state.unknown||{};
+  $('#hubKnownPrep').innerHTML=`<strong>Bekannte Probenvorbereitung</strong><br>Ā(unbekannt) = ${fmtFixed(u.mean,5)}<br>Verdünnungsfaktor = ${fmt(expected.dilution,3)}<br>Stocklösung = ${fmt(expected.stockVolume,1)} mL`;
+  ['cmeas','cstock','amount','mass'].forEach(name=>setHubStepEnabled(name,false));
+  setHubStepEnabled('quality',true);
+  hubCalcComplete=false;$('#hubSubmitBtn').disabled=true;$('#hubQuantComplete').hidden=true;
+
+  const quality=$('#hubRegressionJudgement');
+  quality.onchange=()=>{
+    const suitable=quality.value==='suitable' && state.regression && state.regression.r2>=0.995;
+    hubMark('quality',suitable,suitable?'✓ Die lineare Eichung ist für die weitere Auswertung geeignet.':quality.value?'Prüfe Diagramm, R² und Residuen noch einmal.':'');
+    if(suitable){quality.disabled=true;setHubStepEnabled('cmeas',true);$('#hubCMeas').focus();}
+  };
+
+  const config=[
+    ['cmeas','#hubCMeas',()=>expected.cMeas,0.025,0.00015,'✓ Konzentration der Messlösung stimmt.'],
+    ['cstock','#hubCStock',()=>expected.cStock,0.025,0.0003,'✓ Verdünnung korrekt zurückgerechnet.'],
+    ['amount','#hubAmount',()=>expected.amountMmol,0.025,0.015,'✓ Stoffmenge der gesamten Stocklösung stimmt.'],
+    ['mass','#hubMass',()=>expected.massG,0.025,0.005,'✓ Massenbilanz ist korrekt.']
+  ];
+  config.forEach((cfg,index)=>{
+    const [name,selector,getExpected,rel,abs,okText]=cfg;
+    const field=$(selector);
+    const validate=()=>{
+      if(field.disabled)return;
+      const value=parseNumber(field.value),target=getExpected(),ok=value!=null&&Number.isFinite(target)&&Math.abs(value-target)<=hubTolerance(target,rel,abs);
+      hubMark(name,ok,ok?okText:'Noch nicht richtig – prüfe Formel, Einheit und Rückrechnungsfaktor.');
+      if(!ok)return;
+      field.disabled=true;
+      const next=config[index+1];
+      if(next){setHubStepEnabled(next[0],true);$(next[1]).focus();}
+      else{
+        hubCalcComplete=true;$('#hubSubmitBtn').disabled=false;$('#hubQuantComplete').hidden=false;
+        $('#hubBridgeMessage').textContent='Quantitative Photometrieauswertung vollständig. Das Ergebnis kann an den Hub zurückgegeben werden.';
+      }
+    };
+    field.onblur=validate;
+    field.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();field.blur();}};
+  });
+}
+
+function sendHubPhotometryResult(){
+  if(!hubMode||!hubRun||!hubInput||!hubCalcComplete||!window.AnalytikBridge)return;
+  const expected=hubExpectedValues();
+  const result={
+    result_id:'RES_'+Date.now()+'_'+Math.random().toString(36).slice(2,7),
+    run_id:hubRun.run_id,
+    case_id:hubRun.case_id,
+    sample_id:hubRun.sample_id,
+    app_id:'MESSWERT_LAB',
+    app_version:VERSION,
+    analysis_type:'PHOTOMETRIC_QUANT_EVALUATION',
+    status:'completed',
+    source:'app',
+    source_result_id:hubRun.source_result_id||null,
+    measurement:{
+      wavelength_nm:Number(hubInput.wavelength_nm)||null,
+      standard_measurements:(hubInput.standard_measurements||[]).map(x=>({...x})),
+      unknown_measurements:(hubInput.unknown_measurements||[]).map(x=>({...x})),
+      regression:{
+        slope:state.regression.slope,
+        intercept:state.regression.intercept,
+        r2:state.regression.r2,
+        rmse:state.regression.rmse
+      },
+      mean_unknown_absorbance:state.unknown.mean
+    },
+    student_calculation:{
+      measurement_concentration_mol_l:parseNumber($('#hubCMeas').value),
+      dilution_factor:expected.dilution,
+      stock_concentration_mol_l:parseNumber($('#hubCStock').value),
+      stock_volume_ml:expected.stockVolume,
+      amount_cu_mmol:parseNumber($('#hubAmount').value),
+      balance_molar_mass_g_mol:expected.molarMass,
+      cuso4_5h2o_mass_g:parseNumber($('#hubMass').value)
+    },
+    evaluation:{
+      quantification_status:'completed',
+      analyte_id:'COPPER_II_AQ',
+      balance_as_substance_id:'COPPER_SULFATE_PENTAHYDRATE',
+      balance_as_name_de:'Kupfer(II)-sulfat-Pentahydrat',
+      cuso4_5h2o_mass_g:parseNumber($('#hubMass').value)
+    },
+    created_at:new Date().toISOString()
+  };
+  const completed=window.AnalytikBridge.completeRun(hubRun.run_id,result);
+  window.AnalytikBridge.returnToHub(completed);
+}
+
 $('#chooseFile').onclick=()=>{$('#dropzone').style.display='block';$('#fileInput').click()};$('#browseFile').onclick=()=>$('#fileInput').click();
 $('#fileInput').onchange=e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>loadText(reader.result,f.name);reader.onerror=()=>alert('Datei konnte nicht gelesen werden.');reader.readAsText(f,'utf-8')};
 const dz=$('#dropzone');['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('drag')}));dz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(!f)return;const r=new FileReader();r.onload=()=>loadText(r.result,f.name);r.readAsText(f,'utf-8')});
@@ -1537,6 +1814,8 @@ $('#refreshRegression').onclick=()=>{calculateAll();drawChart()};$('#axisUnit').
 $('#substanceName').addEventListener('change',e=>{state.substanceNameOverride=e.target.value.trim();updateAxisUnitAvailability();renderImport();renderRegression();renderUnknown();drawChart()});
 $('#molarMassInput').addEventListener('change',e=>{if(!setMolarMassOverride(e.target.value))updateSubstanceEditor();});
 $('#exportPng').onclick=exportPng;$('#exportMd').onclick=exportMd;$('#exportCsv').onclick=exportCsv;$('#exportJson').onclick=exportJson;
+$('#hubSubmitBtn').onclick=sendHubPhotometryResult;
+$('#hubReturnBtn').onclick=()=>{if(window.AnalytikBridge&&hubRun)window.AnalytikBridge.returnToHub(hubRun)};
 $('#kinNewDataset').onclick=resetApp;$('#kinResetWorking').onclick=()=>{kinState.workingRows=structuredClone(kinState.rawRows);kinState.settingsInitializedFor=null;renderKineticAll()};
 $$('[data-knext]').forEach(b=>b.onclick=()=>{if(b.dataset.knext==='analysis'&&!validateKineticData(true))return;showKinStep(b.dataset.knext)});$$('[data-kprev]').forEach(b=>b.onclick=()=>showKinStep(b.dataset.kprev));$$('.kstep').forEach(b=>b.onclick=()=>{if(['analysis','result','export'].includes(b.dataset.kstep)&&!validateKineticData(true))return;showKinStep(b.dataset.kstep)});
 $('#kinSeriesSelectData').addEventListener('change',e=>selectKinSeries(e.target.value));$('#kinSeriesSelectAnalysis').addEventListener('change',e=>selectKinSeries(e.target.value));
@@ -1554,7 +1833,14 @@ $('#titrChartView').addEventListener('change',renderTitrAnalysis);$('#titrOverla
 $('#titrExportPng').onclick=exportTitrPng;$('#titrExportMd').onclick=()=>download(titrMdText(),titrBaseName()+'.md','text/markdown;charset=utf-8');$('#titrExportCsv').onclick=()=>download(titrCsvText(),titrBaseName()+'.csv','text/csv;charset=utf-8');$('#titrExportJson').onclick=exportTitrJson;
 
 window.addEventListener('resize',()=>{if($('#panel-regression').classList.contains('active')||$('#panel-unknown').classList.contains('active'))drawChart();if($('#kin-panel-analysis').classList.contains('active'))drawKineticChart();if($('#btb-panel-analysis').classList.contains('active'))drawBtbChart();if($('#titr-panel-analysis').classList.contains('active'))drawTitrChart()});
-const qs=new URLSearchParams(location.search);if(qs.get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');if(qs.get('kin')==='1')loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');if(qs.get('btb')==='1')loadText(BTB_SAMPLE_CSV,'PHOT_GLEICHGEWICHT_BTB_PH_SERIE_BEISPIEL.csv');if(qs.get('titr')==='1')loadText(TITRATION_SAMPLE_CSV,'TITR_OXALIC_NaOH_BEISPIEL.csv');
+const qs=new URLSearchParams(location.search);
+if(hubMode)initHubBridge();
+else{
+  if(qs.get('sample')==='1')loadText(SAMPLE_CSV,'PHOT_EICHUNG_PERMANGANAT_BEISPIEL.csv');
+  if(qs.get('kin')==='1')loadText(KINETIC_SAMPLE_CSV,'PHOT_KINETIK_KRISTALLVIOLETT_BEISPIEL.csv');
+  if(qs.get('btb')==='1')loadText(BTB_SAMPLE_CSV,'PHOT_GLEICHGEWICHT_BTB_PH_SERIE_BEISPIEL.csv');
+  if(qs.get('titr')==='1')loadText(TITRATION_SAMPLE_CSV,'TITR_OXALIC_NaOH_BEISPIEL.csv');
+}
 </script>
 </body>
 </html>

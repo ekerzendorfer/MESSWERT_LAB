@@ -102,7 +102,7 @@ body.hub-photometry #panel-unknown .toolbar [data-next="export"]{display:none}
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.6.0 · Photometrie &amp; Titration</span>
+    <span class="version">v0.6.1 · Photometrie &amp; Titration</span>
   </header>
 
   <main>
@@ -224,7 +224,7 @@ body.hub-photometry #panel-unknown .toolbar [data-next="export"]{display:none}
               <span class="hub-step-no">2</span>
               <div>
                 <label for="hubCMeas"><strong>Konzentration der Messlösung c<sub>Mess</sub> / mol·L⁻¹</strong></label>
-                <p>Verwende A = m·c + b und die mittlere Absorbanz der unbekannten Probe. Stelle nach c um.</p>
+                <p>Verwende A = m·c + b und die mittlere Absorbanz der unbekannten Probe. Stelle nach c um. <strong>Runde den berechneten Konzentrationswert anschließend auf eine zur Messgenauigkeit sinnvolle Stellenzahl und verwende genau diesen gerundeten Arbeitswert weiter.</strong> Für VCÖ-01 ist c<sub>Mess</sub> ≈ 0,01 mol·L⁻¹ angemessen; zusätzliche Regressionsstellen würden Scheingenauigkeit vortäuschen.</p>
                 <input id="hubCMeas" type="text" inputmode="decimal" disabled placeholder="z. B. 0,0100">
                 <div id="hubStatus_cmeas" class="hub-step-status"></div>
               </div>
@@ -488,12 +488,12 @@ body.hub-photometry #panel-unknown .toolbar [data-next="export"]{display:none}
     </section>
 
   </main>
-  <footer>DatenLab v0.6.0 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.6.1 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.6.0';
+const VERSION='0.6.1';
 const SUBSTANCE_DATA=Object.freeze({
   'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034},
   'tetraamminkupfer ii komplex':{formula:'[Cu(NH₃)₄]²⁺',molarMass:127.68},
@@ -1726,10 +1726,19 @@ function initHubQuantGuide(){
   };
 
   const config=[
-    ['cmeas','#hubCMeas',()=>expected.cMeas,0.025,0.00015,'✓ Konzentration der Messlösung stimmt.'],
-    ['cstock','#hubCStock',()=>expected.cStock,0.025,0.0003,'✓ Verdünnung korrekt zurückgerechnet.'],
-    ['amount','#hubAmount',()=>expected.amountMmol,0.025,0.015,'✓ Stoffmenge der gesamten Stocklösung stimmt.'],
-    ['mass','#hubMass',()=>expected.massG,0.025,0.005,'✓ Massenbilanz ist korrekt.']
+    ['cmeas','#hubCMeas',()=>expected.cMeas,0.025,0.00015,'✓ Konzentration der Messlösung stimmt. Nutze diesen gerundeten Arbeitswert in den nächsten Schritten.'],
+    ['cstock','#hubCStock',()=>{
+      const cMeasStudent=parseNumber($('#hubCMeas').value);
+      return cMeasStudent==null?NaN:cMeasStudent*expected.dilution;
+    },0.025,0.0003,'✓ Verdünnung korrekt zurückgerechnet.'],
+    ['amount','#hubAmount',()=>{
+      const cStockStudent=parseNumber($('#hubCStock').value);
+      return cStockStudent==null?NaN:cStockStudent*expected.stockVolume;
+    },0.025,0.015,'✓ Stoffmenge der gesamten Stocklösung stimmt.'],
+    ['mass','#hubMass',()=>{
+      const amountStudent=parseNumber($('#hubAmount').value);
+      return amountStudent==null?NaN:amountStudent/1000*expected.molarMass;
+    },0.025,0.005,'✓ Massenbilanz ist korrekt.']
   ];
   config.forEach((cfg,index)=>{
     const [name,selector,getExpected,rel,abs,okText]=cfg;

@@ -1,4 +1,4 @@
-# MESSWERT_LAB – DatenLab v0.6.0
+# MESSWERT_LAB – DatenLab v0.6.1
 
 Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 
@@ -75,3 +75,10 @@ Rückgabe:
 - finale Cu-Stoffmenge und Massenbilanz als CuSO₄·5H₂O
 
 Der normale Standalone-Betrieb für Photometrie, Kinetik, BTB und Titrationsdaten bleibt unverändert.
+
+
+## v0.6.1 – Rundung in der Hub-Photometrie
+
+Beim VCÖ-01-Hubauftrag wird nach der Berechnung von c(Mess) aus der Regressionsgeraden nun ausdrücklich auf sinnvolle Rundung entsprechend der Messgenauigkeit hingewiesen. Für die vorliegenden VCÖ-01-Daten ist ein Arbeitswert von ungefähr 0,01 mol/L angemessen; zusätzliche Regressionsstellen sollen nicht als Scheingenauigkeit in die weitere Bilanz übernommen werden.
+
+Wichtig für die Transparenz der Rechenkette: Nach akzeptierter Eingabe von c(Mess) werden Verdünnungsrechnung, Stoffmenge und Massenbilanz nun aus den jeweils von den SchülerInnen eingegebenen und akzeptierten Zwischenwerten weitergeführt – nicht aus einem intern ungerundeten Regressionswert.

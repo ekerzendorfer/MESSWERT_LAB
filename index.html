@@ -102,7 +102,7 @@ body.hub-photometry #panel-unknown .toolbar [data-next="export"]{display:none}
 <div class="app-shell">
   <header class="topbar">
     <div class="brand"><div class="logo" aria-hidden="true">∿</div><div><h1>DatenLab</h1><p class="subtitle">Messwerte auswerten – verständlich, nachvollziehbar, browserbasiert</p></div></div>
-    <span class="version">v0.6.1 · Photometrie &amp; Titration</span>
+    <span class="version">v0.6.2 · Photometrie &amp; Titration</span>
   </header>
 
   <main>
@@ -224,7 +224,7 @@ body.hub-photometry #panel-unknown .toolbar [data-next="export"]{display:none}
               <span class="hub-step-no">2</span>
               <div>
                 <label for="hubCMeas"><strong>Konzentration der Messlösung c<sub>Mess</sub> / mol·L⁻¹</strong></label>
-                <p>Verwende A = m·c + b und die mittlere Absorbanz der unbekannten Probe. Stelle nach c um. <strong>Runde den berechneten Konzentrationswert anschließend auf eine zur Messgenauigkeit sinnvolle Stellenzahl und verwende genau diesen gerundeten Arbeitswert weiter.</strong> Für VCÖ-01 ist c<sub>Mess</sub> ≈ 0,01 mol·L⁻¹ angemessen; zusätzliche Regressionsstellen würden Scheingenauigkeit vortäuschen.</p>
+                <p>Verwende A = m·c + b und die mittlere Absorbanz der unbekannten Probe. Stelle nach c um. <strong>Runde den berechneten Konzentrationswert anschließend auf eine zur Messgenauigkeit sinnvolle Stellenzahl und verwende genau diesen gerundeten Arbeitswert weiter.</strong> Zusätzliche Stellen aus der Regression dürfen nicht als höhere Messgenauigkeit interpretiert werden.</p>
                 <input id="hubCMeas" type="text" inputmode="decimal" disabled placeholder="z. B. 0,0100">
                 <div id="hubStatus_cmeas" class="hub-step-status"></div>
               </div>
@@ -488,12 +488,12 @@ body.hub-photometry #panel-unknown .toolbar [data-next="export"]{display:none}
     </section>
 
   </main>
-  <footer>DatenLab v0.6.1 · Alle Berechnungen erfolgen lokal im Browser.</footer>
+  <footer>DatenLab v0.6.2 · Alle Berechnungen erfolgen lokal im Browser.</footer>
 </div>
 
 <script>
 'use strict';
-const VERSION='0.6.1';
+const VERSION='0.6.2';
 const SUBSTANCE_DATA=Object.freeze({
   'kaliumpermanganat':{formula:'KMnO₄',molarMass:158.034},
   'tetraamminkupfer ii komplex':{formula:'[Cu(NH₃)₄]²⁺',molarMass:127.68},
@@ -1691,6 +1691,22 @@ function hubTolerance(expected,relative=0.025,absolute=0){
   return Math.max(Math.abs(expected)*relative,absolute);
 }
 
+function hubCMeasConsistent(value){
+  if(value==null || !Number.isFinite(value) || !state.regression || !state.unknown)return false;
+  const slope=Number(state.regression.slope);
+  const intercept=Number(state.regression.intercept);
+  const observedA=Number(state.unknown.mean);
+  if(![slope,intercept,observedA].every(Number.isFinite) || Math.abs(slope)<1e-12)return false;
+
+  // Prüfe die vom Schüler gewählte gerundete Konzentration gegen die sichtbare
+  // Regressionsbeziehung, nicht gegen einen versteckten ungerundeten Zielwert.
+  const predictedA=slope*value+intercept;
+  const regressionRmse=Math.abs(Number(state.regression.rmse)||0);
+  const roundingAllowance=Math.abs(slope)*Math.max(Math.abs(value)*0.03,0.00015);
+  const absorbanceTolerance=Math.max(0.012,2*regressionRmse,roundingAllowance);
+  return Math.abs(predictedA-observedA)<=absorbanceTolerance;
+}
+
 function setHubStepEnabled(name,enabled){
   const card=document.querySelector(`[data-hub-step="${name}"]`);
   const field=card?.querySelector('input,select');
@@ -1745,8 +1761,13 @@ function initHubQuantGuide(){
     const field=$(selector);
     const validate=()=>{
       if(field.disabled)return;
-      const value=parseNumber(field.value),target=getExpected(),ok=value!=null&&Number.isFinite(target)&&Math.abs(value-target)<=hubTolerance(target,rel,abs);
-      hubMark(name,ok,ok?okText:'Noch nicht richtig – prüfe Formel, Einheit und Rückrechnungsfaktor.');
+      const value=parseNumber(field.value),target=getExpected();
+      const ok=name==='cmeas'
+        ? hubCMeasConsistent(value)
+        : value!=null&&Number.isFinite(target)&&Math.abs(value-target)<=hubTolerance(target,rel,abs);
+      hubMark(name,ok,ok?okText:(name==='cmeas'
+        ? 'Noch nicht passend – prüfe das Umstellen von A = m·c + b, die mittlere Absorbanz und eine sinnvolle Rundung.'
+        : 'Noch nicht richtig – prüfe Formel, Einheit und Rückrechnungsfaktor.'));
       if(!ok)return;
       field.disabled=true;
       const next=config[index+1];

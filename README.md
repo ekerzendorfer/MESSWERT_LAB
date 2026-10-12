@@ -1,4 +1,4 @@
-# MESSWERT_LAB – DatenLab v0.6.1
+# MESSWERT_LAB – DatenLab v0.6.2
 
 Browserbasierte Anwendung zur geführten Auswertung schulischer Messdaten.
 
@@ -82,3 +82,12 @@ Der normale Standalone-Betrieb für Photometrie, Kinetik, BTB und Titrationsdate
 Beim VCÖ-01-Hubauftrag wird nach der Berechnung von c(Mess) aus der Regressionsgeraden nun ausdrücklich auf sinnvolle Rundung entsprechend der Messgenauigkeit hingewiesen. Für die vorliegenden VCÖ-01-Daten ist ein Arbeitswert von ungefähr 0,01 mol/L angemessen; zusätzliche Regressionsstellen sollen nicht als Scheingenauigkeit in die weitere Bilanz übernommen werden.
 
 Wichtig für die Transparenz der Rechenkette: Nach akzeptierter Eingabe von c(Mess) werden Verdünnungsrechnung, Stoffmenge und Massenbilanz nun aus den jeweils von den SchülerInnen eingegebenen und akzeptierten Zwischenwerten weitergeführt – nicht aus einem intern ungerundeten Regressionswert.
+
+
+## v0.6.2 – Prüfung von c(Mess) gegen die Regressionsbeziehung
+
+Beim Hub-Photometrieauftrag wird die Eingabe von c(Mess) jetzt nicht mehr gegen einen intern ungerundeten Zielwert geprüft. Stattdessen wird kontrolliert, ob der eingegebene – sinnvoll gerundete – Konzentrationswert die sichtbare Regressionsbeziehung A = m·c + b mit der gemessenen mittleren Absorbanz innerhalb einer zur Mess- und Regressionsgenauigkeit passenden Toleranz erfüllt.
+
+Damit werden Rundungswerte wie 0,01 bzw. entsprechend aus der sichtbaren Eichgeraden berechnete Werte akzeptiert, sofern sie mit der Messung konsistent sind.
+
+Zusätzlich wurde der konkrete VCÖ-01-Zielwert aus dem Hilfetext entfernt, damit im Expertenkontext keine Lösung vorweggenommen wird.
